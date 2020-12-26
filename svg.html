@@ -172,9 +172,9 @@ var svg = d3.select("#magic")
     .data(data)
     .enter()
     .append("circle")
-        .attr("cx", function (d) { return x(d.Weight); } )
-        .attr("cy", function (d) { return y(d.Gender); } )
-        .attr("r", 5)
+        .attr("cxx", function (d) { return x(d.Weight); } )
+        .attr("cyy", function (d) { return y(d.Gender); } )
+        .attr("rr", 5)
         .style("fill", "#69b3a2" )
     });
 
