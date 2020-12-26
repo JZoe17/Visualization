@@ -41,6 +41,7 @@
     <h3>The Eight Visual Variables </h3>
 
     <div class="col-sm-6">
+        <div id="magic"></div>
         <div id="draw_here"></div>
         <div id="buttons_here"></div>
         <div id="my_dataviz"></div>
@@ -54,7 +55,7 @@
         <div id="button_x"></div>
         <p> Y-Axis </p>
         <div id="button_y"></div>
-        <h4> (b) Scaling </h4>
+        <p> (b) Scaling </p>
         <!-- Add 2 buttons -->
         <div id="button_linlog"></div>
         
@@ -131,6 +132,46 @@
 
 
 <script>
+
+    // append the svg object to the body of the page
+var svg = d3.select("#magic")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+//Read the data
+d3.csv("/data/babies.csv", function(data) {
+        console.log(data);
+    });
+  // Add X axis
+  var x = d3.scaleLinear()
+    .domain([3, 9])
+    .range([ 0, width ]);
+  var xAxis = svg.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x));
+
+  // Add Y axis
+  var y = d3.scaleLinear()
+    .domain([0, 9])
+    .range([ height, 0]);
+  svg.append("g")
+    .call(d3.axisLeft(y));
+
+  // Add dots
+  svg.append('g')
+    .selectAll("dot")
+    .data(data)
+    .enter()
+    .append("circle")
+        .attr("cx", function (d) { return x(d.Weight); } )
+        .attr("cy", function (d) { return y(d.Gender); } )
+        .attr("r", 5)
+        .style("fill", "#69b3a2" )
+
 
     var w = 500;
     var h = 200;
