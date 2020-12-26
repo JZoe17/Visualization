@@ -154,7 +154,7 @@ var svg = d3.select("#magic")
           "translate(" + margin.left + "," + margin.top + ")");  
   // Add X axis
   var x = d3.scaleLinear()
-    .domain([0, 4])
+    .domain([0, 5000])
     .range([ 0, width ]);
   var xAxis = svg.append("g")
     .attr("transform", "translate(0," + height + ")")
@@ -162,8 +162,8 @@ var svg = d3.select("#magic")
 
   // Add Y axis
   var y = d3.scaleLinear()
-    .domain([0, 9])
-    .range([ height, 0]);
+    .domain([0, 3])
+    .range([ 0, height]);
   svg.append("g")
     .call(d3.axisLeft(y));
 
