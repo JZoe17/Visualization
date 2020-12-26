@@ -51,21 +51,13 @@
         <h4>(1) Position</h4>
         <p> (a) Selection of Variables </p>
         <p> X-Axis </p>
-        
+        <div id="button_x"></div>
         <p> Y-Axis </p>
-
+        <div id="button_y"></div>
         <h4> (b) Scaling </h4>
         <!-- Add 2 buttons -->
-        <br><br>
-        <h6>Radio button</h6>
-        <form id="form" class="btn-group btn-group-toggle" data-toggle="buttons">
-          <label class="btn btn-secondary active">
-            <input type="radio" name="controlHeatmapType" value="MRR" checked>Option 1<br>
-          </label>
-          <label class="btn btn-secondary">
-            <input type="radio" name="controlHeatmapType" value="LYL">Option 2<br>
-          </label>
-        </form>
+        <div id="button_lin"></div>
+        <div id="button_log"></div>
 
         <svg id="buttons_2" width="400px" height="200px"></svg>
         <input type="range" name="slider" id=slider min="2" max="40" value="10">
@@ -157,6 +149,55 @@
             .attr("height", h);
 
     draw_circles();
+
+
+    d3.select("#button_x").append("button")
+        .text("change data")
+        .on("click",function(){
+            if (selectedData==data1) {
+                selectedData=data2;  
+            } else   {
+                selectedData=data1;
+            }
+            draw_circles();
+        });//end click function
+
+      
+        d3.select("#button_y").append("button")
+        .text("change data")
+        .on("click",function(){
+            if (selectedData==data1) {
+                selectedData=data2;  
+            } else   {
+                selectedData=data1;
+            }
+            draw_circles();
+        });//end click function    
+
+     
+        d3.select("#button_lin").append("button")
+        .text("change data")
+        .on("click",function(){
+            if (selectedData==data1) {
+                selectedData=data2;  
+            } else   {
+                selectedData=data1;
+            }
+            draw_circles();
+        });//end click function  
+        
+        d3.select("#button_log").append("button")
+        .text("change data")
+        .on("click",function(){
+            if (selectedData==data1) {
+                selectedData=data2;  
+            } else   {
+                selectedData=data1;
+            }
+            draw_circles();
+        });//end click function  
+
+
 
     d3.select("#buttons_here").append("button")
         .text("change data")
