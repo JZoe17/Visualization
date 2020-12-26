@@ -56,8 +56,8 @@
         <div id="button_y"></div>
         <h4> (b) Scaling </h4>
         <!-- Add 2 buttons -->
-        <div id="button_lin"></div>
-        <div id="button_log"></div>
+        <div id="button_linlog"></div>
+        
 
         <svg id="buttons_2" width="400px" height="200px"></svg>
         <input type="range" name="slider" id=slider min="2" max="40" value="10">
@@ -152,7 +152,29 @@
 
 
     d3.select("#button_x").append("button")
-        .text("change data")
+        .text("Variable 1")
+        .on("click",function(){
+            if (selectedData==data1) {
+                selectedData=data2;  
+            } else   {
+                selectedData=data1;
+            }
+            draw_circles();
+        });//end click function
+
+        d3.select("#button_x").append("button")
+        .text("Variable 2")
+        .on("click",function(){
+            if (selectedData==data1) {
+                selectedData=data2;  
+            } else   {
+                selectedData=data1;
+            }
+            draw_circles();
+        });//end click function
+
+        d3.select("#button_x").append("button")
+        .text("Variable 3")
         .on("click",function(){
             if (selectedData==data1) {
                 selectedData=data2;  
@@ -164,7 +186,7 @@
 
       
         d3.select("#button_y").append("button")
-        .text("change data")
+        .text("Variable 1")
         .on("click",function(){
             if (selectedData==data1) {
                 selectedData=data2;  
@@ -174,9 +196,31 @@
             draw_circles();
         });//end click function    
 
+        d3.select("#button_y").append("button")
+        .text("Variable 2")
+        .on("click",function(){
+            if (selectedData==data1) {
+                selectedData=data2;  
+            } else   {
+                selectedData=data1;
+            }
+            draw_circles();
+        });//end click function   
+
+        d3.select("#button_y").append("button")
+        .text("Variable 3")
+        .on("click",function(){
+            if (selectedData==data1) {
+                selectedData=data2;  
+            } else   {
+                selectedData=data1;
+            }
+            draw_circles();
+        });//end click function 
+
      
-        d3.select("#button_lin").append("button")
-        .text("change data")
+        d3.select("#button_linlog").append("button")
+        .text("Linear Scale")
         .on("click",function(){
             if (selectedData==data1) {
                 selectedData=data2;  
@@ -186,8 +230,8 @@
             draw_circles();
         });//end click function  
         
-        d3.select("#button_log").append("button")
-        .text("change data")
+        d3.select("#button_linlog").append("button")
+        .text("Logarithmic Scale")
         .on("click",function(){
             if (selectedData==data1) {
                 selectedData=data2;  
