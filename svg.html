@@ -150,7 +150,6 @@ var svg = d3.select("#magic")
 //Read the data
 d3.csv("/data/babies.csv", function(data) {
         console.log(data);
-    });
   // Add X axis
   var x = d3.scaleLinear()
     .domain([3, 9])
@@ -176,7 +175,7 @@ d3.csv("/data/babies.csv", function(data) {
         .attr("cy", function (d) { return y(d.Gender); } )
         .attr("r", 5)
         .style("fill", "#69b3a2" )
-
+    });
 
      /*   
     var w = 500;
