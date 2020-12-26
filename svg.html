@@ -149,10 +149,9 @@ var svg = d3.select("#magic")
 
 //Read the data
 d3.csv("/data/babies.csv", function(data) {
-        console.log(data);
   // Add X axis
   var x = d3.scaleLinear()
-    .domain([3, 9])
+    .domain([0, 4])
     .range([ 0, width ]);
   var xAxis = svg.append("g")
     .attr("transform", "translate(0," + height + ")")
