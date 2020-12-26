@@ -167,6 +167,21 @@ var svg = d3.select("#magic")
   svg.append("g")
     .call(d3.axisLeft(y));
 
+// Add X axis label:
+   svg.append("text")
+      .attr("text-anchor", "end")
+      .attr("x", width/2 + margin.left)
+      .attr("y", height + margin.top + 20)
+      .text("Weight");
+
+  // Y axis label:
+  svg.append("text")
+      .attr("text-anchor", "end")
+      .attr("transform", "rotate(-90)")
+      .attr("y", -margin.left + 20)
+      .attr("x", -margin.top - height/2 + 20)
+      .text("Gender")   
+
   // Add dots
   svg.append('g')
     .selectAll("dot")
