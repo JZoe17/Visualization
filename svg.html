@@ -43,6 +43,8 @@
     <div class="col-md-6">
         <div id="draw_here"></div>
         <div id="buttons_here"></div>
+        <div id="buttons_2"></div>
+        <div id="slider"></div>
     </div>
 
     <div class="col-md-6">
@@ -198,7 +200,32 @@
                         .attr("opacity", "0.5");
 ;
     }
+
+    var theCircles = d3.select("#buttons_2")
+  .selectAll("mycircles")
+  .data(position)
+  .enter()
+  .append("circle")
+    .attr("cx", function(d){return d} )
+    .attr("cy", 100)
+    .attr("r", 10)
+
+// Function that change a color
+function changeSize(size) {
+  theCircles
+    .attr('r',size)
+}
+
+// Listen to the slider?
+d3.select("#slider").on("change", function(d){
+  selectedValue = this.value
+  changeSize(selectedValue)
+})
+
+
 </script>
+
+
  
 
 </body>
