@@ -152,7 +152,7 @@ var svg = d3.select("#magic")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");  
   // Add X axis
-  var x = d3.scaleLinear()
+  var x = d3.scale.linear()
     .domain([0, 4])
     .range([ 0, width ]);
   var xAxis = svg.append("g")
