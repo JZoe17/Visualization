@@ -218,47 +218,54 @@ var svg = d3.select("#magic")
     var position = [50, 150, 250, 350]
 
     d3.select("#button_x").append("button")
-        .text("Variable 1")
+        .text("Weight")
         .on("click",function(){
-            /*
-            if (selectedData==data1) {
-                selectedData=data2;  
-            } else   {
-                selectedData=data1;
-            }
-            draw_circles();
-            */
+            svg.append('g')
+           .selectAll("dot")
+           .data(data)
+           .enter()
+         .append("circle")
+        .attr("cx", function (d) { return x(d.Weight); } )
+        .attr("cy", function (d) { return y(d.Gender); } )
+        .attr("r", 5)
+        .style("fill", "#69b3a2" )
+    });
         });//end click function
 
         d3.select("#button_x").append("button")
-        .text("Variable 2")
+        .text("Gender")
         .on("click",function(){
-            /*
-            if (selectedData==data1) {
-                selectedData=data2;  
-            } else   {
-                selectedData=data1;
-            }
-            draw_circles();
-            */
+            svg.append('g')
+    .selectAll("dot")
+    .data(data)
+    .enter()
+    .append("circle")
+        .attr("cx", function (d) { return x(d.Gender); } )
+        .attr("cy", function (d) { return y(d.Gender); } )
+        .attr("r", 5)
+        .style("fill", "#69b3a2" )
+    });
         });//end click function
 
         d3.select("#button_x").append("button")
-        .text("Variable 3")
+        .text("Time of Birth")
         .on("click",function(){
-            /*
-            if (selectedData==data1) {
-                selectedData=data2;  
-            } else   {
-                selectedData=data1;
-            }
-            draw_circles();
-            */
+
+        svg.append('g')
+        .selectAll("dot")
+        .data(data)
+        .enter()
+        .append("circle")
+        .attr("cx", function (d) { return x(d.Time); } )
+        .attr("cy", function (d) { return y(d.Gender); } )
+        .attr("r", 5)
+        .style("fill", "#69b3a2" )
+    });
         });//end click function
 
       
         d3.select("#button_y").append("button")
-        .text("Variable 1")
+        .text("Weight")
         .on("click",function(){
             /*
             if (selectedData==data1) {
@@ -271,7 +278,7 @@ var svg = d3.select("#magic")
         });//end click function    
 
         d3.select("#button_y").append("button")
-        .text("Variable 2")
+        .text("Gender")
         .on("click",function(){
             /*
             if (selectedData==data1) {
@@ -284,7 +291,7 @@ var svg = d3.select("#magic")
         });//end click function   
 
         d3.select("#button_y").append("button")
-        .text("Variable 3")
+        .text("Time of Birthh")
         .on("click",function(){
             /*
             if (selectedData==data1) {
