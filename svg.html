@@ -138,6 +138,7 @@
 
 //Read the data
 d3.csv("data/babies.csv", function(data) {
+    console.log(data);
 
 var margin = {top: 10, right: 30, bottom: 30, left: 60},
     width = 460 - margin.left - margin.right,
@@ -182,7 +183,7 @@ var svg = d3.select("#magic")
      /*   
     var w = 500;
     var h = 200;
-    var position = [50, 150, 250, 350]
+
 
     data1 = [[0, 50], [1, 60], [2, 70], [3, 30], [4, 20], [5, 10]];
     data2 = [[0, 30], [1, 80], [2, 20], [3, 40]];
@@ -199,7 +200,8 @@ var svg = d3.select("#magic")
     draw_circles();
    */
 
-
+    var position = [50, 150, 250, 350]
+    
     d3.select("#button_x").append("button")
         .text("Variable 1")
         .on("click",function(){
