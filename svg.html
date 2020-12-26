@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script type="text/javascript" src="d3/d3.v3.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     
@@ -152,7 +152,7 @@ var svg = d3.select("#magic")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");  
   // Add X axis
-  var x = d3.scale.linear()
+  var x = d3.scaleLinear()
     .domain([0, 4])
     .range([ 0, width ]);
   var xAxis = svg.append("g")
@@ -160,7 +160,7 @@ var svg = d3.select("#magic")
     .call(d3.axisBottom(x));
 
   // Add Y axis
-  var y = d3.scale.linear()
+  var y = d3.scaleLinear()
     .domain([0, 9])
     .range([ height, 0]);
   svg.append("g")
