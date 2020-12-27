@@ -145,14 +145,14 @@ Y
         //x axis
         x.domain([0, d3.max(dataFilter, function(d) { return d[selectedGroup1] }) ]);
         svg.selectAll(".myXaxis").transition()
-            .duration(1000)
+            .duration(3000)
             .call(xAxis);
 
         // create the Y axis
         y.domain([0, d3.max(dataFilter, function(d) { return d[selectedGroup2]  }) ]);
         svg.selectAll(".myYaxis")
             .transition()
-            .duration(1000)
+            .duration(3000)
             .call(yAxis);
 
 
@@ -160,7 +160,7 @@ Y
           dot
             .data(dataFilter)
             .transition()
-            .duration(1000)
+            .duration(3000)
               .attr("cx", function(d) { return x(+d.Xaxi) })
               .attr("cy", function(d) { return y(+d.Yaxi) })
         }
