@@ -165,9 +165,8 @@ Y
                     .data(data)
                     .transition()
                     .duration(1000)
-                    .attr("transform",
-                    "translate(" + (width/2) + " ," + 
-                           (height + margin.bottom) + ")")
+                    .attr("x", width / 2 )
+                    .attr("y",  height + margin.bottom)
                     .style("text-anchor", "middle")
                     .text(selectedGroup1);         
         
