@@ -140,19 +140,21 @@ Y
         var dataFilter = data.map(function(d){return {Yaxi: d[selectedGroup2], Xaxi: d[selectedGroup1]} })
         var Xmax = d3.max(dataFilter, function(d) { return +d.Xaxi} )
         var Ymax = d3.max(dataFilter, function(d) { return +d.Yaxi} )
+        var Xmin = d3.min(dataFilter, function(d) { return +d.Xaxi} )
+        var Ymin = d3.min(dataFilter, function(d) { return +d.Yaxi} )
 
         // updating the x,y axis range 
         //x axis
         console.log(dataFilter);
         console.log(Xmax);
         console.log(Ymax);
-        x.domain([0, Xmax]);
+        x.domain([Xmin, Xmax]);
         svg.selectAll(".myXaxis").transition()
             .duration(3000)
             .call(xAxis);
 
         // create the Y axis
-        y.domain([0, Ymax]);
+        y.domain([Ymin, Ymax]);
         svg.selectAll(".myYaxis")
             .transition()
             .duration(3000)
