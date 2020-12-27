@@ -142,13 +142,13 @@ Y
 
         // updating the x,y axis range 
         //x axis
-        x.domain([0, 1.5*d3.max(d.Xaxi) ]);
+        x.domain([0, 1.5*d3.max(function(d) { return x(+d.Xaxi) }) ]);
         svg.selectAll(".myXaxis").transition()
             .duration(1000)
             .call(xAxis);
 
         // create the Y axis
-        y.domain([0, 1.5*d3.max(d.Yaxi) ]);
+        y.domain([0, 1.5*d3.max(function(d) { return x(+d.Yaxi) }) ]);
         svg.selectAll(".myYaxis")
             .transition()
             .duration(1000)
