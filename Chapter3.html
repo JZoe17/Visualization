@@ -152,6 +152,12 @@ Y
         svg.selectAll(".myXaxis").transition()
             .duration(3000)
             .call(xAxis);
+        svg.append("text")             
+            .attr("transform",
+            "translate(" + (width/2) + " ," + 
+                           (height + margin.top + 20) + ")")
+             .style("text-anchor", "middle")
+            .text(selectedGroup1);
 
         // create the Y axis
         y.domain([Ymin, Ymax]);
