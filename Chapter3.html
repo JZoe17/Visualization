@@ -66,7 +66,7 @@ Y
 
     // set the dimensions and margins of the graph
     var margin = {top: 30, right: 100, bottom: 30, left: 60},
-        width = 560 - margin.left - margin.right,
+        width = 760 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
     
     // append the svg object to the body of the page
@@ -144,14 +144,14 @@ Y
         //x axis
         x.domain([0, 1.5*d3.max(dataFilter, function(d) { return d.Xaxi }) ]);
         svg.selectAll(".myXaxis").transition()
-            .duration(3000)
+            .duration(1000)
             .call(xAxis);
 
         // create the Y axis
         y.domain([0, 1.5*d3.max(dataFilter, function(d) { return d.Yaxi  }) ]);
         svg.selectAll(".myYaxis")
             .transition()
-            .duration(3000)
+            .duration(1000)
             .call(yAxis);
 
 
