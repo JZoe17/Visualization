@@ -142,6 +142,8 @@ Y
 
         // updating the x,y axis range 
         //x axis
+        console.log(dataFilter);
+        console.log(d3.max(dataFilter, function(d) { return d.Xaxi }) );
         x.domain([0, 2*d3.max(dataFilter, function(d) { return d.Xaxi }) ]);
         svg.selectAll(".myXaxis").transition()
             .duration(3000)
