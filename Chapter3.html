@@ -150,7 +150,7 @@ Y
         console.log(Ymax);
         x.domain([Xmin, Xmax]);
         svg.selectAll(".myXaxis").transition()
-            .duration(3000)
+            .duration(1000)
             .call(xAxis);
         svg.append("text")
                 .attr("text-anchor", "end")
@@ -166,6 +166,14 @@ Y
             .transition()
             .duration(3000)
             .call(yAxis);
+
+        svg.append("text")
+                .attr("transform", "rotate(-90)")
+                .attr("y", 0 - margin.left)
+                .attr("x",0 - (height / 2))
+                .attr("dy", "1em")
+                .style("text-anchor", "middle")
+                .text(selectedGroup2);    
 
 
     
