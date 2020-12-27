@@ -66,7 +66,7 @@ Y
 
     // set the dimensions and margins of the graph
     var margin = {top: 30, right: 100, bottom: 30, left: 60},
-        width = 760 - margin.left - margin.right,
+        width = 560 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
     
     // append the svg object to the body of the page
@@ -128,6 +128,8 @@ Y
           .data(data)
           .enter()
           .append('circle')
+            .attr("cx")
+            .attr("cy")
             .attr("r", 7)
             .style("fill", "#69b3a2")
     
@@ -142,16 +144,16 @@ Y
 
         // updating the x,y axis range 
         //x axis
-        x.domain([0, 1.5*d3.max(function(d) { return x(+d.Xaxi) }) ]);
+        x.domain([0, d3.max(function(d) { return d.Xaxi }) ]);
         svg.selectAll(".myXaxis").transition()
-            .duration(1000)
+            .duration(3000)
             .call(xAxis);
 
         // create the Y axis
-        y.domain([0, 1.5*d3.max(function(d) { return x(+d.Yaxi) }) ]);
+        y.domain([0, d3.max(function(d) { return d.Yaxi  }) ]);
         svg.selectAll(".myYaxis")
             .transition()
-            .duration(1000)
+            .duration(3000)
             .call(yAxis);
 
 
