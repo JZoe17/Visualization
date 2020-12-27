@@ -15,13 +15,16 @@
 <!-- Radio button: one choice only -->
 <br><br>
 <h6>Radio button</h6>
-<form id="form" class="btn-group btn-group-toggle" data-toggle="buttons">
-  <label class="btn btn-secondary active">
-    <input type="radio" name="controlHeatmapType" value="MRR" checked>Option 1<br>
-  </label>
-  <label class="btn btn-secondary">
-    <input type="radio" name="controlHeatmapType" value="LYL">Option 2<br>
-  </label>
-</form>
+<div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <label class="btn btn-secondary active">
+      <input type="radio" name="options" id="option1" autocomplete="off" checked> Active
+    </label>
+    <label class="btn btn-secondary">
+      <input type="radio" name="options" id="option2" autocomplete="off"> Radio
+    </label>
+    <label class="btn btn-secondary">
+      <input type="radio" name="options" id="option3" autocomplete="off"> Radio
+    </label>
+  </div>
 
 </html>
