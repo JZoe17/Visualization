@@ -176,12 +176,23 @@ Y
             .duration(3000)
             .call(yAxis);
 
-            innerSpace.select("#text_label")
+        svg.append("text")
+                .transition()
+                .duration(1000)
+                
+                .style("text-anchor", "middle")
+                .text(selectedGroup2);    
+
+
+        svg.select("#text_label")
                     .data(data)
                     .transition()
                     .duration(1000)
-                    .attr("y", height + margin.top + 20)
-                    .text(selectedGroup2);  
+                    .attr("transform", "rotate(-90)")
+                    .attr("y", 0 - margin.left)
+                    .attr("x",0 - (height / 2))
+                    .attr("dy", "1em")
+                    .text(selectedGroup2);         
 
 
     
