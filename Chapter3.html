@@ -160,12 +160,15 @@ Y
         svg.selectAll(".myXaxis").transition()
             .duration(1000)
             .call(xAxis);
-        
-        svg.append("text")
-                .attr("text-anchor", "end")
-                .attr("x", width)
-                .attr("y", height + margin.top + 20)
-                .text(Xmax);
+
+        svg.select("#text_label")
+                    .data(data)
+                    .transition()
+                    .duration(1000)
+                    .attr("text-anchor", "end")
+                    .attr("x", width)
+                    .attr("y", height + margin.top + 20)
+                    .text(selectedGroup1);         
         
         console.log(selectedGroup1);
 
@@ -175,13 +178,6 @@ Y
             .transition()
             .duration(3000)
             .call(yAxis);
-
-        svg.append("text")
-                .transition()
-                .duration(1000)
-                
-                .style("text-anchor", "middle")
-                .text(selectedGroup2);    
 
 
         svg.select("#text_label")
