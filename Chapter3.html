@@ -49,12 +49,14 @@
   </div>
   
   <div class="col-md-2">
-    <h2>Column 2</h2>
-    <p>Some text..</p>
+    <h5>1. Position</h5>
+    <p>1. Position</p>
     X
     <select id="selectButton1"></select> 
     Y
     <select id="selectButton2"></select>
+    Scale
+    <select id="selectButton3"></select>
 
   </div>
 </div>
@@ -85,6 +87,7 @@
     d3.csv("data/babies.csv", function(data) {
     console.log(data);
     var allGroup = d3.keys(data[0]);
+    var allScales = [ {"linear":0, "logarithmic":1} ];
     
         // List of groups (here I have one group per column)
         
@@ -106,6 +109,14 @@
             .append('option')
           .text(function (d) { return d; }) // text showed in the menu
           .attr("value", function (d) { return d; }) // corresponding value returned by the button
+
+    d3.select("#selectButton3")
+          .selectAll('myOptions')
+            .data(allScales)
+          .enter()
+            .append('option')
+          .text(function (d) { return d; }) // text showed in the menu
+          .attr("value", function (d) { return d; }) // corresponding value returned by the button      
     
     
     
@@ -230,7 +241,24 @@
             // run the updateChart function with this selected option
             var sel = d3.select("#selectButton1").property("value")
             update(sel, selectedOption2)
+            
     })
+
+    d3.select("#selectButton3").on("change", function(d) {
+            // recover the option that has been chosen
+            var selectedOption3 = d3.select(this).property("value")
+            // run the updateChart function with this selected option
+            var sel = d3.select("#selectButton3").property("value")
+            updateAxis(sel)
+    })
+
+    function updateAxis(sel) {
+        if (sel == 1)
+        {x.scaleLog()}
+        
+
+    }
+            
     
     update(allGroup[0],allGroup[0])
     
