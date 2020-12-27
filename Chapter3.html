@@ -152,6 +152,7 @@ Y
         svg.selectAll(".myXaxis").transition()
             .duration(1000)
             .call(xAxis);
+        
         svg.append("text")
                 .attr("text-anchor", "end")
                 .attr("x", width)
@@ -168,6 +169,8 @@ Y
             .call(yAxis);
 
         svg.append("text")
+                .transition()
+                .duration(1000)
                 .attr("transform", "rotate(-90)")
                 .attr("y", 0 - margin.left)
                 .attr("x",0 - (height / 2))
@@ -183,7 +186,9 @@ Y
             .duration(1000)
               .attr("cx", function(d) { return x(+d.Xaxi) })
               .attr("cy", function(d) { return y(+d.Yaxi) })
-        }
+        
+         svg.exit().remove(); 
+     }
     
     
     
