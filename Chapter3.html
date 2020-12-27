@@ -97,7 +97,7 @@
      
     d3.select("#selectButton1")
           .selectAll('myOptions')
-            .data(Scales)
+            .data(allGroup)
           .enter()
             .append('option')
           .text(function (d) { return d; }) // text showed in the menu
@@ -113,7 +113,7 @@
 
     d3.select("#selectButton3")
           .selectAll('myOptions')
-            .data(allScales)
+            .data(Scales)
           .enter()
             .append('option')
           .text(function (d) { return d; }) // text showed in the menu
