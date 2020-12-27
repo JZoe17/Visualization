@@ -123,11 +123,20 @@ Y
         var text = svg.append("g").attr("class", "bar_label").selectAll("text")
                 .data(data)
                  .enter().append("text")
-                .attr("id", "text_label")
+                .attr("id", "text_label1")
                 .attr("font-family", "sans-serif")
                 .attr("font-size", "22px")
                 .attr("fill", "red")
                 .attr("text-anchor", "middle");
+         
+        var text = svg.append("g").attr("class", "bar_label").selectAll("text")
+                .data(data)
+                 .enter().append("text")
+                .attr("id", "text_label2")
+                .attr("font-family", "sans-serif")
+                .attr("font-size", "22px")
+                .attr("fill", "red")
+                .attr("text-anchor", "middle");        
                     
     
         // Initialize dots with group a
@@ -161,7 +170,7 @@ Y
             .duration(1000)
             .call(xAxis);
 
-        svg.select("#text_label")
+        svg.select("#text_label1")
                     .data(data)
                     .transition()
                     .duration(1000)
@@ -180,7 +189,7 @@ Y
             .call(yAxis);
 
 
-        svg.select("#text_label")
+        svg.select("#text_label2")
                     .data(data)
                     .transition()
                     .duration(1000)
