@@ -1,6 +1,21 @@
 
 <!DOCTYPE html>
 <html lang="en">
+    <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            body { background: #FFB6C1; }
+        </style>
+        <meta charset="utf-8">
+        {{ bokeh_css }}
+        {{ bokeh_js }}
+    </head>
+    <body>
+        {{ plot_div|indent(8) }}
+        {{ plot_script|indent(8) }}
+    </body>
+</html>
     <head>
         <meta charset="utf-8">
         <title>my plot</title>
@@ -37,6 +52,12 @@
     Bokeh.set_log_level("info");
 </script>
     </head>
+
+    <script
+    src="https://demo.bokeh.org/sliders/autoload.js?bokeh-autoload-element=1000&bokeh-app-path=/sliders&bokeh-absolute-url=https://demo.bokeh.org/sliders"
+    id="1000">
+</script>
+
     <body>
         
         <div class="bk-root">
