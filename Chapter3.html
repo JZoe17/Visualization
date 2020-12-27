@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://d3js.org/d3.v4.js"></script>
+
+    <title>Visualization Examples</title>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="row">
+<!-- <div class="col-md-2"> -->            
+<!-- <img src="resources/d3logo.png"> -->                
+<!-- </div> -->            
+
+
+            <div class="col-md-10">
+                <h1 class="logo">Visualization Examples</h1>
+                <h4> Zoë </h4>
+                <div class="btn-group btn-group-md" role="group" aria-label="...">
+                    <a href="index.html" class="btn btn-default" role="button">Home</a>
+                    <a href="svg.html" class="btn btn-default" role="button">1 Chapter</a>
+                    <a href="barChart.html" class="btn btn-default" role="button">2 Chapter</a>
+                    <a href="Chapter3.html" class="btn btn-default" role="button">3 Chapter</a>
+                    <a href="bubbleChart.html" class="btn btn-default" role="button">4 Chapter</a>
+                    <a href="force.html" class="btn btn-default" role="button">5 Chapter</a>
+                    <a href="globe.html" class="btn btn-default" role="button">6 Chapter</a>
+                    <a href="http://www.d3js.org" class="btn btn-default" role="button">Appendix</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+
+<!-- Initialize a select button -->
+
+X
+<select id="selectButton1"></select> 
+Y
+<select id="selectButton2"></select>
+
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+
+<!-- Color Scale -->
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+
+<script>
+
+    // set the dimensions and margins of the graph
+    var margin = {top: 30, right: 100, bottom: 30, left: 60},
+        width = 560 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
+    
+    // append the svg object to the body of the page
+    var svg = d3.select("#my_dataviz")
+      .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform",
+              "translate(" + margin.left + "," + margin.top + ")");
+    
+    //Read the data
+    d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_connectedscatter.csv", function(data) {
+    
+        // List of groups (here I have one group per column)
+        var allGroup = ["valueA", "valueB", "valueC"]
+    
+        // add the options to the button
+     
+    d3.select("#selectButton1")
+          .selectAll('myOptions')
+            .data(allGroup)
+          .enter()
+            .append('option')
+          .text(function (d) { return d; }) // text showed in the menu
+          .attr("value", function (d) { return d; }) // corresponding value returned by the button
+    
+    d3.select("#selectButton2")
+          .selectAll('myOptions')
+            .data(allGroup)
+          .enter()
+            .append('option')
+          .text(function (d) { return d; }) // text showed in the menu
+          .attr("value", function (d) { return d; }) // corresponding value returned by the button
+    
+    
+    
+        // Initialise a X axis:
+        var x = d3.scaleLinear().range([0,width]);
+        var xAxis = d3.axisBottom().scale(x);
+        svg.append("g")
+             .attr("transform", "translate(0," + height + ")")
+             .attr("class","myXaxis")
+
+        // Initialize an Y axis
+        var y = d3.scaleLinear().range([height, 0]);
+        var yAxis = d3.axisLeft().scale(y);
+            svg.append("g")
+            .attr("class","myYaxis")
+    
+        // Initialize line with group a
+        
+    
+        // Initialize dots with group a
+        var dot = svg
+          .selectAll('circle')
+          .data(data)
+          .enter()
+          .append('circle')
+            .attr("cx", function(d) { return x(+d.valueA) })
+            .attr("cy", function(d) { return y(+d.valueA) })
+            .attr("r", 7)
+            .style("fill", "#69b3a2")
+    
+    
+        // A function that update the chart
+        function update(selectedGroup1, selectedGroup2) {
+
+        
+        // Create new data with the selection?
+        var dataFilter = data.map(function(d){return {Yaxi: d[selectedGroup2], Xaxi: d[selectedGroup1]} })
+        
+
+        // updating the x,y axis range 
+        //x axis
+        x.domain([0, d3.max(dataFilter, function(d) { return d.Xaxi }) ]);
+        svg.selectAll(".myXaxis").transition()
+            .duration(3000)
+            .call(xAxis);
+
+        // create the Y axis
+        y.domain([0, d3.max(dataFilter, function(d) { return d.Yaxi  }) ]);
+        svg.selectAll(".myYaxis")
+            .transition()
+            .duration(3000)
+            .call(yAxis);
+
+
+    
+          dot
+            .data(dataFilter)
+            .transition()
+            .duration(1000)
+              .attr("cx", function(d) { return x(+d.Xaxi) })
+              .attr("cy", function(d) { return y(+d.Yaxi) })
+        }
+    
+    
+    
+        // When the button is changed, run the updateChart function
+        d3.select("#selectButton1").on("change", function(d) {
+            // recover the option that has been chosen
+            var selectedOption = d3.select(this).property("value")
+            // run the updateChart function with this selected option
+            var sel = d3.select("#selectButton2").property("value")
+            update(selectedOption, sel)
+        })
+    
+       // When the button is changed, run the updateChart function
+        d3.select("#selectButton2").on("change", function(d) {
+            // recover the option that has been chosen
+            var selectedOption2 = d3.select(this).property("value")
+            // run the updateChart function with this selected option
+            var sel = d3.select("#selectButton1").property("value")
+            update(sel, selectedOption2)
+    })
+    
+    
+    })
+    
+    
+    </script>
