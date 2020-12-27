@@ -138,19 +138,21 @@ Y
         
         // Create new data with the selection?
         var dataFilter = data.map(function(d){return {Yaxi: d[selectedGroup2], Xaxi: d[selectedGroup1]} })
-        
+        var Xmax = d3.max(dataFilter, function(d) { return +d.Xaxi} )
+        var Ymax = d3.max(dataFilter, function(d) { return +d.Yaxi} )
 
         // updating the x,y axis range 
         //x axis
         console.log(dataFilter);
-        console.log(d3.max(dataFilter, function(d) { return d.Xaxi }) );
-        x.domain([0, 2*d3.max(dataFilter, function(d) { return d.Xaxi }) ]);
+        console.log(Xmax);
+        console.log(Ymax);
+        x.domain([0, Xmax]);
         svg.selectAll(".myXaxis").transition()
             .duration(3000)
             .call(xAxis);
 
         // create the Y axis
-        y.domain([0, 2*d3.max(dataFilter, function(d) { return d.Yaxi  }) ]);
+        y.domain([0, Ymax]);
         svg.selectAll(".myYaxis")
             .transition()
             .duration(3000)
