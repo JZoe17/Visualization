@@ -152,12 +152,11 @@ Y
         svg.selectAll(".myXaxis").transition()
             .duration(3000)
             .call(xAxis);
-        svg.append("text")             
-            .attr("transform",
-            "translate(" + (width/2) + " ," + 
-                           (height + margin.top + 20) + ")")
-             .style("text-anchor", "middle")
-            .text(selectedGroup1);
+        svg.append("text")
+                .attr("text-anchor", "end")
+                .attr("x", width)
+                .attr("y", height + margin.top + 20)
+                .text(selectedGroup1);
         
         console.log(selectedGroup1);
 
