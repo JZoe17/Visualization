@@ -88,8 +88,8 @@
     console.log(data);
     var allGroup = d3.keys(data[0]);
     var allScales = [ {"linear":0, "logarithmic":1} ];
-    console.log(d3.keys(allScales[0]));
-    console.log(allScales);
+    var Scales = d3.keys(allScales[0]);
+    
         // List of groups (here I have one group per column)
         
     
@@ -97,7 +97,7 @@
      
     d3.select("#selectButton1")
           .selectAll('myOptions')
-            .data(allGroup)
+            .data(Scales)
           .enter()
             .append('option')
           .text(function (d) { return d; }) // text showed in the menu
