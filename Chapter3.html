@@ -47,7 +47,7 @@
 <!-- </div> -->            
 
 
-<div class="col-md-6"> 
+<div class="col-md-9"> 
 
 <!-- Create a div where the graph will take place -->
 <div id="my_dataviz"></div>
@@ -55,7 +55,7 @@
 </div>
 
 
-<div class="col-md-4">
+<div class="col-md-2">
     X
     <select id="selectButton1"></select> 
     Y
@@ -73,8 +73,8 @@
 
     // set the dimensions and margins of the graph
     var margin = {top: 30, right: 100, bottom: 60, left: 40},
-        width = 560 - margin.left - margin.right,
-        height = 300 - margin.top - margin.bottom;
+        width = 860 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
     
     // append the svg object to the body of the page
     var svg = d3.select("#my_dataviz")
@@ -198,8 +198,6 @@
 
         svg.select("#text_label2")
                     .data(data)
-                    .transition()
-                    .duration(500)
                     .attr("transform", "rotate(-90)")
                     .attr("y", 0 - 1.1*margin.left)
                     .attr("x",0 - (height / 2))
