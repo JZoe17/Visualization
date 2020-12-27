@@ -79,10 +79,12 @@ Y
               "translate(" + margin.left + "," + margin.top + ")");
     
     //Read the data
-    d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_connectedscatter.csv", function(data) {
+    d3.csv("data/babies.csv", function(data) {
+    console.log(data);
+    var allGroup = d3.keys(data[0]);
     
         // List of groups (here I have one group per column)
-        var allGroup = ["valueA", "valueB", "valueC"]
+        
     
         // add the options to the button
      
