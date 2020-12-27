@@ -142,13 +142,13 @@ Y
 
         // updating the x,y axis range 
         //x axis
-        x.domain([0, d3.max(function(d) { return d.Xaxi }) ]);
+        x.domain([0, d3.max(dataFilter, function(d) { return d[selectedGroup1] }) ]);
         svg.selectAll(".myXaxis").transition()
             .duration(3000)
             .call(xAxis);
 
         // create the Y axis
-        y.domain([0, d3.max(function(d) { return d.Yaxi  }) ]);
+        y.domain([0, d3.max(dataFilter, function(d) { return d[selectedGroup2] }) ]);
         svg.selectAll(".myYaxis")
             .transition()
             .duration(3000)
