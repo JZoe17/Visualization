@@ -41,7 +41,7 @@
 
 <!-- Initialize a select button -->
 <div class="container">
-    <div class="column">
+    
 <!-- <div class="col-md-2"> -->            
 <!-- <img src="resources/d3logo.png"> -->                
 <!-- </div> -->            
@@ -55,7 +55,7 @@
 </div>
 
 
-<div class="col-md-2">
+<div class="col-md-4">
     X
     <select id="selectButton1"></select> 
     Y
@@ -63,7 +63,7 @@
 
 </div>
 </div>
-</div>
+
 
 <!-- Color Scale -->
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
@@ -199,7 +199,7 @@
         svg.select("#text_label2")
                     .data(data)
                     .transition()
-                    .duration(1000)
+                    .duration(500)
                     .attr("transform", "rotate(-90)")
                     .attr("y", 0 - 1.1*margin.left)
                     .attr("x",0 - (height / 2))
