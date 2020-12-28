@@ -171,7 +171,7 @@
 
         
         // Create new data with the selection?
-        var dataFilter = data.map(function(d){return {Yaxi: d[selectedGroup2], Xaxi: d[selectedGroup1], vals: d[ax]}})
+        var dataFilter = data.map(function(d){return {Yaxi: d[selectedGroup2], Xaxi: d[selectedGroup1], vals: d[ax1], vals2: d[ax2]}})
         var Xmax = d3.max(dataFilter, function(d) { return +d.Xaxi} )
         var Ymax = d3.max(dataFilter, function(d) { return +d.Yaxi} )
         var Xmin = d3.min(dataFilter, function(d) { return +d.Xaxi} )
@@ -219,7 +219,7 @@
         
         console.log(selectedGroup1);
        
-        console.log(ax2);
+        console.log(vals2);
         
         if(ax2 == "logarithmic")
         {
