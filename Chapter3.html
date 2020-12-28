@@ -129,7 +129,7 @@
              .attr("class","myXaxis")
 
         // Initialize an Y axis
-        var y = d3.range([height, 0]);
+        var y = d3.scaleLinear().range([height, 0]);
         var yAxis = d3.axisLeft().scale(y);
             svg.append("g")
             .attr("class","myYaxis")
@@ -200,9 +200,9 @@
         if(ax == 1)
         {
         // create the Y axis
-        y.scaleLog().domain([Ymin, Ymax]);
+        y.scaleLog().range([height, 0]).domain([Ymin, Ymax]);
         } else {
-        y.scaleLinear().domain([Ymin, Ymax]);
+        y.scaleLinear().range([height, 0]).domain([Ymin, Ymax]);
         }
         
         svg.selectAll(".myYaxis")
