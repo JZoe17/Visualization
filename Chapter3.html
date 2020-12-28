@@ -98,8 +98,8 @@
     var allGroup = d3.keys(data[0]);
     var allScales = [ {"linear":0, "logarithmic":1} ];
     var Scales = d3.keys(allScales[0]);
-    var size = [ {"-----":0, data}];
-    var sizeV = d3.keys(size[0])
+    var size = [ {"-----":0}];
+    var sizeV = [d3.keys(size[0]), allGroup]
     console.log(size);
     console.log(sizeV);
     
