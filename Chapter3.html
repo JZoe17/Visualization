@@ -22,12 +22,12 @@
                 <h4> Zoë </h4>
                 <div class="btn-group btn-group-md" role="group" aria-label="...">
                     <a href="index.html" class="btn btn-default" role="button">Home</a>
-                    <a href="svg.html" class="btn btn-default" role="button">1 Chapter</a>
-                    <a href="barChart.html" class="btn btn-default" role="button">2 Chapter</a>
+                    <a href="index.html" class="btn btn-default" role="button">1 Chapter</a>
+                    <a href="index.html" class="btn btn-default" role="button">2 Chapter</a>
                     <a href="Chapter3.html" class="btn btn-default" role="button">3 Chapter</a>
-                    <a href="bubbleChart.html" class="btn btn-default" role="button">4 Chapter</a>
-                    <a href="force.html" class="btn btn-default" role="button">5 Chapter</a>
-                    <a href="globe.html" class="btn btn-default" role="button">6 Chapter</a>
+                    <a href="index.html" class="btn btn-default" role="button">4 Chapter</a>
+                    <a href="index.html" class="btn btn-default" role="button">5 Chapter</a>
+                    <a href="index.html" class="btn btn-default" role="button">6 Chapter</a>
                     <a href="http://www.d3js.org" class="btn btn-default" role="button">Appendix</a>
                 </div>
             </div>
@@ -61,6 +61,7 @@
     <select id="selectButton3"></select>
     <h5>2. Mark</h5>
     <h5>3. Size</h5>
+    <select id="ButtonSize"></select>
     <h5>4. Brightness</h5>
     <h5>5. Color</h5>
     <h5>6. Orientation</h5>
@@ -97,6 +98,8 @@
     var allGroup = d3.keys(data[0]);
     var allScales = [ {"linear":0, "logarithmic":1} ];
     var Scales = d3.keys(allScales[0]);
+    var sizesB = [{"---": 0}, allGroup]
+
     
         // List of groups (here I have one group per column)
         
@@ -135,6 +138,14 @@
           .text(function (d) { return d; }) // text showed in the menu
           .attr("value", function (d) { return d; }) // corresponding value returned by the button          
     
+    d3.select("#ButtonSize")
+          .selectAll('myOptions')
+            .data(sizesB)
+          .enter()
+            .append('option')
+          .text(function (d) { return d; }) // text showed in the menu
+          .attr("value", function (d) { return d; }) // corresponding value returned by the button          
+          
     
         // Initialise a X axis:
         var x = d3.scaleLinear().range([0,width]);
