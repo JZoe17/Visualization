@@ -200,11 +200,13 @@
         if(ax == 1)
         {
         // create the Y axis
-        y.scaleLog().range([height, 0]).domain([Ymin, Ymax]);
+        var y = d3.scaleLog().range([height, 0]);
         } else {
-        y.scaleLinear().range([height, 0]).domain([Ymin, Ymax]);
+        var y = d3.scaleLinear().range([height, 0]);
         }
+
         
+        y.domain([Ymin, Ymax]);
         svg.selectAll(".myYaxis")
             .transition()
             .duration(1000)
