@@ -129,7 +129,7 @@
              .attr("class","myXaxis")
 
         // Initialize an Y axis
-        var y = d3.scaleLinear().range([height, 0]);
+        var y = d3.range([height, 0]);
         var yAxis = d3.axisLeft().scale(y);
             svg.append("g")
             .attr("class","myYaxis")
@@ -165,7 +165,7 @@
     
     
         // A function that update the chart
-        function update(selectedGroup1, selectedGroup2) {
+        function update(selectedGroup1, selectedGroup2, ax) {
 
         
         // Create new data with the selection?
@@ -195,9 +195,16 @@
                     .text(selectedGroup1);         
         
         console.log(selectedGroup1);
-
+       
+        console.log(ax);
+        if(ax == 1)
+        {
         // create the Y axis
-        y.domain([Ymin, Ymax]);
+        y.scaleLog().domain([Ymin, Ymax]);
+        } else {
+        y.scaleLinear().domain([Ymin, Ymax]);
+        }
+        
         svg.selectAll(".myYaxis")
             .transition()
             .duration(1000)
@@ -222,6 +229,7 @@
               .attr("cy", function(d) { return y(+d.Yaxi) })
         
          svg.exit().remove(); 
+        
      }
     
     
@@ -232,7 +240,9 @@
             var selectedOption = d3.select(this).property("value")
             // run the updateChart function with this selected option
             var sel = d3.select("#selectButton2").property("value")
-            update(selectedOption, sel)
+
+            var ax = d3.select("#selectButton3").property("value")
+            update(selectedOption, sel, ax)
         })
     
        // When the button is changed, run the updateChart function
@@ -241,24 +251,23 @@
             var selectedOption2 = d3.select(this).property("value")
             // run the updateChart function with this selected option
             var sel = d3.select("#selectButton1").property("value")
-            update(sel, selectedOption2)
+
+            var ax = d3.select("#selectButton3").property("value")
+            update(sel, selectedOption2, ax)
             
     })
 
     d3.select("#selectButton3").on("change", function(d) {
             // recover the option that has been chosen
-            var selectedOption3 = d3.select(this).property("value")
+            var sel3 = d3.select(this).property("value")
             // run the updateChart function with this selected option
-            var sel = d3.select("#selectButton3").property("value")
-            updateAxis(sel)
+            var sel1 = d3.select("#selectButton1").property("value")
+
+            var sel2 = d3.select("#selectButton2").property("value")
+            console.log(sel1, sel2, sel3);
+            update(sel1, sel2, sel3)
     })
 
-    function updateAxis(sel) {
-        if (sel == 1)
-        {x.scaleLog()}
-        
-
-    }
             
     
     update(allGroup[0],allGroup[0])
