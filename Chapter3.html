@@ -203,23 +203,25 @@
         // create the Y axis
         var y = d3.scaleLog().range([height, 0]);
         y.domain([Ymin, Ymax]);
+        var yAxis = d3.axisLeft().scale(y);
+            svg.append("g")
+            .attr("class","myYaxis")
         svg.selectAll(".myYaxis")
             .transition()
             .duration(1000)
             .call(yAxis);
-        var yAxis = d3.axisLeft().scale(y);
-            svg.append("g")
-            .attr("class","myYaxis")    
+            
         } else {
         var y = d3.scaleLinear().range([height, 0]);
         y.domain([Ymin, Ymax]);
+        var yAxis = d3.axisLeft().scale(y);
+            svg.append("g")
+            .attr("class","myYaxis")  
         svg.selectAll(".myYaxis")
             .transition()
             .duration(1000)
             .call(yAxis);
-        var yAxis = d3.axisLeft().scale(y);
-            svg.append("g")
-            .attr("class","myYaxis")         
+              
         }
 
         
