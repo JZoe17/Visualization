@@ -199,7 +199,7 @@
         console.log(ax);
         
 
-        var vals = function(d){return  d[ax] };
+        var vals = d3.data(ax).attr("value", function (d) { return d; });
         console.log(vals);
         if(vals == 1)
         {
