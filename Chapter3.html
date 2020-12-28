@@ -121,6 +121,13 @@
           .text(function (d) { return d; }) // text showed in the menu
           .attr("value", function (d) { return d; }) // corresponding value returned by the button      
     
+    d3.select("#selectButton4")
+          .selectAll('myOptions')
+            .data(Scales)
+          .enter()
+            .append('option')
+          .text(function (d) { return d; }) // text showed in the menu
+          .attr("value", function (d) { return d; }) // corresponding value returned by the button          
     
     
         // Initialise a X axis:
