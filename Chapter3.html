@@ -270,7 +270,9 @@
                     .attr("dy", "1em")
                     .text(selectedGroup2);         
 
-
+        var z = d3.scaleLinear()
+            .domain([Xmin, Xmax])
+            .range([ 4, 40]);
     
           dot
             .data(dataFilter)
@@ -278,6 +280,7 @@
             .duration(1000)
               .attr("cx", function(d) { return x(+d.Xaxi) })
               .attr("cy", function(d) { return y(+d.Yaxi) })
+              .attr("r", function (d) { return z(+d.Xaxi) } )
         
          svg.exit().remove(); 
         
