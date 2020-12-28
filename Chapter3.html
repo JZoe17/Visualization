@@ -197,7 +197,10 @@
         console.log(selectedGroup1);
        
         console.log(ax);
-        if(ax == 1)
+        console.log(function(d){return  d[ax] });
+
+        vals = function(d){return  d[ax] };
+        if(vals == 1)
         {
         // create the Y axis
         var y = d3.scaleLog().range([height, 0]);
