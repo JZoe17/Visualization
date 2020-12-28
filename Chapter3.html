@@ -217,6 +217,9 @@
             .transition()
             .duration(1000)
             .call(yAxis);
+        var yAxis = d3.axisLeft().scale(y);
+            svg.append("g")
+            .attr("class","myYaxis")         
         }
 
         
