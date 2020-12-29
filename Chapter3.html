@@ -349,6 +349,10 @@
         {
             dot
             .style("fill","#69b3a2")
+        } else
+        {
+            dot
+            .style("fill", function (d) { return myColor(+d.ColorB); } )
         }
         
          svg.exit().remove(); 
