@@ -103,7 +103,7 @@
     var initialK = d3.keys(initial[0]);
     //var sizeV = d3.merge(sizeC, data)
     //var allSize = d3.keys(sizeV[0])
-    allSizes.push("-----")
+    allSizes.unshift("-----")
     //console.log(sizeC);
     //console.log(sizeV);
     console.log(allSizes)
@@ -303,7 +303,7 @@
 
         var z = d3.scaleLinear()
             .domain([Zmin, Zmax])
-            .range([ 10, 20]);
+            .range([ 10, 30]);
 
         console.log(Zmin, Zmax)    
         
