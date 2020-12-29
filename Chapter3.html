@@ -214,9 +214,7 @@
         var Ymin = d3.min(dataFilter, function(d) { return +d.Yaxi} )
 
 
-        if (sizeCir == "-----"){
-            d.sizeCir = 5;
-        }
+        
         // updating the x,y axis range 
         //x axis
         console.log(dataFilter);
@@ -308,7 +306,19 @@
             .domain([Xmin,Xmax])
             .range(d3.schemeSet2);    
     
-          dot
+        if (sizeCir == "-----")
+        {
+            dot
+            .data(dataFilter)
+            .transition()
+            .duration(1000)
+              .attr("cx", function(d) { return x(+d.Xaxi) })
+              .attr("cy", function(d) { return y(+d.Yaxi) })
+              .attr("r", 10 )
+              .style("fill", function (d) { return myColor(+d.Xaxi); } )
+        } else
+        {
+        dot
             .data(dataFilter)
             .transition()
             .duration(1000)
@@ -316,6 +326,7 @@
               .attr("cy", function(d) { return y(+d.Yaxi) })
               .attr("r", function (d) { return z(+d.sizeCir) } )
               .style("fill", function (d) { return myColor(+d.Xaxi); } )
+        }
         
          svg.exit().remove(); 
         
