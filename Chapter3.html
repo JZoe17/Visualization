@@ -99,9 +99,11 @@
     var allScales = [ {"linear":0, "logarithmic":1} ];
     var Scales = d3.keys(allScales[0]);
     var sizeC = [ {"-":0}];
-    var sizeV = d3.merge(d3.keys(sizeC[0]), allGroup)
+    var sizeV = d3.merge(sizeC, data)
+    var allSize = d3.keys(sizeV[0])
     console.log(sizeC);
     console.log(sizeV);
+    console.log(allSize)
     
 
     
