@@ -99,8 +99,8 @@
     var allScales = [ {"linear":0, "logarithmic":1} ];
     var Scales = d3.keys(allScales[0]);
     var allSizes = d3.keys(data[0]);
-    var initial = [{"-----": 5}];
-    var initialK = d3.keys(initial);
+    var initial = {"-----": 5};
+    var initialK = d3.keys(initial[0]);
     //var sizeV = d3.merge(sizeC, data)
     //var allSize = d3.keys(sizeV[0])
     allSizes.unshift(initialK)
