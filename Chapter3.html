@@ -332,7 +332,6 @@
               .attr("cx", function(d) { return x(+d.Xaxi) })
               .attr("cy", function(d) { return y(+d.Yaxi) })
               .attr("r", 10 )
-              .style("fill", function (d) { return myColor(+d.colorB); } )
         } else
         {
         dot
@@ -342,7 +341,6 @@
               .attr("cx", function(d) { return x(+d.Xaxi) })
               .attr("cy", function(d) { return y(+d.Yaxi) })
               .attr("r", function (d) { return z(+d.sizeCi) } )
-              .style("fill", function (d) { return myColor(+d.ColorB); } )
         }
 
         if (colorC == "-----")
@@ -427,8 +425,8 @@
             var sel1 = d3.select("#selectButton1").property("value")
 
             var sel2 = d3.select("#selectButton2").property("value")
-            var sel4 = d3.select("#selectButton3").property("value")
-            var sel3 = d3.select("#selectButton4").property("value")
+            var sel3 = d3.select("#selectButton3").property("value")
+            var sel4 = d3.select("#selectButton4").property("value")
             var sel6 = d3.select("#ButtonColor").property("value")
             console.log(sel1, sel2, sel3, sel4, sel5);
             update(sel1, sel2, sel3, sel4, sel5, sel6)
