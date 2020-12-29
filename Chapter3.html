@@ -212,6 +212,8 @@
         var Ymax = d3.max(dataFilter, function(d) { return +d.Yaxi} )
         var Xmin = d3.min(dataFilter, function(d) { return +d.Xaxi} )
         var Ymin = d3.min(dataFilter, function(d) { return +d.Yaxi} )
+        var Zmin = d3.min(dataFilter, function(d) { return +d.sizeCi})
+        var Zmax = d3.max(dataFilter, function(d) { return +d.sizeCi})
 
 
         
@@ -298,7 +300,7 @@
                     .text(selectedGroup2);         
 
         var z = d3.scaleLinear()
-            .domain([Xmin, Xmax])
+            .domain([Zmin, Zmax])
             .range([ 4, 40]);
         
          // Add a scale for bubble color
