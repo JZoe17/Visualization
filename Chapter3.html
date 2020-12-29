@@ -64,6 +64,7 @@
     <select id="ButtonSize"></select>
     <h5>4. Brightness</h5>
     <h5>5. Color</h5>
+    <select id="ButtonColor"></select>
     <h5>6. Orientation</h5>
     <h5>7. Texture</h5>
     <h5>8. Motion</h5>
@@ -156,7 +157,14 @@
             .append('option')
           .text(function (d) { return d; }) // text showed in the menu
           .attr("value", function (d) { return d; }) // corresponding value returned by the button          
-          
+      
+    d3.select("#ButtonColor")
+          .selectAll('myOptions')
+            .data(allSizes)
+          .enter()
+            .append('option')
+          .text(function (d) { return d; }) // text showed in the menu
+          .attr("value", function (d) { return d; }) // corresponding value returned by the button          
     
         // Initialise a X axis:
         var x = d3.scaleLinear().range([0,width]);
@@ -204,18 +212,21 @@
     
     
         // A function that update the chart
-        function update(selectedGroup1, selectedGroup2, ax1, ax2, sizeCir) {
+        function update(selectedGroup1, selectedGroup2, ax1, ax2, sizeCir, colorC) {
 
             
         
         // Create new data with the selection?
-        var dataFilter = data.map(function(d){return {Yaxi: d[selectedGroup2], Xaxi: d[selectedGroup1], vals: d[ax1], vals2: d[ax2], sizeCi: d[sizeCir]}})
+        var dataFilter = data.map(function(d){return {Yaxi: d[selectedGroup2], Xaxi: d[selectedGroup1], vals: d[ax1], vals2: d[ax2], sizeCi: d[sizeCir],colorB: d[colorC]}})
         var Xmax = d3.max(dataFilter, function(d) { return +d.Xaxi} )
         var Ymax = d3.max(dataFilter, function(d) { return +d.Yaxi} )
         var Xmin = d3.min(dataFilter, function(d) { return +d.Xaxi} )
         var Ymin = d3.min(dataFilter, function(d) { return +d.Yaxi} )
         var Zmin = d3.min(dataFilter, function(d) { return +d.sizeCi})
         var Zmax = d3.max(dataFilter, function(d) { return +d.sizeCi})
+        var Cmin = d3.min(dataFilter, function(d) { return +d.colorB})
+        var Cmax = d3.max(dataFilter, function(d) { return +d.colorB})
+
 
 
         
@@ -309,10 +320,10 @@
         
          // Add a scale for bubble color
         var myColor = d3.scaleLinear()
-            .domain([Xmin,Xmax])
+            .domain([Cmin,Cmax])
             .range(d3.schemeSet2);    
     
-        if (sizeCir == "-----")
+        if (sizeCir == "-----") 
         {
             dot
             .data(dataFilter)
@@ -321,7 +332,7 @@
               .attr("cx", function(d) { return x(+d.Xaxi) })
               .attr("cy", function(d) { return y(+d.Yaxi) })
               .attr("r", 10 )
-              .style("fill", function (d) { return myColor(+d.Xaxi); } )
+              .style("fill", function (d) { return myColor(+d.colorB); } )
         } else
         {
         dot
@@ -331,7 +342,13 @@
               .attr("cx", function(d) { return x(+d.Xaxi) })
               .attr("cy", function(d) { return y(+d.Yaxi) })
               .attr("r", function (d) { return z(+d.sizeCi) } )
-              .style("fill", function (d) { return myColor(+d.Xaxi); } )
+              .style("fill", function (d) { return myColor(+d.Colorb); } )
+        }
+
+        if (colorC == "-----")
+        {
+            dot
+            .style("fill","#69b3a2")
         }
         
          svg.exit().remove(); 
@@ -350,8 +367,9 @@
             var sel3 = d3.select("#selectButton3").property("value")
             var sel4 = d3.select("#selectButton4").property("value")
             var sel5 = d3.select("#ButtonSize").property("value")
-            console.log(sel1, sel2, sel3, sel4, sel5);
-            update(sel1, sel2, sel3, sel4, sel5)
+            var sel6 = d3.select("#ButtonColor").property("value")
+            console.log(sel1, sel2, sel3, sel4, sel5, sel6);
+            update(sel1, sel2, sel3, sel4, sel5, sel6)
         })
     
        // When the button is changed, run the updateChart function
@@ -364,8 +382,9 @@
             var sel3 = d3.select("#selectButton3").property("value")
             var sel4 = d3.select("#selectButton4").property("value")
             var sel5 = d3.select("#ButtonSize").property("value")
-            console.log(sel1, sel2, sel3, sel4, sel5);
-            update(sel1, sel2, sel3, sel4, sel5)
+            var sel6 = d3.select("#ButtonColor").property("value")
+            console.log(sel1, sel2, sel3, sel4, sel5, sel6);
+            update(sel1, sel2, sel3, sel4, sel5, sel6)
             
     })
 
@@ -378,8 +397,9 @@
             var sel2 = d3.select("#selectButton2").property("value")
             var sel4 = d3.select("#selectButton4").property("value")
             var sel5 = d3.select("#ButtonSize").property("value")
-            console.log(sel1, sel2, sel3, sel4, sel5);
-            update(sel1, sel2, sel4, sel3, sel5)
+            var sel6 = d3.select("#ButtonColor").property("value")
+            console.log(sel1, sel2, sel3, sel4, sel5, sel6);
+            update(sel1, sel2, sel4, sel3, sel5, sel6)
     })
 
     d3.select("#selectButton4").on("change", function(d) {
@@ -391,8 +411,9 @@
             var sel2 = d3.select("#selectButton2").property("value")
             var sel4 = d3.select("#selectButton3").property("value")
             var sel5 = d3.select("#ButtonSize").property("value")
+            var sel6 = d3.select("#ButtonColor").property("value")
             console.log(sel1, sel2, sel3, sel4, sel5);
-            update(sel1, sel2, sel4, sel3, sel5)
+            update(sel1, sel2, sel4, sel3, sel5, sel6)
     })
 
     d3.select("#ButtonSize").on("change", function(d) {
@@ -404,13 +425,28 @@
             var sel2 = d3.select("#selectButton2").property("value")
             var sel4 = d3.select("#selectButton3").property("value")
             var sel3 = d3.select("#selectButton4").property("value")
+            var sel6 = d3.select("#ButtonColor").property("value")
             console.log(sel1, sel2, sel3, sel4, sel5);
-            update(sel1, sel2, sel3, sel4, sel5)
+            update(sel1, sel2, sel3, sel4, sel5, sel6)
     })
 
+    d3.select("#ButtonColor").on("change", function(d) {
+            // recover the option that has been chosen
+            var sel6 = d3.select(this).property("value")
+            // run the updateChart function with this selected option
+            var sel1 = d3.select("#selectButton1").property("value")
+
+            var sel2 = d3.select("#selectButton2").property("value")
+            var sel3 = d3.select("#selectButton3").property("value")
+            var sel4 = d3.select("#selectButton4").property("value")
+            var sel5 = d3.select("#ButtonSize").property("value")
+
+            console.log(sel1, sel2, sel3, sel4, sel5, sel6);
+            update(sel1, sel2, sel3, sel4, sel5, sel6)
+    })
             
     
-    update(allGroup[0],allGroup[0],Scales[0],Scales[0],allSizes[0])
+    update(allGroup[0],allGroup[0],Scales[0],Scales[0],allSizes[0],allSizes[0],)
     
     })
     
