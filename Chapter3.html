@@ -98,10 +98,10 @@
     var allGroup = d3.keys(data[0]);
     var allScales = [ {"linear":0, "logarithmic":1} ];
     var Scales = d3.keys(allScales[0]);
-    var sizeC = [ {"-":0}];
+    var allSizes = d3.keys(data[0]);
     //var sizeV = d3.merge(sizeC, data)
     //var allSize = d3.keys(sizeV[0])
-    allGroup.unshift("---")
+    allSizes.unshift("---")
     //console.log(sizeC);
     //console.log(sizeV);
     console.log(allGroup)
@@ -147,7 +147,7 @@
     
     d3.select("#ButtonSize")
           .selectAll('myOptions')
-            .data(allGroup)
+            .data(allSizes)
           .enter()
             .append('option')
           .text(function (d) { return d; }) // text showed in the menu
