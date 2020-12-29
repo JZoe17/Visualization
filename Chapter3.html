@@ -301,7 +301,9 @@
 
         var z = d3.scaleLinear()
             .domain([Zmin, Zmax])
-            .range([ 4, 40]);
+            .range([ 10, 20]);
+
+        console.log(Zmin, Zmax)    
         
          // Add a scale for bubble color
         var myColor = d3.scaleLinear()
