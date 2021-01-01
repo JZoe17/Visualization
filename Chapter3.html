@@ -67,13 +67,15 @@
     <select id="selectButton3"></select>
 </p>
     <h5>2. Mark</h5>
-    <h5>3. Size
-    <select id="ButtonSize"></select>
-   </h5>
+    <h5>3. Size</h5>
+    <p>  <select id="ButtonSize"></select>
+    </p>
+
     <h5>4. Brightness</h5>
-    <h5>5. Color
-    <select id="ButtonColor"></select>
-    </h5>
+    <h5>5. Color </h5>
+   <p> <select id="ButtonColor"></select>
+   </p>
+    
     <h5>6. Orientation</h5>
     <h5>7. Texture</h5>
     <h5>8. Motion</h5>
@@ -89,7 +91,7 @@
 <script>
 
     // set the dimensions and margins of the graph
-    var margin = {top: 30, right: 50, bottom: 60, left: 90},
+    var margin = {top: 50, right: 50, bottom: 60, left: 90},
         width = 760 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
     
@@ -220,7 +222,7 @@
             .style("fill", "brown")
             .style("opacity", "0.7")
             .attr("stroke", "blue")
-            .style("opacity", "0.8")
+            .style("opacity", "0.3")
     
     
         // A function that update the chart
@@ -353,7 +355,14 @@
               .attr("cx", function(d) { return x(+d.Xaxi) })
               .attr("cy", function(d) { return y(+d.Yaxi) })
               .attr("r", 10 )
-              .style("fill", function (d) { return myColor(+d.colorB); } )
+              if (colorC == "-----")
+              {dot 
+              .style("fill", "violet")
+              }
+              else 
+              {dot 
+              .style("fill", function (d) { return myColor(+d.colorB); })
+              }
         } else
         {
         dot
@@ -364,13 +373,22 @@
               .attr("cy", function(d) { return y(+d.Yaxi) })
               .attr("r", function (d) { return z(+d.sizeCi) } )
               .style("fill", function (d) { return myColor(+d.colorB); } )
+              if (colorC == "-----")
+              {dot 
+              .style("fill", "violet")
+              }
+              else 
+              {dot 
+              .style("fill", function (d) { return myColor(+d.colorB); })
+              }
         }
 
-        if (colorC == "-----")
+       /* if (colorC == "-----")
         {
             dot
             .style("fill", "blue")     
         }
+        */
         
 
         
