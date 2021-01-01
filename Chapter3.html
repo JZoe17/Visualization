@@ -425,8 +425,9 @@
                     .attr("d", d3.symbol()
                         .size(120)
                         .type(d3.symbolCircle)
+                    )
                     .attr("transform", function(d) { return "translate(" + x(+d.Xaxi) + "," + y(+d.Yaxi) + ")"; })   
-                    .attr("transform", function (d) { return myOrientation(+d.orieB); })    
+                    .attr("transform", function (d) { return myOrientation(+d.orieB); }) 
               }
 
 
@@ -469,9 +470,10 @@
                     .attr("d", d3.symbol()
                         .size(120)
                         .type(d3.symbolCircle)
+                    )
                     .attr("transform", function(d) { return "translate(" + x(+d.Xaxi) + "," + y(+d.Yaxi) + ")"; })   
                     .attr("transform", function (d) { return myOrientation(+d.orieB); })    
-      )
+      
 
               }
 
