@@ -216,7 +216,7 @@
           .append('circle')
             .attr("r", 7)
             .style("fill", "blue")
-            .style("opacity", "0.7")
+            .style("opacity", "0.6")
             .attr("stroke", "blue")
     
     
@@ -366,7 +366,9 @@
         if (colorC == "-----")
         {
             dot
-            .style("fill", "blue")     
+            .transition()
+            .duration(1000)
+            .style("fill", "white")     
         }
         
 
