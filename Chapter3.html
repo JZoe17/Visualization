@@ -38,6 +38,9 @@
 
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.js"></script>
+<script src="https://d3js.org/d3-color.v1.min.js">  </script> 
+<script src="https://d3js.org/d3-interpolate.v1.min.js">  </script> 
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js">  </script> 
 <br>
 <!-- Initialize a select button -->
 <div class="container">
@@ -70,7 +73,7 @@
     <h5>4. Brightness</h5>
     <h5>5. Color
     <select id="ButtonColor"></select>
-</h5>
+    </h5>
     <h5>6. Orientation</h5>
     <h5>7. Texture</h5>
     <h5>8. Motion</h5>
@@ -81,9 +84,6 @@
 
 <!-- Color Scale -->
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-<!-- Import D3 Scale Chromatic via CDN -->
-<script src="https://d3js.org/d3-color.v1.min.js"></script>
-<script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
 
 
 <script>
@@ -329,7 +329,7 @@
         
          // Add a scale for bubble color
         var myColor = d3.scaleLinear()
-            .domain([Cmin,Cmax])
+            .domain([(Cmin/Cmax),(Cmax/Cmax)])
             .range(d3.interpolateRainbow);    
         
         console.log(Cmin)
