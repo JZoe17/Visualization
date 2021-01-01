@@ -417,11 +417,16 @@
               {
               }
               else 
-              {dot 
-                .append('path')
-                .attr("d", d3.svg.symbol().type(d3.symbolTriangle).size(10))
-                .attr("transform", function(d) { return "translate(" + x(+d.Xaxi) + "," + y(+d.Yaxi) + ")"; })   
-                .attr("transform", function (d) { return myOrientation(+d.orieB); })
+              {dot.append('g')
+                    .selectAll("dot")
+                    .data(dataFilter)
+                    .enter()
+                    .append("path")
+                    .attr("d", d3.symbol()
+                        .size(120)
+                        .type(d3.symbolCircle)
+                    .attr("transform", function(d) { return "translate(" + x(+d.Xaxi) + "," + y(+d.Yaxi) + ")"; })   
+                    .attr("transform", function (d) { return myOrientation(+d.orieB); })    
               }
 
 
@@ -456,11 +461,18 @@
               {
               }
               else 
-              {dot 
-                .append('path')
-                .attr("d", d3.svg.symbol().type(d3.symbolTriangle).size(10))
-                .attr("transform", function(d) { return "translate(" + x(+d.Xaxi) + "," + y(+d.Yaxi) + ")"; })   
-                .attr("transform", function (d) { return myOrientation(+d.orieB); })
+              {dot.append('g')
+                    .selectAll("dot")
+                    .data(dataFilter)
+                    .enter()
+                    .append("path")
+                    .attr("d", d3.symbol()
+                        .size(120)
+                        .type(d3.symbolCircle)
+                    .attr("transform", function(d) { return "translate(" + x(+d.Xaxi) + "," + y(+d.Yaxi) + ")"; })   
+                    .attr("transform", function (d) { return myOrientation(+d.orieB); })    
+      )
+
               }
 
 
