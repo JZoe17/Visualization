@@ -328,10 +328,14 @@
         console.log(Zmin, Zmax)    
         
          // Add a scale for bubble color
-        var myColor = d3.scaleLinear()
+       /* var myColor = d3.scaleLinear()
             .domain([(Cmin/Cmax),(Cmax/Cmax)])
             .range(d3.interpolateRainbow);    
-        
+        */
+        var myColor = d3.scaleSequential()
+                        .interpolator(d3.interpolateWarm)
+                        .domain([Cmin, Cmax]);  
+
         console.log(Cmin)
         console.log(Cmax)   
             
