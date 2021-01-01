@@ -413,23 +413,9 @@
               .style("opacity", function (d) { return myOpacity(+d.opaC); })
               }
 
-              if (orientaB == "-----")
-              {
-              }
-              else 
-              {dot.append('g')
-                    .selectAll("dot")
-                    .data(dataFilter)
-                    .enter()
-                    .append("path")
-                    .attr("d", d3.symbol()
-                        .size(120)
-                        .type(d3.symbolTriangle)
-                    )
-                    .attr("transform", function(d) { return "translate(" + x(+d.Xaxi) + "," + y(+d.Yaxi) +")";})   
-                    //.attr("transform", "rotate(-60)") 
+               
  
-              }
+              
 
 
         } else
@@ -459,7 +445,20 @@
               .style("opacity", function (d) { return myOpacity(+d.opaC); })
               }
 
-              if (orientaB == "-----")
+              
+
+
+        }
+
+       /* if (colorC == "-----")
+        {
+            dot
+            .style("fill", "blue")     
+        }
+        */
+        
+
+        if (orientaB == "-----")
               {
               }
               else 
@@ -473,29 +472,15 @@
                         .type(d3.symbolTriangle)
                     )
                     .attr("transform", function(d) { return "translate(" + x(+d.Xaxi) + "," + y(+d.Yaxi) +")";})   
-                   // .attr("transform", "rotate(-60)")
-      
-
-              }
-
-
+                    //.attr("transform", "rotate(-60)")
+     
         }
-
-       /* if (colorC == "-----")
-        {
-            dot
-            .style("fill", "blue")     
-        }
-        */
-        
-
-        
         
          svg.exit().remove(); 
         
-     
-        }
-    
+        
+    }
+
         // run the updateChart function with this selected option
         var sel1 = d3.select("#selectButton1").property("value")
         var sel2 = d3.select("#selectButton2").property("value")
