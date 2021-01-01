@@ -426,8 +426,9 @@
                         .size(120)
                         .type(d3.symbolCircle)
                     )
-                    .attr("transform", function(d) { return "translate(" + x(+d.Xaxi) + "," + y(+d.Yaxi) + ") rotate("+ function (d) { return myOrientation(+d.orieB)+")";} })   
-                    
+                    //.attr("transform", function(d) { return "translate(" + x(+d.Xaxi) + "," + y(+d.Yaxi) + ") rotate("+ function (d) { return myOrientation(+d.orieB)+")";} })   
+                    .attr("transform", function(d) { return "translate(" + x(+d.Xaxi) + "," + y(+d.Yaxi) + ") rotate(-60)";}) 
+ 
               }
 
 
@@ -471,8 +472,9 @@
                         .size(120)
                         .type(d3.symbolCircle)
                     )
-                    .attr("transform", function(d) { return "translate(" + x(+d.Xaxi) + "," + y(+d.Yaxi) + ") rotate("+ function (d) { return myOrientation(+d.orieB)+")";} })   
-                      
+                    //.attr("transform", function(d) { return "translate(" + x(+d.Xaxi) + "," + y(+d.Yaxi) + ") rotate("+ function (d) { return myOrientation(+d.orieB)+")";} })   
+                    .attr("transform", function(d) { return "translate(" + x(+d.Xaxi) + "," + y(+d.Yaxi) + ") rotate(-60)";}) 
+ 
       
 
               }
