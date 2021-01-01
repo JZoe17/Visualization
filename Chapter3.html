@@ -54,18 +54,23 @@
   <p> X Variable 
     <select id="selectButton1"></select> 
 </p>
-    Scale
+<p>   Scale
     <select id="selectButton4"></select>
-    Y Variable
+</p>
+<p>     Y Variable
     <select id="selectButton2"></select>
-    Scale
+</p>
+<p>   Scale
     <select id="selectButton3"></select>
+</p>
     <h5>2. Mark</h5>
-    <h5>3. Size</h5>
+    <h5>3. Size
     <select id="ButtonSize"></select>
+   </h5>
     <h5>4. Brightness</h5>
-    <h5>5. Color</h5>
+    <h5>5. Color
     <select id="ButtonColor"></select>
+</h5>
     <h5>6. Orientation</h5>
     <h5>7. Texture</h5>
     <h5>8. Motion</h5>
@@ -209,7 +214,7 @@
             .attr("r", 7)
             .style("fill", "blue")
             .style("opacity", "0.7")
-            .attr("stroke", "grey")
+            .attr("stroke", "blue")
     
     
         // A function that update the chart
@@ -322,7 +327,7 @@
          // Add a scale for bubble color
         var myColor = d3.scaleLinear()
             .domain([Cmin,Cmax])
-            .range(d3.schemeSet2);    
+            .range(d3.interpolateRainbow);    
         
         console.log(Cmin)
         console.log(Cmax)   
@@ -354,7 +359,7 @@
         if (colorC == "-----")
         {
             dot
-            .style("fill", "grey")     
+            .style("fill", "blue")     
         }
         
 
