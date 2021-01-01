@@ -76,10 +76,10 @@
     </p>
 
     <h5>5. Color </h5>
-   <p> <select id="ButtonColor"></select>
-   </p>
+   <p> <select id="ButtonColor"></select> </p>
     
     <h5>6. Orientation</h5>
+    <p> <select id="ButtonOrient"></select> </p>
     <h5>7. Texture</h5>
     <h5>8. Motion</h5>
   </div>
@@ -187,13 +187,23 @@
             .append('option')
           .text(function (d) { return d; }) // text showed in the menu
           .attr("value", function (d) { return d; }) // corresponding value returned by the button
+    
     d3.select("#ButtonOpacity")
           .selectAll('myOptions')
             .data(allSizes)
           .enter()
             .append('option')
           .text(function (d) { return d; }) // text showed in the menu
+          .attr("value", function (d) { return d; }) // corresponding value returned by the button      
+    
+    d3.select("#ButtonOrient")
+          .selectAll('myOptions')
+            .data(allSizes)
+          .enter()
+            .append('option')
+          .text(function (d) { return d; }) // text showed in the menu
           .attr("value", function (d) { return d; }) // corresponding value returned by the button          
+          
     
         // Initialise a X axis:
         var x = d3.scaleLinear().range([0,width]);
@@ -245,12 +255,12 @@
     
     
         // A function that update the chart
-        function update(selectedGroup1, selectedGroup2, ax1, ax2, sizeCir, colorC, opaciB) {
+        function update(selectedGroup1, selectedGroup2, ax1, ax2, sizeCir, colorC, opaciB, orientaB) {
 
             
         
         // Create new data with the selection?
-        var dataFilter = data.map(function(d){return {Yaxi: d[selectedGroup2], Xaxi: d[selectedGroup1], vals: d[ax1], vals2: d[ax2], sizeCi: d[sizeCir],colorB: d[colorC], opaC: d[opaciB]}})
+        var dataFilter = data.map(function(d){return {Yaxi: d[selectedGroup2], Xaxi: d[selectedGroup1], vals: d[ax1], vals2: d[ax2], sizeCi: d[sizeCir],colorB: d[colorC], opaC: d[opaciB], orieB: d[orientaB]}})
         var Xmax = d3.max(dataFilter, function(d) { return +d.Xaxi} )
         var Ymax = d3.max(dataFilter, function(d) { return +d.Yaxi} )
         var Xmin = d3.min(dataFilter, function(d) { return +d.Xaxi} )
@@ -261,6 +271,8 @@
         var Cmax = d3.max(dataFilter, function(d) { return +d.colorB})
         var Omin = d3.min(dataFilter, function(d) { return +d.opaC})
         var Omax = d3.max(dataFilter, function(d) { return +d.opaC})
+        var Ormin = d3.min(dataFilter, function(d) { return +d.orieB})
+        var Ormax = d3.max(dataFilter, function(d) { return +d.orieB})
 
 
 
@@ -345,7 +357,8 @@
                     .attr("y", 0 - margin.left)
                     .attr("x",0 - (height / 2))
                     .attr("dy", "1em")
-                    .text(selectedGroup2);         
+                    .text(selectedGroup2);     
+                             
 
         var z = d3.scaleLinear()
             .domain([Zmin, Zmax])
@@ -364,11 +377,14 @@
         
         var myOpacity = d3.scaleLinear()
                         .domain([Omin, Omax])
-                        .range([ 0.1, 1]);                 
+                        .range([ 0.1, 1]);     
 
-        console.log(Cmin)
-        console.log(Cmax)   
-            
+        var myOrientation = d3.scaleLinear()
+                        .doman([Ormin,Ormax])
+                        .range([0,270])                
+                        
+                        
+          
 
     
         if (sizeCir == "-----") 
@@ -397,6 +413,18 @@
               .style("opacity", function (d) { return myOpacity(+d.opaC); })
               }
 
+              if (orientaB == "-----")
+              {
+              }
+              else 
+              {dot 
+              append('path')
+                .attr("d", d3.svg.symbol().type("triangle-up").size(10))
+                .attr("transform", function(d) { return "translate(" + x(+d.Xaxi) + "," + y(+d.Yaxi) + ")"; })   
+                .attr("transform", function (d) { return myOrientation(+d.orieB); })
+              }
+
+
         } else
         {
         dot
@@ -422,6 +450,17 @@
               else 
               {dot 
               .style("opacity", function (d) { return myOpacity(+d.opaC); })
+              }
+
+              if (orientaB == "-----")
+              {
+              }
+              else 
+              {dot 
+              append('path')
+                .attr("d", d3.svg.symbol().type("triangle-up").size(10))
+                .attr("transform", function(d) { return "translate(" + x(+d.Xaxi) + "," + y(+d.Yaxi) + ")"; })   
+                .attr("transform", function (d) { return myOrientation(+d.orieB); })
               }
 
 
@@ -450,6 +489,7 @@
         var sel5 = d3.select("#ButtonSize").property("value")
         var sel6 = d3.select("#ButtonColor").property("value")
         var sel7 = d3.select("#ButtonOpacity").property("value")
+        var sel8 = d3.select("#ButtonOrient").property("value")
 
     
         // When the button is changed, run the updateChart function
@@ -457,7 +497,7 @@
             // recover the option that has been chosen
             sel1 = d3.select(this).property("value")
             // run the updateChart function with this selected option
-            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7)
+            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8)
         })
     
        // When the button is changed, run the updateChart function
@@ -465,7 +505,7 @@
             // recover the option that has been chosen
             sel2 = d3.select(this).property("value")
             // run the updateChart function with this selected option
-            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7)
+            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8)
             
     })
 
@@ -473,35 +513,41 @@
             // recover the option that has been chosen
             sel3 = d3.select(this).property("value")
             // run the updateChart function with this selected option
-            update(sel1, sel2, sel4, sel3, sel5, sel6, sel7)
+            update(sel1, sel2, sel4, sel3, sel5, sel6, sel7, sel8)
     })
 
     d3.select("#selectButton4").on("change", function(d) {
             // recover the option that has been chosen
             sel4 = d3.select(this).property("value")
-            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7)
+            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8)
     })
 
     d3.select("#ButtonSize").on("change", function(d) {
             // recover the option that has been chosen
             sel5 = d3.select(this).property("value")
-            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7)
+            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8)
     })
 
     d3.select("#ButtonColor").on("change", function(d) {
             // recover the option that has been chosen
             sel6 = d3.select(this).property("value")
-            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7)
+            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8)
     })
 
     d3.select("#ButtonOpacity").on("change", function(d) {
             // recover the option that has been chosen
             sel7 = d3.select(this).property("value")
-            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7)
+            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8)
+    })
+
+    d3.select("#ButtonOrient").on("change", function(d) {
+            // recover the option that has been chosen
+            sel8 = d3.select(this).property("value")
+            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8)
     })
             
     
-    update(allGroup[0],allGroup[0],Scales[0],Scales[0],allSizes[0],allSizes[0], allSizes[0])
+    update(allGroup[0],allGroup[0],Scales[0],Scales[0],allSizes[0],allSizes[0], allSizes[0], allSizes[0])
     
     })
 
