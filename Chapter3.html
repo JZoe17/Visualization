@@ -418,7 +418,7 @@
               }
               else 
               {dot 
-              append('path')
+                .append('path')
                 .attr("d", d3.svg.symbol().type("triangle-up").size(10))
                 .attr("transform", function(d) { return "translate(" + x(+d.Xaxi) + "," + y(+d.Yaxi) + ")"; })   
                 .attr("transform", function (d) { return myOrientation(+d.orieB); })
@@ -457,7 +457,7 @@
               }
               else 
               {dot 
-              append('path')
+                .append('path')
                 .attr("d", d3.svg.symbol().type("triangle-up").size(10))
                 .attr("transform", function(d) { return "translate(" + x(+d.Xaxi) + "," + y(+d.Yaxi) + ")"; })   
                 .attr("transform", function (d) { return myOrientation(+d.orieB); })
