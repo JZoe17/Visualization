@@ -358,10 +358,14 @@
               if (colorC == "-----")
               {dot 
               .style("fill", "violet")
+              .attr("stroke", "violet")
+              .style("opacity", "0.8")
               }
               else 
               {dot 
               .style("fill", function (d) { return myColor(+d.colorB); })
+              .attr("stroke", function (d) { return myColor(+d.colorB); })
+              .style("opacity", "0.8")
               }
         } else
         {
@@ -375,10 +379,14 @@
               if (colorC == "-----")
               {dot 
               .style("fill", "violet")
+              .attr("stroke", "violet")
+              .style("opacity", "0.8")
               }
               else 
               {dot 
               .style("fill", function (d) { return myColor(+d.colorB); })
+              .attr("stroke", function (d) { return myColor(+d.colorB); })
+              .style("opacity", "0.8")
               }
         }
 
