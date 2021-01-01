@@ -72,6 +72,9 @@
     </p>
 
     <h5>4. Brightness</h5>
+    <p> <select id="ButtonOpacity"></select>
+    </p>
+
     <h5>5. Color </h5>
    <p> <select id="ButtonColor"></select>
    </p>
@@ -183,6 +186,13 @@
           .enter()
             .append('option')
           .text(function (d) { return d; }) // text showed in the menu
+          .attr("value", function (d) { return d; }) // corresponding value returned by the button
+    d3.select("#ButtonOpacity")
+          .selectAll('myOptions')
+            .data(allSizes)
+          .enter()
+            .append('option')
+          .text(function (d) { return d; }) // text showed in the menu
           .attr("value", function (d) { return d; }) // corresponding value returned by the button          
     
         // Initialise a X axis:
@@ -227,7 +237,7 @@
           .enter()
           .append('circle')
             .attr("r", 7)
-            .style("opacity", "0.6")
+            /*.style("opacity", "0.6") */
             .attr("stroke", "grey")
             /*.attr("stroke", "blue")
             .style("opacity", "0.3")
@@ -235,12 +245,12 @@
     
     
         // A function that update the chart
-        function update(selectedGroup1, selectedGroup2, ax1, ax2, sizeCir, colorC) {
+        function update(selectedGroup1, selectedGroup2, ax1, ax2, sizeCir, colorC, opaciB) {
 
             
         
         // Create new data with the selection?
-        var dataFilter = data.map(function(d){return {Yaxi: d[selectedGroup2], Xaxi: d[selectedGroup1], vals: d[ax1], vals2: d[ax2], sizeCi: d[sizeCir],colorB: d[colorC]}})
+        var dataFilter = data.map(function(d){return {Yaxi: d[selectedGroup2], Xaxi: d[selectedGroup1], vals: d[ax1], vals2: d[ax2], sizeCi: d[sizeCir],colorB: d[colorC], opaC: d[opaciB]}})
         var Xmax = d3.max(dataFilter, function(d) { return +d.Xaxi} )
         var Ymax = d3.max(dataFilter, function(d) { return +d.Yaxi} )
         var Xmin = d3.min(dataFilter, function(d) { return +d.Xaxi} )
@@ -249,6 +259,8 @@
         var Zmax = d3.max(dataFilter, function(d) { return +d.sizeCi})
         var Cmin = d3.min(dataFilter, function(d) { return +d.colorB})
         var Cmax = d3.max(dataFilter, function(d) { return +d.colorB})
+        var Omin = d3.min(dataFilter, function(d) { return +d.opaC})
+        var Omax = d3.max(dataFilter, function(d) { return +d.opaC})
 
 
 
@@ -349,6 +361,10 @@
         var myColor = d3.scaleSequential()
                         .interpolator(d3.interpolateWarm)
                         .domain([Cmin, Cmax]);  
+        
+        var myOpacity = d3.scaleLinear()
+                        .domain([Omin, Omax])
+                        .range([ 0.1, 1]);                 
 
         console.log(Cmin)
         console.log(Cmax)   
@@ -372,6 +388,15 @@
               {dot 
               .style("fill", function (d) { return myColor(+d.colorB); })
               }
+              if (opaciB == "-----")
+              {dot 
+              .style("opacity", "0")
+              }
+              else 
+              {dot 
+              .style("opacity", function (d) { return myOpacity(+d.opaC); })
+              }
+
         } else
         {
         dot
@@ -389,6 +414,17 @@
               {dot 
               .style("fill", function (d) { return myColor(+d.colorB); })
               }
+              
+              if (opaciB == "-----")
+              {dot 
+              .style("opacity", "0.3")
+              }
+              else 
+              {dot 
+              .style("opacity", function (d) { return myOpacity(+d.opaC); })
+              }
+
+
         }
 
        /* if (colorC == "-----")
@@ -406,97 +442,66 @@
      
         }
     
+        // run the updateChart function with this selected option
+        var sel1 = d3.select("#selectButton1").property("value")
+        var sel2 = d3.select("#selectButton2").property("value")
+        var sel3 = d3.select("#selectButton3").property("value")
+        var sel4 = d3.select("#selectButton4").property("value")
+        var sel5 = d3.select("#ButtonSize").property("value")
+        var sel6 = d3.select("#ButtonColor").property("value")
+        var sel7 = d3.select("#ButtonOpacity").property("value")
+
     
         // When the button is changed, run the updateChart function
         d3.select("#selectButton1").on("change", function(d) {
             // recover the option that has been chosen
-            var sel1 = d3.select(this).property("value")
+            sel1 = d3.select(this).property("value")
             // run the updateChart function with this selected option
-            var sel2 = d3.select("#selectButton2").property("value")
-
-            var sel3 = d3.select("#selectButton3").property("value")
-            var sel4 = d3.select("#selectButton4").property("value")
-            var sel5 = d3.select("#ButtonSize").property("value")
-            var sel6 = d3.select("#ButtonColor").property("value")
-            console.log(sel1, sel2, sel3, sel4, sel5, sel6);
-            update(sel1, sel2, sel3, sel4, sel5, sel6)
+            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7)
         })
     
        // When the button is changed, run the updateChart function
         d3.select("#selectButton2").on("change", function(d) {
             // recover the option that has been chosen
-            var sel2 = d3.select(this).property("value")
+            sel2 = d3.select(this).property("value")
             // run the updateChart function with this selected option
-            var sel1 = d3.select("#selectButton1").property("value")
-
-            var sel3 = d3.select("#selectButton3").property("value")
-            var sel4 = d3.select("#selectButton4").property("value")
-            var sel5 = d3.select("#ButtonSize").property("value")
-            var sel6 = d3.select("#ButtonColor").property("value")
-            console.log(sel1, sel2, sel3, sel4, sel5, sel6);
-            update(sel1, sel2, sel3, sel4, sel5, sel6)
+            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7)
             
     })
 
     d3.select("#selectButton3").on("change", function(d) {
             // recover the option that has been chosen
-            var sel3 = d3.select(this).property("value")
+            sel3 = d3.select(this).property("value")
             // run the updateChart function with this selected option
-            var sel1 = d3.select("#selectButton1").property("value")
-
-            var sel2 = d3.select("#selectButton2").property("value")
-            var sel4 = d3.select("#selectButton4").property("value")
-            var sel5 = d3.select("#ButtonSize").property("value")
-            var sel6 = d3.select("#ButtonColor").property("value")
-            console.log(sel1, sel2, sel3, sel4, sel5, sel6);
-            update(sel1, sel2, sel4, sel3, sel5, sel6)
+            update(sel1, sel2, sel4, sel3, sel5, sel6, sel7)
     })
 
     d3.select("#selectButton4").on("change", function(d) {
             // recover the option that has been chosen
-            var sel3 = d3.select(this).property("value")
-            // run the updateChart function with this selected option
-            var sel1 = d3.select("#selectButton1").property("value")
-
-            var sel2 = d3.select("#selectButton2").property("value")
-            var sel4 = d3.select("#selectButton3").property("value")
-            var sel5 = d3.select("#ButtonSize").property("value")
-            var sel6 = d3.select("#ButtonColor").property("value")
-            console.log(sel1, sel2, sel3, sel4, sel5);
-            update(sel1, sel2, sel4, sel3, sel5, sel6)
+            sel4 = d3.select(this).property("value")
+            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7)
     })
 
     d3.select("#ButtonSize").on("change", function(d) {
             // recover the option that has been chosen
-            var sel5 = d3.select(this).property("value")
-            // run the updateChart function with this selected option
-            var sel1 = d3.select("#selectButton1").property("value")
-
-            var sel2 = d3.select("#selectButton2").property("value")
-            var sel3 = d3.select("#selectButton3").property("value")
-            var sel4 = d3.select("#selectButton4").property("value")
-            var sel6 = d3.select("#ButtonColor").property("value")
-            console.log(sel1, sel2, sel3, sel4, sel5);
-            update(sel1, sel2, sel3, sel4, sel5, sel6)
+            sel5 = d3.select(this).property("value")
+            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7)
     })
 
     d3.select("#ButtonColor").on("change", function(d) {
             // recover the option that has been chosen
-            var sel6 = d3.select(this).property("value")
-            // run the updateChart function with this selected option
-            var sel1 = d3.select("#selectButton1").property("value")
+            sel6 = d3.select(this).property("value")
+            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7)
+    })
 
-            var sel2 = d3.select("#selectButton2").property("value")
-            var sel3 = d3.select("#selectButton3").property("value")
-            var sel4 = d3.select("#selectButton4").property("value")
-            var sel5 = d3.select("#ButtonSize").property("value")
-
-            console.log(sel1, sel2, sel3, sel4, sel5, sel6);
-            update(sel1, sel2, sel3, sel4, sel5, sel6)
+    d3.select("#ButtonOpacity").on("change", function(d) {
+            // recover the option that has been chosen
+            sel7 = d3.select(this).property("value")
+            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7)
     })
             
     
-    update(allGroup[0],allGroup[0],Scales[0],Scales[0],allSizes[0],allSizes[0])
+    update(allGroup[0],allGroup[0],Scales[0],Scales[0],allSizes[0],allSizes[0], allSizes[0])
     
     })
 
