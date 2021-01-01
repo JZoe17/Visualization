@@ -196,6 +196,7 @@
                 .attr("font-family", "sans-serif")
                 .attr("font-size", "22px")
                 .attr("fill", "black")
+                .style("opacity", "0.4")
                 .attr("text-anchor", "middle");
          
         var text = svg.append("g").attr("class", "bar_label").selectAll("text")
@@ -205,6 +206,7 @@
                 .attr("font-family", "sans-serif")
                 .attr("font-size", "22px")
                 .attr("fill", "black")
+                .style("opacity", "0.4")
                 .attr("text-anchor", "middle");        
                     
     
@@ -215,9 +217,10 @@
           .enter()
           .append('circle')
             .attr("r", 7)
-            .style("fill", "blue")
+            .style("fill", "brown")
             .style("opacity", "0.7")
             .attr("stroke", "blue")
+            .style("opacity", "0.8")
     
     
         // A function that update the chart
