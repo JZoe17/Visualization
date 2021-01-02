@@ -496,6 +496,15 @@
 
         if (orientaB == "no")
               {
+                svg.exit().remove();
+                  
+                  semi
+                      .data(dataFilter)
+                      .transition()
+                      .duration(1000)
+                      .attr("transform", function(d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) +")";})   
+                      .style("fill", "white")
+                      .style("opacity", 0)
               }
               else 
               {
@@ -506,7 +515,7 @@
                     .transition()
                     .duration(1000)
                     .attr("transform", function(d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) +")";})   
-                    .style("fill", "black")
+                    .style("fill", "green")
                     .style("opacity", 0.8)
                     //.attr("transform", "rotate(-60)")
 
