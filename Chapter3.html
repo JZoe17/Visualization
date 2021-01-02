@@ -288,6 +288,7 @@
         .append("path")
         .attr("d", customCircle)
         
+        
     
     
         // A function that update the chart
@@ -521,18 +522,22 @@
                     if (opaciB == "-----")
                     {semi 
                     .style("opacity", "0.8")
+                    .attr("stroke", "grey")
                     }
                     else 
                     {semi 
                     .style("opacity", function (d) { return myOpacity(+d.opaC); })
+                    .attr("stroke", "grey")
                     }
                     if (colorC == "-----")
                     {semi 
                     .style("fill", "violet")
+                    .attr("stroke", "grey")
                     }
                     else 
                     {semi 
                     .style("fill", function (d) { return myColor(+d.colorB); })
+                    .attr("stroke", "grey")
                     }
                     //.attr("transform", "rotate(-60)")
                     if (sizeCir == "-----") 
