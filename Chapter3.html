@@ -538,12 +538,12 @@
                     if (sizeCir == "-----") 
                     {
                     semi
-                    .attr("d", customCircle.size(100))
+                    .attr("d", customCircle.size(1000))
                     }
                     else 
                     {
                     semi
-                    .attr("d", customCircle.size(10*function (d) { return z(+d.sizeCi); } ))
+                    .attr("d", customCircle.size(function (d) { return 1000*z(+d.sizeCi); } ))
                     }
 
 
