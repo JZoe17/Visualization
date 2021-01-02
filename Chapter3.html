@@ -252,6 +252,20 @@
             /*.attr("stroke", "blue")
             .style("opacity", "0.3")
             */
+
+        var trian = svg
+          .append('g')
+          .selectAll('dot')
+          .data(data)
+          .enter()
+          .append('path')
+                .attr("d", d3.symbol()
+                .size(120)
+                .type(d3.symbolTriangle)
+      )
+            /*.attr("stroke", "blue")
+            .style("opacity", "0.3")
+            */   
     
     
         // A function that update the chart
@@ -462,16 +476,10 @@
               {
               }
               else 
-              {dot.append('g')
-                    .selectAll("dot")
-                    .data(dataFilter)
-                    .enter()
-                    .append("path")
-                    .attr("d", d3.symbol()
-                        .size(120)
-                        .type(d3.symbolTriangle)
-                    )
+              {trian
                     .attr("transform", function(d) { return "translate(" + x(+d.Xaxi) + "," + y(+d.Yaxi) +")";})   
+                    .style("fill", "black")
+                    .style("opacity", 0.8)
                     //.attr("transform", "rotate(-60)")
      
         }
