@@ -502,22 +502,38 @@
                   semi
                       .data(dataFilter)
                       .transition()
-                      .duration(1000)
-                      .attr("transform", function(d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) +")";})   
+                      .duration(50)
                       .style("fill", "white")
                       .style("opacity", 0)
               }
               else 
               {
                 svg.exit().remove();
+                dot 
+                      .style("fill", "white")
+                      .style("opacity", 0)
                   
                 semi
                     .data(dataFilter)
                     .transition()
                     .duration(1000)
                     .attr("transform", function(d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) +") rotate("+myOrientation(d.orieB)+")";})   
-                    .style("fill", "green")
-                    .style("opacity", 0.8)
+                    if (opaciB == "-----")
+                    {semi 
+                    .style("opacity", "0.8")
+                    }
+                    else 
+                    {semi 
+                    .style("opacity", function (d) { return myOpacity(+d.opaC); })
+                    }
+                    if (colorC == "-----")
+                    {semi 
+                    .style("fill", "violet")
+                    }
+                    else 
+                    {semi 
+                    .style("fill", function (d) { return myColor(+d.colorB); })
+                    }
                     //.attr("transform", "rotate(-60)")
 
 
