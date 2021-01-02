@@ -477,6 +477,9 @@
               }
               else 
               {trian
+                    .data(dataFilter)
+                    .transition()
+                    .duration(1000)
                     .attr("transform", function(d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) +")";})   
                     .style("fill", "black")
                     .style("opacity", 0.8)
