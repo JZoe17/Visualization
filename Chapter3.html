@@ -281,9 +281,13 @@
         
         var customCircle = d3.symbol().type(customShapeCircle).size(500);
         var semi = svg
+        .append('g')
+        .selectAll('dot')
+        .data(data)
+        .enter()
         .append("path")
         .attr("d", customCircle)
-        .attr("transform", "translate(50,50)");
+        
     
     
         // A function that update the chart
@@ -490,7 +494,7 @@
         */
         
 
-        if (orientaB == "-----")
+        if (orientaB == "no")
               {
               }
               else 
