@@ -58,13 +58,13 @@
     <select id="selectButton1"></select> 
 </p>
 <p>   Scale
-    <select id="selectButton4"></select>
+    <select id="selectButton3"></select>
 </p>
 <p>     Y Variable
     <select id="selectButton2"></select>
 </p>
 <p>   Scale
-    <select id="selectButton3"></select>
+    <select id="selectButton4"></select>
 </p>
     <h5>2. Mark</h5>
     <h5>3. Size</h5>
@@ -98,6 +98,7 @@
 <!-- Color Scale -->
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 
+<svg id="demoCustomCircle" width="100" height="100"></svg>
 
 <script>
 
@@ -124,6 +125,7 @@
     var allSizes = d3.keys(data[0]);
     var initial = [{"-----": 5}];
     var initialK = d3.keys(initial[0]);
+    var Orient = ["yes", "no"]
     //var sizeV = d3.merge(sizeC, data)
     //var allSize = d3.keys(sizeV[0])
     allSizes.unshift("-----")
@@ -198,7 +200,7 @@
     
     d3.select("#ButtonOrient")
           .selectAll('myOptions')
-            .data(allSizes)
+            .data(Orient)
           .enter()
             .append('option')
           .text(function (d) { return d; }) // text showed in the menu
@@ -253,7 +255,7 @@
             .style("opacity", "0.3")
             */
 
-        var trian = svg
+       /* var trian = svg
           .append('g')
           .selectAll('dot')
           .data(data)
@@ -266,6 +268,22 @@
             /*.attr("stroke", "blue")
             .style("opacity", "0.3")
             */   
+
+      //Custom Semi Circle, accurate center and size
+        var customShapeCircle = {
+            draw: function(context, size) {
+            let r = Math.sqrt(2 * size / Math.PI);
+            let orgin = (4 * r) / (3 * Math.PI); //the orgin of the circle, not of the symbol
+            context.arc(0, -orgin, r, Math.PI, 2 * Math.PI, true);
+            context.closePath();
+            }
+        }
+        
+        var customCircle = d3.symbol().type(customShapeCircle).size(500);
+        var semi = svg
+        .append("path")
+        .attr("d", customCircle)
+        .attr("transform", "translate(50,50)");
     
     
         // A function that update the chart
@@ -288,7 +306,7 @@
         var Ormin = d3.min(dataFilter, function(d) { return +d.orieB})
         var Ormax = d3.max(dataFilter, function(d) { return +d.orieB})
 
-
+       
 
         
         // updating the x,y axis range 
@@ -479,7 +497,7 @@
               {
                 svg.exit().remove();
                   
-                trian
+                semi
                     .data(dataFilter)
                     .transition()
                     .duration(1000)
@@ -487,6 +505,8 @@
                     .style("fill", "black")
                     .style("opacity", 0.8)
                     //.attr("transform", "rotate(-60)")
+
+
      
         }
         
