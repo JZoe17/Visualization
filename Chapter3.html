@@ -476,7 +476,10 @@
               {
               }
               else 
-              {trian
+              {
+                svg.exit().remove();
+                  
+                trian
                     .data(dataFilter)
                     .transition()
                     .duration(1000)
@@ -524,7 +527,7 @@
             // recover the option that has been chosen
             sel3 = d3.select(this).property("value")
             // run the updateChart function with this selected option
-            update(sel1, sel2, sel4, sel3, sel5, sel6, sel7, sel8)
+            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8)
     })
 
     d3.select("#selectButton4").on("change", function(d) {
