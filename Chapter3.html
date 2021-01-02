@@ -521,21 +521,29 @@
                     .attr("transform", function(d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) +") rotate("+myOrientation(d.orieB)+")";})   
                     if (opaciB == "-----")
                     {semi 
+                    .transition()
+                    .duration(1000)    
                     .style("opacity", "0.8")
                     .attr("stroke", "grey")
                     }
                     else 
                     {semi 
+                    .transition()
+                    .duration(1000)    
                     .style("opacity", function (d) { return myOpacity(+d.opaC); })
                     .attr("stroke", "grey")
                     }
                     if (colorC == "-----")
                     {semi 
+                    .transition()
+                    .duration(1000)    
                     .style("fill", "violet")
                     .attr("stroke", "grey")
                     }
                     else 
                     {semi 
+                    .transition()
+                    .duration(1000)    
                     .style("fill", function (d) { return myColor(+d.colorB); })
                     .attr("stroke", "grey")
                     }
@@ -543,11 +551,15 @@
                     if (sizeCir == "-----") 
                     {
                     semi
+                    .transition()
+                    .duration(1000)
                     .attr("d", customCircle.size(500))
                     }
                     else 
                     {
                     semi
+                    .transition()
+                    .duration(1000)
                     .attr("d", customCircle.size(function (d) { return 50*z(+d.sizeCi); } ))
                     }
 
