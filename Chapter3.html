@@ -535,6 +535,16 @@
                     .style("fill", function (d) { return myColor(+d.colorB); })
                     }
                     //.attr("transform", "rotate(-60)")
+                    if (sizeCir == "-----") 
+                    {
+                    semi
+                    .size(10)
+                    }
+                    else 
+                    {
+                    semi
+                    .size(function (d) { return z(+d.sizeCi) } )
+                    }
 
 
      
