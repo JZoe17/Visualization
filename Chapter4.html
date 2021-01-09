@@ -126,15 +126,15 @@
     var Scales = d3.keys(allScales[0]);
     var allSizes = d3.keys(data[0]);
     var initial = [{"-----": 5}];
-    var initialK = d3.keys(initial[0]);
+        var initialK = d3.keys(initial[0]);
+        var catData = d3.keys(allSizes[1]);
         var Orient = ["no", "yes"];
-        var catData = allSizes[1];
     //var sizeV = d3.merge(sizeC, data)
     //var allSize = d3.keys(sizeV[0])
-        console.log(catData)
         console.log(allSizes)
         allSizes.unshift("-----");
-        catData.unshift("-----")
+        catData.unshift("-----");
+        
     //console.log(sizeC);
     //console.log(sizeV);
     console.log(initial)
