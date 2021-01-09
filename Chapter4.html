@@ -141,8 +141,8 @@
 
    // Shape scale: give a specie, it gives a shape
         var shape = d3.scaleOrdinal()
-            .domain([1, 2])
-            .range([d3.symbolCircle, d3.symbolTriangle])
+            //.domain([1, 2])
+            .range([d3.symbols])
 
 
     
@@ -581,7 +581,14 @@
 
             if (markB == "-----")
             {
+                svg.exit().remove();
 
+                markers
+                    .data(dataFilter)
+                    .transition()
+                    .duration(50)
+                    .style("fill", "white")
+                    .style("opacity", 0)
             }
             else {
                 svg.exit().remove();
