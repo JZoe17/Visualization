@@ -296,7 +296,20 @@
         .data(data)
         .enter()
         .append("path")
-        .attr("d", customCircle)
+            .attr("d", customCircle)
+
+        var markers = svg
+            .append('g')
+            .selectAll("dot")
+            .data(data)
+            .enter()
+            .append("path")
+            .attr("d", d3.symbol()
+                .size(120)
+                .type(function (d) { return shape(d.Species) })
+            )
+            
+        .
         
         
     
@@ -431,24 +444,7 @@
                         .range([0,270])                
                         
 
-            if (markB == "-----")
-            {
-            }
-
-            else
-            {
-                // Add dots
-                dot
-                    .data(dataFilter)
-                    .attr("d", d3.symbol()
-                        .size(120)
-                        .type(function (d) { return shape(d.markB) })
-                    )
-                    .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) + ")"; })
-                    .style("fill", "black")
-                    .style("opacity", 0.8)
-
-            }
+            
           
 
     
@@ -469,7 +465,10 @@
               {dot 
               .style("fill", function (d) { return myColor(+d.colorB); })
               }
-              if (opaciB == "-----")
+
+
+
+            if (opaciB == "-----")
               {dot 
               .style("opacity", "1")
               }
@@ -582,6 +581,30 @@
 
      
         }
+
+            if (markB == "-----")
+            {
+
+            }
+            else {
+                svg.exit().remove();
+                dot
+                    .style("fill", "white")
+                    .style("opacity", 0)
+                // Add dots
+                markers
+                    .data(dataFilter)
+                    .transition()
+                    .duration(50)
+                    .attr("d", d3.symbol()
+                        .size(120)
+                        .type(function (d) { return shape(d.markB) })
+                    )
+                    .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) + ")"; })
+                    .style("fill", "black")
+                    .style("opacity", 0.8)
+
+            }
         
          svg.exit().remove(); 
         
