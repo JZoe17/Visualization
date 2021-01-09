@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -67,6 +67,8 @@
     <select id="selectButton4"></select>
 </p>
     <h5>2. Mark</h5>
+    <p> <select id="ButtonMark"></select> </p>
+    
     <h5>3. Size</h5>
     <p>  <select id="ButtonSize"></select>
     </p>
@@ -126,13 +128,21 @@
     var initial = [{"-----": 5}];
     var initialK = d3.keys(initial[0]);
     var Orient = ["no", "yes"]
+    var catData = allSizes[1]
     //var sizeV = d3.merge(sizeC, data)
     //var allSize = d3.keys(sizeV[0])
-    allSizes.unshift("-----")
+        allSizes.unshift("-----")
+        catData.unshift("-----")
     //console.log(sizeC);
     //console.log(sizeV);
     console.log(allSizes)
     console.log(initial)
+
+   // Shape scale: give a specie, it gives a shape
+        var shape = d3.scaleOrdinal()
+            .domain(allSizes[2])
+            .range([d3.symbolCircle, d3.symbolTriangle])
+
 
     
 
@@ -181,7 +191,15 @@
             .append('option')
           .text(function (d) { return d; }) // text showed in the menu
           .attr("value", function (d) { return d; }) // corresponding value returned by the button          
-      
+
+    d3.select("#ButtonMark")
+            .selectAll('myOptions')
+            .data(catData)
+            .enter()
+            .append('option')
+            .text(function (d) { return d; }) // text showed in the menu
+            .attr("value", function (d) { return d; }) // corresponding value returned by the button   
+
     d3.select("#ButtonColor")
           .selectAll('myOptions')
             .data(allSizes)
@@ -230,16 +248,7 @@
                 .attr("fill", "black")
                 .style("opacity", "0.4")
                 .attr("text-anchor", "middle");
-         
-        var text = svg.append("g").attr("class", "bar_label").selectAll("text")
-                .data(data)
-                 .enter().append("text")
-                .attr("id", "text_label2")
-                .attr("font-family", "sans-serif")
-                .attr("font-size", "22px")
-                .attr("fill", "black")
-                .style("opacity", "0.4")
-                .attr("text-anchor", "middle");        
+              
                     
     
         // Initialize dots with group a
@@ -291,13 +300,13 @@
         
     
     
-        // A function that update the chart
-        function update(selectedGroup1, selectedGroup2, ax1, ax2, sizeCir, colorC, opaciB, orientaB) {
+        // A function that updates the chart
+        function update(selectedGroup1, selectedGroup2, ax1, ax2, sizeCir, colorC, opaciB, orientaB, markB) {
 
             
         
         // Create new data with the selection?
-        var dataFilter = data.map(function(d){return {Yaxi: d[selectedGroup2], Xaxi: d[selectedGroup1], vals: d[ax1], vals2: d[ax2], sizeCi: d[sizeCir],colorB: d[colorC], opaC: d[opaciB], orieB: d[orientaB]}})
+        var dataFilter = data.map(function(d){return {Yaxi: d[selectedGroup2], Xaxi: d[selectedGroup1], vals: d[ax1], vals2: d[ax2], sizeCi: d[sizeCir],colorB: d[colorC], opaC: d[opaciB], orieB: d[orientaB], marks: d[markB]}})
         var Xmax = d3.max(dataFilter, function(d) { return +d.Xaxi} )
         var Ymax = d3.max(dataFilter, function(d) { return +d.Yaxi} )
         var Xmin = d3.min(dataFilter, function(d) { return +d.Xaxi} )
@@ -420,7 +429,28 @@
                         .domain([Ormin,Ormax])
                         .range([0,270])                
                         
-                        
+
+            if (markB == "-----")
+            {
+            }
+
+            else
+            {
+                // Add dots
+                dot
+                    .data(dataFilter)
+                    .transition()
+                    .enter()
+                    .append("path")
+                    .attr("d", d3.symbol()
+                        .size(120)
+                        .type(function (d) { return shape(d.markB) })
+                    )
+                    .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) + ")"; })
+                    .style("fill", "black")
+                    .style("opacity", 0.8)
+
+            }
           
 
     
@@ -569,6 +599,7 @@
         var sel6 = d3.select("#ButtonColor").property("value")
         var sel7 = d3.select("#ButtonOpacity").property("value")
         var sel8 = d3.select("#ButtonOrient").property("value")
+        var sel9 = d3.select("#ButtonMark").property("value")
 
     
         // When the button is changed, run the updateChart function
@@ -576,7 +607,7 @@
             // recover the option that has been chosen
             sel1 = d3.select(this).property("value")
             // run the updateChart function with this selected option
-            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8)
+            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9)
         })
     
        // When the button is changed, run the updateChart function
@@ -584,7 +615,7 @@
             // recover the option that has been chosen
             sel2 = d3.select(this).property("value")
             // run the updateChart function with this selected option
-            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8)
+            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9)
             
     })
 
@@ -592,41 +623,47 @@
             // recover the option that has been chosen
             sel3 = d3.select(this).property("value")
             // run the updateChart function with this selected option
-            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8)
+            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9)
     })
 
     d3.select("#selectButton4").on("change", function(d) {
             // recover the option that has been chosen
             sel4 = d3.select(this).property("value")
-            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8)
+            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9)
     })
 
     d3.select("#ButtonSize").on("change", function(d) {
             // recover the option that has been chosen
             sel5 = d3.select(this).property("value")
-            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8)
+            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9)
     })
 
     d3.select("#ButtonColor").on("change", function(d) {
             // recover the option that has been chosen
             sel6 = d3.select(this).property("value")
-            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8)
+            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9)
     })
 
     d3.select("#ButtonOpacity").on("change", function(d) {
             // recover the option that has been chosen
             sel7 = d3.select(this).property("value")
-            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8)
+            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9)
     })
 
     d3.select("#ButtonOrient").on("change", function(d) {
             // recover the option that has been chosen
             sel8 = d3.select(this).property("value")
-            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8)
+            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9)
     })
+
+    d3.select("#ButtonMark").on("change", function (d) {
+            // recover the option that has been chosen
+            sel9 = d3.select(this).property("value")
+            update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9)
+        })
             
     
-    update(allGroup[0],allGroup[0],Scales[0],Scales[0],allSizes[0],allSizes[0], allSizes[0], allSizes[0])
+    update(allGroup[0],allGroup[0],Scales[0],Scales[0],allSizes[0],allSizes[0], allSizes[0], catData[0])
     
     })
 
