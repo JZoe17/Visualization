@@ -141,7 +141,7 @@
 
    // Shape scale: give a specie, it gives a shape
         var shape = d3.scaleOrdinal()
-            .domain("1", "2")
+            .domain([1, 2])
             .range([d3.symbolCircle, d3.symbolTriangle])
 
 
@@ -304,10 +304,7 @@
             .data(data)
             .enter()
             .append("path")
-            .attr("d", d3.symbol()
-                .size(120)
-                .type(function (d) { return shape(d.Species) })
-            )
+
             
         
         
