@@ -298,18 +298,26 @@
         .append("path")
             .attr("d", customCircle)
 
+        /*
         var markers = svg
             .append('g')
             .selectAll("dot")
             .data(data)
             .enter()
             .append("path")
-            .attr("d", d3.symbol()
-                .size(120)
-                .type(function (d) { return shape(d.markB) })
-            )
+            .attr("d", d3.symbol())
+            */
             
-        
+        var markers = svg.append("g")
+            .attr("stroke-width", 1.5)
+            .attr("font-family", "sans-serif")
+            .attr("font-size", 10)
+            .selectAll("path")
+            .data(data)
+            .join("path")
+            
+
+        return svg.node();
         
         
     
@@ -599,17 +607,18 @@
                     .style("fill", "white")
                     .style("opacity", 0)
                 // Add dots
+                shape = d3.scaleOrdinal(data.map(d => d.category), d3.symbols.map(s => d3.symbol().type(s)()))
+
                 markers
                     .data(dataFilter)
                     .transition()
                     .duration(50)
-                    .attr("d", d3.symbol()
-                        .size(120)
-                        .type(function (d) { return shape(d.markB) })
-                    )
-                    .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) + ")"; })
+                    .attr("transform", d => `translate(${x(d.Xaxi)},${y(d.Yaxi)})`)
+                    .attr("fill", d => color(d.marks))
+                    .attr("d", d => shape(d.marks))
                     .style("fill", "black")
-                    .style("opacity", 0.8)
+                    .style("opacity", 0.8);
+                    
 
             }
         
