@@ -127,11 +127,12 @@
     var allSizes = d3.keys(data[0]);
     var initial = [{"-----": 5}];
     var initialK = d3.keys(initial[0]);
-    var Orient = ["no", "yes"]
-    var catData = allSizes[1]
+        var Orient = ["no", "yes"];
+        var catData = allSizes[1];
     //var sizeV = d3.merge(sizeC, data)
     //var allSize = d3.keys(sizeV[0])
-        allSizes.unshift("-----")
+    console.log(catData)
+        allSizes.unshift("-----");
         catData.unshift("-----")
     //console.log(sizeC);
     //console.log(sizeV);
