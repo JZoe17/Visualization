@@ -441,8 +441,6 @@
                 dot
                     .data(dataFilter)
                     .transition()
-                    .enter()
-                    .append("path")
                     .attr("d", d3.symbol()
                         .size(120)
                         .type(function (d) { return shape(d.markB) })
