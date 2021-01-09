@@ -141,8 +141,8 @@
 
    // Shape scale: give a specie, it gives a shape
         var shape = d3.scaleOrdinal()
-            .domain([1, 2])
-            .range([d3.symbols])
+            .domain(["1", "2"])
+            .range([d3.symbolTriangle, d3.symbolSquare])
 
 
     
@@ -607,17 +607,19 @@
                     .style("fill", "white")
                     .style("opacity", 0)
                 // Add dots
-                shape = d3.scaleOrdinal(data.map(d => d.category), d3.symbols.map(s => d3.symbol().type(s)()))
-
-                markers
-                    .data(dataFilter)
-                    .transition()
-                    .duration(50)
-                    .attr("transform", d => `translate(${x(d.Xaxi)},${y(d.Yaxi)})`)
-                    .attr("fill", d => color(d.marks))
-                    .attr("d", d => shape(d.marks))
+                
+                svg.append('g')
+                    .selectAll("dot")
+                    .data(data)
+                    .enter()
+                    .append("path")
+                    .attr("d", d3.symbol()
+                        .size(120)
+                        .type(function (d) { return shape(d.Species) })
+                    )
+                    .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) + ")"; })
                     .style("fill", "black")
-                    .style("opacity", 0.8);
+                    .style("opacity", 0.8)
                     
 
             }
