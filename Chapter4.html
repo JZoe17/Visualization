@@ -337,9 +337,10 @@
                 .enter()
                 .append("path")
 
-            var texture1 = textures.lines();
+            var t = textures.lines()
+                .thicker();
 
-            svg.call(texture1);
+            svg.call(t);
 
 
 
@@ -504,7 +505,7 @@
                         }
                         else {
                             dot
-                                .style("fill", textures.lines().background("violet"))
+                                .style("fill", .style("fill", t.url()))
                         }
                     }
                     else {
