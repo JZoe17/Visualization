@@ -675,7 +675,8 @@
                 else {
                     markers
                         .attr("d", d3.symbol()
-                            .type(function (d) { return shape(d.marks) })).size(function (d) { return 100 * z(d.sizeCi) })
+                            .size(function (d) { return 100 * z(d.sizeCi); }).type(function (d) { return shape(d.marks); }))
+                        .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) + ")"; })
      
                 }
     
