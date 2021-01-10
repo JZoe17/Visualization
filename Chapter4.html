@@ -556,9 +556,16 @@
                       .style("fill", "white")
                       .style("opacity", 0)
 
-                markers
-                    .style("fill", "white")
-                    .style("opacity", 0)
+                 markers
+                        .data(dataFilter)
+                        .transition()
+                        .duration(50)
+                        .attr("d", d3.symbol()
+                            .size(120)
+                            .type(function (d) { return shape(d.marks) })
+                        )
+                        .style("fill", "white")
+                        .style("opacity", 0)
                   
                 semi
                     .data(dataFilter)
@@ -614,12 +621,22 @@
                     )
                     .style("fill", "white")
                     .style("opacity", 0)
+
             }
             else {
                 svg.exit().remove();
                 dot
                     .style("fill", "white")
                     .style("opacity", 0)
+
+                semi
+                    .data(dataFilter)
+                    .transition()
+                    .duration(50)
+                    .style("fill", "white")
+                    .style("opacity", 0)
+
+
                 // Add dots
 
                 markers
@@ -627,7 +644,6 @@
                     .transition()
                     .duration(500)
                     .attr("d", d3.symbol()
-                        .size(120)
                         .type(function (d) { return shape(d.marks) })
                     )
                     .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) + ")"; })
@@ -658,7 +674,7 @@
                 }
                 else {
                     markers
-                        .attr("d", d3.symbol().size(function (d) { return 50 * z(+d.sizeCi); }))
+                        .attr("d", d3.symbol().size(function (d) { return 80 * z(+d.sizeCi); }))
                 }
 
 
