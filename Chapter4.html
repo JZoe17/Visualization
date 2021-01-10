@@ -337,11 +337,15 @@
                 .enter()
                 .append("path")
 
-            var t = textures.lines().size(4)
+            var l = textures.lines().size(4)
                 .strokeWidth(1).background("violet");
 
-            svg.call(t);
+            var c = textures.circles().size(4)
+                .strokeWidth(1).background("violet");
 
+
+            svg.call(l);
+            svg.call(c);
 
 
 
@@ -374,6 +378,10 @@
                 var shape = d3.scaleOrdinal()
                     .domain(["1", "2"])
                     .range([d3.symbolTriangle, d3.symbolSquare])
+
+                var textu = d3.scaleOrdinal()
+                    .domain(["1", "2"])
+                    .range([l.url(), c.url()])
 
                 // updating the x,y axis range
                 //x axis
@@ -505,7 +513,7 @@
                         }
                         else {
                             dot
-                                .style("fill", t.url())
+                                .style("fill", function (d) { return textu(+d.texC); })
                         }
                     }
                     else {
