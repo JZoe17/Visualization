@@ -342,12 +342,12 @@
     
     
         // A function that updates the chart
-        function update(selectedGroup1, selectedGroup2, ax1, ax2, sizeCir, colorC, opaciB, orientaB, markB) {
+        function update(selectedGroup1, selectedGroup2, ax1, ax2, sizeCir, colorC, opaciB, orientaB, markB, textureC) {
 
             
         
         // Create new data with the selection?
-        var dataFilter = data.map(function(d){return {Yaxi: d[selectedGroup2], Xaxi: d[selectedGroup1], vals: d[ax1], vals2: d[ax2], sizeCi: d[sizeCir],colorB: d[colorC], opaC: d[opaciB], orieB: d[orientaB], marks: d[markB]}})
+        var dataFilter = data.map(function(d){return {Yaxi: d[selectedGroup2], Xaxi: d[selectedGroup1], vals: d[ax1], vals2: d[ax2], sizeCi: d[sizeCir],colorB: d[colorC], opaC: d[opaciB], orieB: d[orientaB], marks: d[markB], texC: d[textureC]}})
         var Xmax = d3.max(dataFilter, function(d) { return +d.Xaxi} )
         var Ymax = d3.max(dataFilter, function(d) { return +d.Yaxi} )
         var Xmin = d3.min(dataFilter, function(d) { return +d.Xaxi} )
