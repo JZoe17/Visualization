@@ -627,8 +627,35 @@
                         .type(function (d) { return shape(d.marks) })
                     )
                     .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) + ")"; })
-                    .style("fill", "black")
-                    .style("opacity", 0.8)
+                if (opaciB == "-----") {
+                    markers
+                        .style("opacity", "0.8")
+                    .attr("stroke", "grey")
+                }
+                else {
+                    markers
+                        .style("opacity", function (d) { return myOpacity(+d.opaC); })
+                    .attr("stroke", "grey")
+                }
+                if (colorC == "-----") {
+                    markers
+                        .style("fill", "violet")
+                    .attr("stroke", "grey")
+                }
+                else {
+                    markers
+                        .style("fill", function (d) { return myColor(+d.colorB); })
+                    .attr("stroke", "grey")
+                }
+                //.attr("transform", "rotate(-60)")
+                if (sizeCir == "-----") {
+                    markers
+                        .attr("d", d3.symbol().size(120))
+                }
+                else {
+                    markers
+                        .attr("d", d3.symbol().size(function (d) { return 25 * z(+d.sizeCi); }))
+                }
 
 
             }
