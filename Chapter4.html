@@ -605,6 +605,10 @@
                     .data(dataFilter)
                     .transition()
                     .duration(50)
+                    .attr("d", d3.symbol()
+                        .size(120)
+                        .type(function (d) { return shape(d.marks) })
+                    )
                     .style("fill", "white")
                     .style("opacity", 0)
             }
@@ -618,7 +622,7 @@
                 markers
                     .data(dataFilter)
                     .transition()
-                    .duration(50)
+                    .duration(500)
                     .attr("d", d3.symbol()
                         .size(120)
                         .type(function (d) { return shape(d.marks) })
