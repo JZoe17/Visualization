@@ -643,6 +643,8 @@
                     .data(dataFilter)
                     .transition()
                     .duration(500)
+                    .attr("d", d3.symbol()
+                        .size(180).type(function (d) { return shape(d.marks); }))
                     .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) + ")"; })
                 if (opaciB == "-----") {
                     markers
