@@ -337,8 +337,8 @@
                 .enter()
                 .append("path")
 
-            var t = textures.lines()
-                .strokeWidth(2).background("violet");
+            var t = textures.lines().size(4)
+                .strokeWidth(1).background("violet");
 
             svg.call(t);
 
