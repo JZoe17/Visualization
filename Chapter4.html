@@ -52,7 +52,7 @@
   </div>
   
   <div class="col-md-2">
-    <h5>1. Position</h5>
+    <h5> <b> 1. Position </b> </h5>
   <!--  <p>1. Position</p>-->
   <p> X Variable 
     <select id="selectButton1"></select> 
@@ -66,24 +66,24 @@
 <p>   Scale
     <select id="selectButton4"></select>
 </p>
-    <h5>2. Mark</h5>
+    <h5> <b> 2. Mark </b> </h5>
     <p> <select id="ButtonMark"></select> </p>
     
-    <h5>3. Size</h5>
+    <h5>  <b> 3. Size </b> </h5>
     <p>  <select id="ButtonSize"></select>
     </p>
 
-    <h5>4. Brightness</h5>
+    <h5>  <b> 4. Brightness </b> </h5>
     <p> <select id="ButtonOpacity"></select>
     </p>
 
-    <h5>5. Color </h5>
+    <h5> <b> 5. Color </b> </h5>
    <p> <select id="ButtonColor"></select> </p>
     
-    <h5>6. Orientation</h5>
+    <h5> <b> 6. Orientation </b> </h5>
     <p> <select id="ButtonOrient"></select> </p>
-    <h5>7. Texture</h5>
-    <h5>8. Motion</h5>
+    <h5> <b> 7. Texture </b> </h5>
+    <h5> <b> 8. Motion </b> </h5>
   </div>
 </div>
 </div>
@@ -555,6 +555,10 @@
                 dot 
                       .style("fill", "white")
                       .style("opacity", 0)
+
+                markers
+                    .style("fill", "white")
+                    .style("opacity", 0)
                   
                 semi
                     .data(dataFilter)
@@ -654,7 +658,7 @@
                 }
                 else {
                     markers
-                        .attr("d", d3.symbol().size(function (d) { return 25 * z(+d.sizeCi); }))
+                        .attr("d", d3.symbol().size(function (d) { return 50 * z(+d.sizeCi); }))
                 }
 
 
