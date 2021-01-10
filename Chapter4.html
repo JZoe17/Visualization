@@ -334,6 +334,12 @@
             .data(data)
             .enter()
             .append("path")
+
+        var texture1 = textures.lines();
+
+        svg.call(texture1);
+
+
             
 
         
@@ -499,7 +505,7 @@
               }
                   else {
                       dot
-                          .style("fill", textures.lines().background("violet"))
+                          .style("fill", texture1.url().background("violet"))
                   }
               }
               else 
