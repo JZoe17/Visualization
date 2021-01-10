@@ -140,9 +140,7 @@
     console.log(initial)
 
    // Shape scale: give a specie, it gives a shape
-        var shape = d3.scaleOrdinal()
-            .domain(["1", "2"])
-            .range([d3.symbolTriangle, d3.symbolSquare])
+        
 
 
     
@@ -350,7 +348,9 @@
         var Ormax = d3.max(dataFilter, function(d) { return +d.orieB})
 
        
-
+        var shape = d3.scaleOrdinal()
+                .domain(["1", "2"])
+                .range([d3.symbolTriangle, d3.symbolSquare])
         
         // updating the x,y axis range 
         //x axis
@@ -461,7 +461,41 @@
 
             
           
+            if (markB == "-----") {
+                svg.exit().remove();
 
+                markers
+                    .data(dataFilter)
+                    .transition()
+                    .duration(50)
+                    .attr("d", d3.symbol()
+                        .size(120)
+                        .type(function (d) { return shape(d.marks) })
+                    )
+                    .style("fill", "white")
+                    .style("opacity", 0)
+            }
+            else {
+                svg.exit().remove();
+                dot
+                    .style("fill", "white")
+                    .style("opacity", 0)
+                // Add dots
+
+                markers
+                    .data(dataFilter)
+                    .transition()
+                    .duration(500)
+                    .attr("d", d3.symbol()
+                        .size(120)
+                        .type(function (d) { return shape(d.marks) })
+                    )
+                    .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) + ")"; })
+                    .style("fill", "black")
+                    .style("opacity", 0.8)
+
+
+            }
     
         if (sizeCir == "-----") 
         {
@@ -597,42 +631,7 @@
      
         }
 
-            if (markB == "-----")
-            {
-                svg.exit().remove();
-
-                markers
-                    .data(dataFilter)
-                    .transition()
-                    .duration(50)
-                    .attr("d", d3.symbol()
-                        .size(120)
-                        .type(function (d) { return shape(d.marks) })
-                    )
-                    .style("fill", "white")
-                    .style("opacity", 0)
-            }
-            else {
-                svg.exit().remove();
-                dot
-                    .style("fill", "white")
-                    .style("opacity", 0)
-                // Add dots
-                
-                markers
-                    .data(dataFilter)
-                    .transition()
-                    .duration(500)
-                    .attr("d", d3.symbol()
-                        .size(120)
-                        .type(function (d) { return shape(d.marks) })
-                    )
-                    .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) + ")"; })
-                    .style("fill", "black")
-                    .style("opacity", 0.8)
-                    
-
-            }
+            
         
          svg.exit().remove(); 
         
