@@ -643,9 +643,6 @@
                     .data(dataFilter)
                     .transition()
                     .duration(500)
-                    .attr("d", d3.symbol()
-                        .type(function (d) { return shape(d.marks) })
-                    )
                     .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) + ")"; })
                 if (opaciB == "-----") {
                     markers
@@ -670,12 +667,17 @@
                 //.attr("transform", "rotate(-60)")
                 if (sizeCir == "-----") {
                     markers
+                        .attr("d", d3.symbol()
+                            .type(function (d) { return shape(d.marks); }))
                         .attr("d", d3.symbol().size(180))
                 }
                 else {
                     markers
-                        .attr("d", d3.symbol().size(function (d) { return 80 * z(+d.sizeCi); }))
+                        .attr("d", d3.symbol()
+                            .size(function (d) { return 80 * z(+d.sizeCi) }).type(function (d) { return shape(d.marks) }))
+     
                 }
+    
 
 
             }
