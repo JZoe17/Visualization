@@ -560,10 +560,6 @@
                         .data(dataFilter)
                         .transition()
                         .duration(50)
-                        .attr("d", d3.symbol()
-                            .size(120)
-                            .type(function (d) { return shape(d.marks) })
-                        )
                         .style("fill", "white")
                         .style("opacity", 0)
                   
@@ -608,6 +604,8 @@
      
             }
 
+
+
             if (markB == "-----") {
                 svg.exit().remove();
 
@@ -643,9 +641,22 @@
                     .data(dataFilter)
                     .transition()
                     .duration(500)
-                    .attr("d", d3.symbol()
-                        .size(180).type(function (d) { return shape(d.marks); }))
-                    .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) + ")"; })
+                    if (sizeCir == "-----") {
+                    markers
+                        .attr("d", d3.symbol()
+                            .size(180).type(function (d) { return shape(d.marks); }))
+                        .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) + ")"; })
+
+                         }
+                     else {
+                    markers
+                        .attr("d", d3.symbol()
+                         // .size(function (d) { return 100 * z(+d.sizeCi); }).type(function (d) { return shape(d.marks); }))
+                        .size(300).type(function (d) { return shape(d.marks); }))
+                        .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) + ")"; })
+
+                        }
+    
                 if (opaciB == "-----") {
                     markers
                         .style("opacity", "0.8")
