@@ -736,7 +736,7 @@
                     if (animationB !== "-----")
                     {
                         repeat();
-                        function repeat() {
+                        while (true) {
                             markers
                                 .transition()
                                 .duration(1000)
@@ -744,7 +744,7 @@
                                 .delay(5000)
                                 .each("end", repeat)
                             if (animationB == "-----") {
-                                break;
+                                false;
                             }
                         }
                         
