@@ -91,6 +91,7 @@
                 <h5> <b> 7. Texture </b> </h5>
                 <p> <select id="ButtonTexture"></select> </p>
                 <h5> <b> 8. Motion </b> </h5>
+                <p> <select id="ButtonAnimation"></select> </p>
             </div>
         </div>
     </div>
@@ -239,6 +240,14 @@
                 .text(function (d) { return d; }) // text showed in the menu
                 .attr("value", function (d) { return d; }) // corresponding value returned by the button
 
+            d3.select("#ButtonAnimation")
+                .selectAll('myOptions')
+                .data(catData)
+                .enter()
+                .append('option')
+                .text(function (d) { return d; }) // text showed in the menu
+                .attr("value", function (d) { return d; }) // corresponding value returned by the button
+
 
             // Initialise a X axis:
             var x = d3.scaleLinear().range([0, width]);
@@ -355,18 +364,18 @@
 
 
             // A function that updates the chart
-            function update(selectedGroup1, selectedGroup2, ax1, ax2, sizeCir, colorC, opaciB, orientaB, markB, textureC) {
+            function update(selectedGroup1, selectedGroup2, ax1, ax2, sizeCir, colorC, opaciB, orientaB, markB, textureC, animationB) {
 
 
 
                 // Create new data with the selection?
-                var dataFilter = data.map(function (d) { return { Yaxi: d[selectedGroup2], Xaxi: d[selectedGroup1], vals: d[ax1], vals2: d[ax2], sizeCi: d[sizeCir], colorB: d[colorC], opaC: d[opaciB], orieB: d[orientaB], marks: d[markB], texC: d[textureC] } })
+                var dataFilter = data.map(function (d) { return { Yaxi: d[selectedGroup2], Xaxi: d[selectedGroup1], vals: d[ax1], vals2: d[ax2], sizeCi: d[sizeCir], colorB: d[colorC], opaC: d[opaciB], orieB: d[orientaB], marks: d[markB], texC: d[textureC], anime: d[animationB] } })
                 var Xmax = d3.max(dataFilter, function (d) { return +d.Xaxi })
                 var Ymax = d3.max(dataFilter, function (d) { return +d.Yaxi })
                 var Xmin = d3.min(dataFilter, function (d) { return +d.Xaxi })
                 var Ymin = d3.min(dataFilter, function (d) { return +d.Yaxi })
                 var Zmin = d3.min(dataFilter, function (d) { return +d.sizeCi })
-                var Zmax = d3.max(dataFilter, function (d) { return +d.sizeCi })
+                var Zmax = d3.max(dataFilter, function (d) { return +d.sizeCi })  
                 var Cmin = d3.min(dataFilter, function (d) { return +d.colorB })
                 var Cmax = d3.max(dataFilter, function (d) { return +d.colorB })
                 var Omin = d3.min(dataFilter, function (d) { return +d.opaC })
@@ -517,8 +526,17 @@
                         }
                     }
                     else {
-                        dot
-                            .style("fill", function (d) { return myColor(+d.colorB); })
+                        if (textureC == "-----") {
+
+                        }
+                        else {
+
+                            dot
+                                .style("fill", function (d) { return textu(+d.texC); })
+                                .style("fill", function (d) { return myColor(+d.colorB); }) 
+                            
+                        }
+                        
                     }
 
 
@@ -715,6 +733,17 @@
                     }
                     //.attr("transform", "rotate(-60)")
 
+                    while (animationB !== "-----")
+                    {
+                        markers
+                            .transition()
+                            .duration(1000)
+                            .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + 10 + "," + y(d.Yaxi) + ")"; })
+
+                        
+                    }
+
+
 
 
 
@@ -738,13 +767,14 @@
             var sel8 = d3.select("#ButtonOrient").property("value")
             var sel9 = d3.select("#ButtonMark").property("value")
             var sel10 = d3.select("#ButtonTexture").property("value")
+            var sel11 = d3.select("#ButtonAnimation").property("value")
 
             // When the button is changed, run the updateChart function
             d3.select("#selectButton1").on("change", function (d) {
                 // recover the option that has been chosen
                 sel1 = d3.select(this).property("value")
                 // run the updateChart function with this selected option
-                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10)
+                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
             })
 
             // When the button is changed, run the updateChart function
@@ -752,7 +782,7 @@
                 // recover the option that has been chosen
                 sel2 = d3.select(this).property("value")
                 // run the updateChart function with this selected option
-                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10)
+                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
 
             })
 
@@ -760,52 +790,58 @@
                 // recover the option that has been chosen
                 sel3 = d3.select(this).property("value")
                 // run the updateChart function with this selected option
-                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10)
+                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
             })
 
             d3.select("#selectButton4").on("change", function (d) {
                 // recover the option that has been chosen
                 sel4 = d3.select(this).property("value")
-                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10)
+                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
             })
 
             d3.select("#ButtonSize").on("change", function (d) {
                 // recover the option that has been chosen
                 sel5 = d3.select(this).property("value")
-                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10)
+                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
             })
 
             d3.select("#ButtonColor").on("change", function (d) {
                 // recover the option that has been chosen
                 sel6 = d3.select(this).property("value")
-                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10)
+                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
             })
 
             d3.select("#ButtonOpacity").on("change", function (d) {
                 // recover the option that has been chosen
                 sel7 = d3.select(this).property("value")
-                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10)
+                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
             })
 
             d3.select("#ButtonOrient").on("change", function (d) {
                 // recover the option that has been chosen
                 sel8 = d3.select(this).property("value")
-                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10)
+                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
             })
 
             d3.select("#ButtonMark").on("change", function (d) {
                 // recover the option that has been chosen
                 sel9 = d3.select(this).property("value")
-                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10)
+                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
             })
 
             d3.select("#ButtonTexture").on("change", function (d) {
                 // recover the option that has been chosen
                 sel10 = d3.select(this).property("value")
-                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10)
+                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
             })
 
-            update(allGroup[0], allGroup[0], Scales[0], Scales[0], allSizes[0], allSizes[0], allSizes[0], allSizes[0], catData[0], catData[0])
+            d3.select("#ButtonAnimation").on("change", function (d) {
+                // recover the option that has been chosen
+                sel10 = d3.select(this).property("value")
+                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+            })
+
+            update(allGroup[0], allGroup[0], Scales[0], Scales[0], allSizes[0], allSizes[0], allSizes[0], allSizes[0], catData[0], catData[0], catData[0])
 
             console.log(catData[0])
 
