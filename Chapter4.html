@@ -748,16 +748,18 @@
 
                         function upwards() {
                             d3.select("#ButtonAnimation").on("change", function (d) {
-                                change = d3.select(this).property("value");
+                                change = d3.select(this).property("value")
                                 if (change == '-----') {
-                                    ending() }
+                                    ending()
+                                }
+                            })
                                 markers
                                     .transition()
                                     .duration(1000)
                                     .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + 10 + "," + y(d.Yaxi) + ")"; })
                                     .delay(5000)
                                     .on("end", downwards)
-                            }
+                                }
                                     
 
                             function ending()
