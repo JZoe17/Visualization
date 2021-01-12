@@ -741,9 +741,9 @@
                             markers
                                 .transition()
                                 .duration(1000)
-                                .attr("transform", function (d) { return "translate(" + x(d.Xaxi) - 10 + "," + y(d.Yaxi) + ")"; })
+                                .attr("transform", function (d) { return "translate(" + 10 + "," + 10 + ")"; })
                                 .delay(500)
-                                    .on("end", upwards)
+                                .on("end", upwards)
                             }
 
                         function upwards() {
@@ -756,7 +756,7 @@
                                 markers
                                     .transition()
                                     .duration(1000)
-                                    .attr("transform", function (d) { return "translate(" + 5*x(d.Xaxi) + "," + y(d.Yaxi) + ")"; })
+                                    .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) + ")"; })
                                     .delay(500)
                                     .on("end", downwards)
                                 }
