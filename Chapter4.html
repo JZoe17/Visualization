@@ -733,13 +733,20 @@
                     }
                     //.attr("transform", "rotate(-60)")
 
-                    while (animationB !== "-----")
+                    if (animationB !== "-----")
                     {
-                        markers
-                            .transition()
-                            .duration(1000)
-                            .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + 10 + "," + y(d.Yaxi) + ")"; })
-                            .delay(5000)
+                        repeat();
+                        function repeat() {
+                            markers
+                                .transition()
+                                .duration(1000)
+                                .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + 10 + "," + y(d.Yaxi) + ")"; })
+                                .delay(5000)
+                                .each("end", repeat)
+                            if (animationB == "-----") {
+                                break
+                            }
+                        }
                         
                     }
 
