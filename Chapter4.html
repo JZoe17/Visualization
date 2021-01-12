@@ -750,9 +750,7 @@
                             d3.select("#ButtonAnimation").on("change", function (d) {
                                 change = d3.select(this).property("value");
                                 if (change == '-----') {
-                                    ending();
-                                }
-                            };
+                                    ending() }
                                 markers
                                     .transition()
                                     .duration(1000)
