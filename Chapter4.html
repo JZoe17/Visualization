@@ -522,16 +522,6 @@
                         .attr("cy", function (d) { return y(+d.Yaxi) })
                         .attr("r", 10)
                     console.log(animationB)
-                }
-                else {
-                    dot
-                        .data(dataFilter)
-                        .transition()
-                        .duration(1000)
-                        .attr("cx", function (d) { return x(+d.Xaxi) })
-                        .attr("cy", function (d) { return y(+d.Yaxi) })
-                        .attr("r", function (d) { return z(+d.sizeCi) })
-                }
                    
 
 
@@ -574,6 +564,45 @@
                     }
 
 
+
+                    
+
+
+
+                } else {
+                    dot
+                        .data(dataFilter)
+                        .transition()
+                        .duration(1000)
+                        .attr("cx", function (d) { return x(+d.Xaxi) })
+                        .attr("cy", function (d) { return y(+d.Yaxi) })
+                        .attr("r", function (d) { return z(+d.sizeCi) })
+                    if (colorC == "-----") {
+                        dot
+                            .style("fill", "violet")
+                    }
+                    else {
+                        dot
+                            .style("fill", function (d) { return myColor(+d.colorB); })
+                    }
+
+                    if (opaciB == "-----") {
+                        dot
+                            .style("opacity", "1")
+                    }
+                    else {
+                        dot
+                            .style("opacity", function (d) { return myOpacity(+d.opaC); })
+                    }
+
+
+
+                    
+
+
+
+
+                }
 
                 if (animationB == "-----") {
 
