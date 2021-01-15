@@ -523,13 +523,13 @@
                             .transition()
                             .duration(2500)
                             .delay(function (d) { return d * 40; })
-                            .on("change", function repeat() {
+                            .on("start", function repeat() {
                                 d3.active(this)
-                                    .attr("cx", width)
+                                    .attr("cx", function (d) { return x(width) })
                                     .transition()
                                     .attr("cx", 0)
                                     .transition()
-                                    .on("change", repeat);
+                                    .on("start", repeat);
                             })
                     }
 
