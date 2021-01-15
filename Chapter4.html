@@ -599,6 +599,9 @@
                 }
                 else {
                     dot
+                        .transition()
+                        .duration(2500)
+                        .delay(function (d) { return d * 40; })
                         .on("start", function repeat() {
                             d3.active(this)
                                 .attr("cx", width)
