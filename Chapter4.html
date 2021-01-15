@@ -382,6 +382,8 @@
                 var Omax = d3.max(dataFilter, function (d) { return +d.opaC })
                 var Ormin = d3.min(dataFilter, function (d) { return +d.orieB })
                 var Ormax = d3.max(dataFilter, function (d) { return +d.orieB })
+                var Armin = d3.min(dataFilter, function (d) { return +d.anime })
+                var Armax = d3.max(dataFilter, function (d) { return +d.anime })
 
 
                 var shape = d3.scaleOrdinal()
@@ -391,6 +393,12 @@
                 var textu = d3.scaleOrdinal()
                     .domain(["1", "2"])
                     .range([l.url(), c.url()])
+
+                var an = d3.scaleLinear()
+                    .domain([Armin, Armax])
+                    .range([1, 10])
+
+
 
                 // updating the x,y axis range
                 //x axis
@@ -606,10 +614,10 @@
                         .duration(2500)
                         .on("start", function repeat() {
                             d3.active(this)
-                                .attr("cx", function (d) { return x(+d.Xaxi) + width })
-                                .attr("cy", function (d) { return y(+d.Yaxi) })
+                                .attr("cx", function (d) { return x(+d.Xaxi) })
+                                .attr("cy", function (d) { return y(+d.Yaxi) + an(+d.anime) })
                                 .transition()
-                                .attr("cx", 0)
+                                .attr("cy", function (d) { return y(+d.Yaxi) - an(+d.anime) })
                                 .transition()
                                 .on("start", repeat);
                         })
