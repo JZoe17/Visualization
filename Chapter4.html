@@ -733,33 +733,46 @@
                     }
                     //.attr("transform", "rotate(-60)")
                     console.log(animationB)
-                    if (animationB == "-----") { }
+                    if (animationB == "-----") {
+                        markers
+                        .attr("stroke", "grey"
+                    }
                     else 
                     {
-
-                            function downwards() {
+                        dot
+                        .on("start", function repeat() {
+                            d3.active(this)
+                                .attr("cx", width)
+                                .transition()
+                                .attr("cx", 0)
+                                .transition()
+                                .on("start", repeat);
+                        })
+                          /*  function downwards() {
 
                             markers
                                 .transition()
                                 .duration(1000)
                                 .attr("transform", function (d) { return "translate(" + 10 + "," + 10 + ")"; })
-                                .delay(500)
-                                .on("end", upwards)
+                                // .delay(500)
+                                //.on("end", upwards)
                             }
+                            */
 
-                        function upwards() {
+                      /*  function upwards() {
                             d3.select("#ButtonAnimation").on("change", function (d) {
                                 change = d3.select(this).property("value")
                                 if (change == '-----') {
                                     ending()
                                 }
+                                */
                             })
                                 markers
                                     .transition()
                                     .duration(1000)
                                     .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) + ")"; })
-                                    .delay(500)
-                                    .on("end", downwards)
+                                    //.delay(500)
+                                    //.on("end", downwards)
                                 }
                                     
 
