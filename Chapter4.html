@@ -599,6 +599,7 @@
                 }
                 else {
                     dot
+                        .data(dataFilter)
                         .transition()
                         .duration(2500)
                         .delay(function (d) { return d * 40; })
