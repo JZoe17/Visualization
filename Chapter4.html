@@ -584,8 +584,30 @@
 
 
 
+                    
+
+
+
 
                 }
+
+
+                console.log(animationB)
+                if (animationB == "-----") {
+                    dot
+                        .attr("stroke", "grey")
+                }
+                else {
+                    dot
+                        .on("start", function repeat() {
+                            d3.active(this)
+                                .attr("cx", width)
+                                .transition()
+                                .attr("cx", 0)
+                                .transition()
+                                .on("start", repeat);
+                        })
+
 
                 /* if (colorC == "-----")
                  {
@@ -732,7 +754,7 @@
                             .attr("stroke", "grey")
                     }
                     //.attr("transform", "rotate(-60)")
-                    console.log(animationB)
+                    /*console.log(animationB)
                     if (animationB == "-----") {
                         markers
                         .attr("stroke", "grey")
@@ -748,6 +770,7 @@
                                 .transition()
                                 .on("start", repeat);
                         })
+                        */
                           /*  function downwards() {
 
                             markers
@@ -767,13 +790,7 @@
                                 }
                                 */
                            // })
-                                markers
-                                    .transition()
-                                    .duration(1000)
-                                    .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) + ")"; })
-                                    //.delay(500)
-                                    //.on("end", downwards)
-                                }
+                               
                                     
 
                             function ending()
@@ -783,7 +800,7 @@
                         
                    
 
-                }
+         
 
 
 
