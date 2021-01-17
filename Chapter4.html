@@ -115,7 +115,7 @@
     <script>
 
         // set the dimensions and margins of the graph
-        var margin = { top: 50, right: 50, bottom: 60, left: 120 },
+        var margin = { top: 50, right: 50, bottom: 60, left: 80 },
             width = 760 - margin.left - margin.right,
             height = 500 - margin.top - margin.bottom;
 
@@ -475,9 +475,9 @@
                 svg.select("#text_label2")
                     .data(data)
                     .attr("transform", "rotate(-90)")
-                    .attr("y", 0 - margin.left)
+                    .attr("y", 0 - margin.left/2)
                     .attr("x", 0 - (height / 2))
-                    .attr("dy", "0.5em")
+                    .attr("dy", "2em")
                     .text(selectedGroup2);
 
 
