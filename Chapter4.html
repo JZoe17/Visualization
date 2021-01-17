@@ -735,8 +735,23 @@
                         semi
                             .attr("d", customCircle.size(function (d) { return 25 * z(+d.sizeCi); }))
                     }
+                    if (animationB == "-----") {
 
-
+                    }
+                    else {
+                        semi
+                            .data(dataFilter)
+                            .transition()
+                            .duration(150)
+                            .on("start", function repeat() {
+                                d3.active(this)
+                                    .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + an(+d.anime) + "," + y(d.Yaxi) + ") rotate(" + myOrientation(d.orieB) + ")"; })
+                                    .transition()
+                                    .attr("transform", function (d) { return "translate(" + x(d.Xaxi) - an(+d.anime) + "," + y(d.Yaxi) + ") rotate(" + myOrientation(d.orieB) + ")"; })
+                                    .transition()
+                                    .on("start", repeat);
+                            })
+                    }
 
                 }
 
@@ -812,6 +827,24 @@
                         markers
                             .style("fill", function (d) { return myColor(+d.colorB); })
                             .attr("stroke", "grey")
+                    }
+
+                    if (animationB == "-----") {
+
+                    }
+                    else {
+                        marker
+                            .data(dataFilter)
+                            .transition()
+                            .duration(150)
+                            .on("start", function repeat() {
+                                d3.active(this)
+                                    .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + an(+d.anime) + "," + y(d.Yaxi) + ")"; })
+                                    .transition()
+                                    .attr("transform", function (d) { return "translate(" + x(d.Xaxi) - an(+d.anime) + "," + y(d.Yaxi) + ")"; })
+                                    .transition()
+                                    .on("start", repeat);
+                            })
                     }
                     //.attr("transform", "rotate(-60)")
                     /*console.log(animationB)
