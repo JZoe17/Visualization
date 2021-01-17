@@ -567,8 +567,9 @@
                         else {
 
                             dot
+                                .style("fill", function (d) { return myColor(+d.colorB); })
                                 .style("fill", function (d) { return textu(+d.texC); })
-                                .style("stroke", function (d) { return myColor(+d.colorB); }) 
+                                 
                             
           
                         }
