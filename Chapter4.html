@@ -386,6 +386,29 @@
                 var Armax = d3.max(dataFilter, function (d) { return +d.anime })
 
 
+               /* function texCre(noTex, colorBack) {
+
+                */
+
+                   /* var l = textures.lines().size(4)
+                        .strokeWidth(1).background("violet");
+                        */
+                var l = textures.lines().size(4)
+                    .strokeWidth(1)
+
+                   /* var c = textures.circles().size(4)
+                        .strokeWidth(1).background("violet");
+                        */
+                var c = textures.circles().size(4)
+                    .strokeWidth(1)
+
+                    svg.call(l);
+                    svg.call(c);
+
+                /*
+                }
+                */
+
                 var shape = d3.scaleOrdinal()
                     .domain(["1", "2"])
                     .range([d3.symbolTriangle, d3.symbolSquare])
@@ -398,7 +421,7 @@
                     .domain([Armin, Armax])
                     .range([1, 10])
 
-
+                
 
                 // updating the x,y axis range
                 //x axis
