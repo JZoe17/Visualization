@@ -563,37 +563,95 @@
                             .style("opacity", function (d) { return myOpacity(+d.opaC); })
                     }
 
+                    if (animationB == "-----") {
 
+                    }
+                    else {
+                        dot
+                            .data(dataFilter)
+                            .transition()
+                            .duration(150)
+                            .on("start", function repeat() {
+                                d3.active(this)
+                                    .attr("cx", function (d) { return x(+d.Xaxi) + an(+d.anime) })
+                                    .transition()
+                                    .attr("cx", function (d) { return x(+d.Xaxi) - an(+d.anime) })
+                                    .transition()
+                                    .on("start", repeat);
+                            })
+                    }
 
                     
 
 
 
                 } else {
-                    dot
-                        .data(dataFilter)
-                        .transition()
-                        .duration(1000)
-                        .attr("cx", function (d) { return x(+d.Xaxi) })
-                        .attr("cy", function (d) { return y(+d.Yaxi) })
-                        .attr("r", function (d) { return z(+d.sizeCi) })
-                    if (colorC == "-----") {
-                        dot
-                            .style("fill", "violet")
-                    }
-                    else {
-                        dot
-                            .style("fill", function (d) { return myColor(+d.colorB); })
-                    }
 
-                    if (opaciB == "-----") {
+                    if (animationB == "-----") {
                         dot
-                            .style("opacity", "1")
+                            .data(dataFilter)
+                            .transition()
+                            .duration(1000)
+                            .attr("cx", function (d) { return x(+d.Xaxi) })
+                            .attr("cy", function (d) { return y(+d.Yaxi) })
+                            .attr("r", function (d) { return z(+d.sizeCi) })
+                        if (colorC == "-----") {
+                            dot
+                                .style("fill", "violet")
+                        }
+                        else {
+                            dot
+                                .style("fill", function (d) { return myColor(+d.colorB); })
+                        }
+
+                        if (opaciB == "-----") {
+                            dot
+                                .style("opacity", "1")
+                        }
+                        else {
+                            dot
+                                .style("opacity", function (d) { return myOpacity(+d.opaC); })
+                        }
+
                     }
                     else {
                         dot
-                            .style("opacity", function (d) { return myOpacity(+d.opaC); })
+                            .data(dataFilter)
+                            .transition()
+                            .duration(150)
+                            .on("start", function repeat() {
+                                d3.active(this)
+                                    .attr("cx", function (d) { return x(+d.Xaxi) + an(+d.anime) })
+                                    .attr("r", function (d) { return z(+d.sizeCi) })
+                                    .transition()
+                                    .attr("cx", function (d) { return x(+d.Xaxi) - an(+d.anime) })
+                                    .attr("r", function (d) { return z(+d.sizeCi) })
+                                    .transition()
+                                    .on("start", repeat);
+                            })
+
+                        if (colorC == "-----") {
+                            dot
+                                .style("fill", "violet")
+                        }
+                        else {
+                            dot
+                                .style("fill", function (d) { return myColor(+d.colorB); })
+                        }
+
+                        if (opaciB == "-----") {
+                            dot
+                                .style("opacity", "1")
+                        }
+                        else {
+                            dot
+                                .style("opacity", function (d) { return myOpacity(+d.opaC); })
+                        }
+
+
+
                     }
+                    
 
 
 
@@ -604,23 +662,7 @@
 
                 }
 
-                if (animationB == "-----") {
-
-                }
-                else {
-                    dot
-                        .data(dataFilter)
-                        .transition()
-                        .duration(150)
-                        .on("start", function repeat() {
-                            d3.active(this)
-                                .attr("cx", function (d) { return x(+d.Xaxi) + an(+d.anime)})
-                                .transition()
-                                .attr("cx", function (d) { return x(+d.Xaxi) - an(+d.anime) })
-                                .transition()
-                                .on("start", repeat);
-                        })
-                }
+                
 
 
                 
