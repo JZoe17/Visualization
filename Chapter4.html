@@ -745,9 +745,9 @@
                             .duration(150)
                             .on("start", function repeat() {
                                 d3.active(this)
-                                    .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + an(+d.anime) + "," + y(d.Yaxi) + ") rotate(" + myOrientation(d.orieB) + ")"; })
+                                    .attr("transform", function (d) { return "translate(" + (x(d.Xaxi) + an(d.anime)) + "," + y(d.Yaxi) + ") rotate(" + myOrientation(d.orieB) + ")"; })
                                     .transition()
-                                    .attr("transform", function (d) { return "translate(" + x(d.Xaxi) - an(+d.anime) + "," + y(d.Yaxi) + ") rotate(" + myOrientation(d.orieB) + ")"; })
+                                    .attr("transform", function (d) { return "translate(" + (x(d.Xaxi) - an(d.anime)) + "," + y(d.Yaxi) + ") rotate(" + myOrientation(d.orieB) + ")"; })
                                     .transition()
                                     .on("start", repeat);
                             })
