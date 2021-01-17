@@ -833,15 +833,15 @@
 
                     }
                     else {
-                        marker
+                        markers
                             .data(dataFilter)
                             .transition()
                             .duration(150)
                             .on("start", function repeat() {
                                 d3.active(this)
-                                    .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + an(+d.anime) + "," + y(d.Yaxi) + ")"; })
+                                    .attr("transform", function (d) { return "translate(" + (x(d.Xaxi) + an(d.anime)) + "," + y(d.Yaxi) + ")"; })
                                     .transition()
-                                    .attr("transform", function (d) { return "translate(" + x(d.Xaxi) - an(+d.anime) + "," + y(d.Yaxi) + ")"; })
+                                    .attr("transform", function (d) { return "translate(" + (x(d.Xaxi) - an(d.anime)) + "," + y(d.Yaxi) + ")"; })
                                     .transition()
                                     .on("start", repeat);
                             })
