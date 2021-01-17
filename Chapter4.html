@@ -611,13 +611,12 @@
                     dot
                         .data(dataFilter)
                         .transition()
-                        .duration(250)
+                        .duration(150)
                         .on("start", function repeat() {
                             d3.active(this)
-                                .attr("cx", function (d) { return x(+d.Xaxi) })
-                                .attr("cy", function (d) { return y(+d.Yaxi) + an(+d.anime) })
+                                .attr("cx", function (d) { return x(+d.Xaxi) + an(+d.anime)})
                                 .transition()
-                                .attr("cy", function (d) { return y(+d.Yaxi) - an(+d.anime) })
+                                .attr("cx", function (d) { return x(+d.Xaxi) - an(+d.anime) })
                                 .transition()
                                 .on("start", repeat);
                         })
