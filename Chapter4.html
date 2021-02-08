@@ -384,7 +384,7 @@
                 var Xmin = d3.min(dataFilter, function (d) { return +d.Xaxi })
                 var Ymin = d3.min(dataFilter, function (d) { return +d.Yaxi })
                 var Zmin = d3.min(dataFilter, function (d) { return +d.sizeCi })
-                var Zmax = d3.max(dataFilter, function (d) { return +d.sizeCi })  
+                var Zmax = d3.max(dataFilter, function (d) { return +d.sizeCi })
                 var Cmin = d3.min(dataFilter, function (d) { return +d.colorB })
                 var Cmax = d3.max(dataFilter, function (d) { return +d.colorB })
                 var Omin = d3.min(dataFilter, function (d) { return +d.opaC })
@@ -397,247 +397,197 @@
 
                 function texCre(noTex, colorBack) {
 
-                
 
-                   /* var l = textures.lines().size(4)
-                        .strokeWidth(1).background("violet");
-                        */
-                var l = textures.lines().size(4)
-                    .strokeWidth(1)
 
-                   /* var c = textures.circles().size(4)
-                        .strokeWidth(1).background("violet");
-                        */
-                var c = textures.circles().size(4)
-                    .strokeWidth(1)
+                    /* var l = textures.lines().size(4)
+                         .strokeWidth(1).background("violet");
+                         */
+                    var l = textures.lines().size(4)
+                        .strokeWidth(1)
+
+                    /* var c = textures.circles().size(4)
+                         .strokeWidth(1).background("violet");
+                         */
+                    var c = textures.circles().size(4)
+                        .strokeWidth(1)
 
                     svg.call(l);
                     svg.call(c);
 
-                /*
-                }
-                */
+                    /*
+                    }
+                    */
 
-                var shape = d3.scaleOrdinal()
-                    .domain(["1", "2"])
-                    .range([d3.symbolTriangle, d3.symbolSquare])
+                    var shape = d3.scaleOrdinal()
+                        .domain(["1", "2"])
+                        .range([d3.symbolTriangle, d3.symbolSquare])
 
-                var textu = d3.scaleOrdinal()
-                    .domain(["1", "2"])
-                    .range([l.url(), c.url()])
+                    var textu = d3.scaleOrdinal()
+                        .domain(["1", "2"])
+                        .range([l.url(), c.url()])
 
-                var an = d3.scaleLinear()
-                    .domain([Armin, Armax])
-                    .range([1, 10])
-
-                
-
-                // updating the x,y axis range
-                //x axis
-                console.log(dataFilter);
-                console.log(Xmax);
-                console.log(Ymax);
-
-                if (ax1 == "logarithmic") {
-                    var x = d3.scaleLog().range([0, width]);
-                    x.domain([Xmin, Xmax]);
-                    var xAxis = d3.axisBottom().scale(x);
-                    svg.append("g")
-                        .attr("transform", "translate(0," + height + ")")
-                        .attr("class", "myXaxis")
-                    svg.selectAll(".myXaxis").transition()
-                        .duration(1000)
-                        .call(xAxis);
-                }
-                else {
-                    var x = d3.scaleLinear().range([0, width]);
-                    x.domain([Xmin, Xmax]);
-                    var xAxis = d3.axisBottom().scale(x);
-                    svg.append("g")
-                        .attr("transform", "translate(0," + height + ")")
-                        .attr("class", "myXaxis")
-                    svg.selectAll(".myXaxis").transition()
-                        .duration(1000)
-                        .call(xAxis);
-
-                }
-
-                svg.select("#text_label1")
-                    .data(data)
-                    .transition()
-                    .duration(1000)
-                    .attr("x", width / 2)
-                    .attr("y", height + 0.8 * margin.bottom)
-                    .style("text-anchor", "middle")
-                    .text(selectedGroup1);
-
-                console.log(selectedGroup1);
-
-                console.log(ax2);
-
-                if (ax2 == "logarithmic") {
-                    // create the Y axis
-                    var y = d3.scaleLog().range([height, 0]);
-                    y.domain([Ymin, Ymax]);
-                    var yAxis = d3.axisLeft().scale(y);
-                    svg.append("g")
-                        .attr("class", "myYaxis")
-                    svg.selectAll(".myYaxis")
-                        .transition()
-                        .duration(1000)
-                        .call(yAxis);
-
-                } else {
-                    var y = d3.scaleLinear().range([height, 0]);
-                    y.domain([Ymin, Ymax]);
-                    var yAxis = d3.axisLeft().scale(y);
-                    svg.append("g")
-                        .attr("class", "myYaxis")
-                    svg.selectAll(".myYaxis")
-                        .transition()
-                        .duration(1000)
-                        .call(yAxis);
-
-                }
+                    var an = d3.scaleLinear()
+                        .domain([Armin, Armax])
+                        .range([1, 10])
 
 
 
+                    // updating the x,y axis range
+                    //x axis
+                    console.log(dataFilter);
+                    console.log(Xmax);
+                    console.log(Ymax);
 
-
-                svg.select("#text_label2")
-                    .data(data)
-                    .attr("transform", "rotate(-90)")
-                    .attr("y", 0 - margin.left/2)
-                    .attr("x", 0 - (height / 2))
-                    .attr("dy", "2em")
-                    .text(selectedGroup2);
-
-
-                var z = d3.scaleLinear()
-                    .domain([Zmin, Zmax])
-                    .range([10, 30]);
-
-                var m = d3.scaleLinear()
-                    .domain([Zmin, Zmax])
-                    .range([5, 50]);
-
-                console.log(Zmin, Zmax)
-
-                // Add a scale for bubble color
-                /* var myColor = d3.scaleLinear()
-                     .domain([(Cmin/Cmax),(Cmax/Cmax)])
-                     .range(d3.interpolateRainbow);
-                 */
-                var myColor = d3.scaleSequential()
-                    .interpolator(d3.interpolateWarm)
-                    .domain([Cmin, Cmax]);
-
-                var myOpacity = d3.scaleLinear()
-                    .domain([Omin, Omax])
-                    .range([0.3, 1]);
-
-                var myOrientation = d3.scaleLinear()
-                    .domain([Ormin, Ormax])
-                    .range([0, 270])
-
-
-
-                console.log(markB)
-
-
-                if (sizeCir == "-----") {
-                    dot
-                        .data(dataFilter)
-                        .transition()
-                        .duration(1000)
-                        .attr("cx", function (d) { return x(+d.Xaxi) })
-                        .attr("cy", function (d) { return y(+d.Yaxi) })
-                        .attr("r", 10)
-                    console.log(animationB)
-                   
-
-
-                    if (colorC == "-----") {
-                        dot
-                            .style("fill", "violet")
-
-                        if (textureC == "-----") {
-
-                        }
-                        else {
-                            dot
-                                .style("fill", function (d) { return textu(+d.texC); })
-                        }
+                    if (ax1 == "logarithmic") {
+                        var x = d3.scaleLog().range([0, width]);
+                        x.domain([Xmin, Xmax]);
+                        var xAxis = d3.axisBottom().scale(x);
+                        svg.append("g")
+                            .attr("transform", "translate(0," + height + ")")
+                            .attr("class", "myXaxis")
+                        svg.selectAll(".myXaxis").transition()
+                            .duration(1000)
+                            .call(xAxis);
                     }
                     else {
-                        if (textureC == "-----") {
-
-                        }
-                        else {
-
-                            dot
-                                
-                                .style("fill", function (d) { return textu(+d.texC); })
-                                .style("fill", function (d) { return myColor(+d.colorB); }) 
-                                
-                            
-          
-                        }
-                        
-                    }
-
-
-
-
-                    if (opaciB == "-----") {
-                        dot
-                            .style("opacity", "1")
-                    }
-                    else {
-                        dot
-                            .style("opacity", function (d) { return myOpacity(+d.opaC); })
-                    }
-
-                    if (animationB == "-----") {
+                        var x = d3.scaleLinear().range([0, width]);
+                        x.domain([Xmin, Xmax]);
+                        var xAxis = d3.axisBottom().scale(x);
+                        svg.append("g")
+                            .attr("transform", "translate(0," + height + ")")
+                            .attr("class", "myXaxis")
+                        svg.selectAll(".myXaxis").transition()
+                            .duration(1000)
+                            .call(xAxis);
 
                     }
-                    else {
-                        dot
-                            .data(dataFilter)
+
+                    svg.select("#text_label1")
+                        .data(data)
+                        .transition()
+                        .duration(1000)
+                        .attr("x", width / 2)
+                        .attr("y", height + 0.8 * margin.bottom)
+                        .style("text-anchor", "middle")
+                        .text(selectedGroup1);
+
+                    console.log(selectedGroup1);
+
+                    console.log(ax2);
+
+                    if (ax2 == "logarithmic") {
+                        // create the Y axis
+                        var y = d3.scaleLog().range([height, 0]);
+                        y.domain([Ymin, Ymax]);
+                        var yAxis = d3.axisLeft().scale(y);
+                        svg.append("g")
+                            .attr("class", "myYaxis")
+                        svg.selectAll(".myYaxis")
                             .transition()
-                            .duration(150)
-                            .on("start", function repeat() {
-                                d3.active(this)
-                                    .attr("cx", function (d) { return x(+d.Xaxi) + an(+d.anime) })
-                                    .transition()
-                                    .attr("cx", function (d) { return x(+d.Xaxi) - an(+d.anime) })
-                                    .transition()
-                                    .on("start", repeat);
-                            })
+                            .duration(1000)
+                            .call(yAxis);
+
+                    } else {
+                        var y = d3.scaleLinear().range([height, 0]);
+                        y.domain([Ymin, Ymax]);
+                        var yAxis = d3.axisLeft().scale(y);
+                        svg.append("g")
+                            .attr("class", "myYaxis")
+                        svg.selectAll(".myYaxis")
+                            .transition()
+                            .duration(1000)
+                            .call(yAxis);
+
                     }
 
-                    
 
 
 
-                } else {
 
-                    if (animationB == "-----") {
+                    svg.select("#text_label2")
+                        .data(data)
+                        .attr("transform", "rotate(-90)")
+                        .attr("y", 0 - margin.left / 2)
+                        .attr("x", 0 - (height / 2))
+                        .attr("dy", "2em")
+                        .text(selectedGroup2);
+
+
+                    var z = d3.scaleLinear()
+                        .domain([Zmin, Zmax])
+                        .range([10, 30]);
+
+                    var m = d3.scaleLinear()
+                        .domain([Zmin, Zmax])
+                        .range([5, 50]);
+
+                    console.log(Zmin, Zmax)
+
+                    // Add a scale for bubble color
+                    /* var myColor = d3.scaleLinear()
+                         .domain([(Cmin/Cmax),(Cmax/Cmax)])
+                         .range(d3.interpolateRainbow);
+                     */
+                    var myColor = d3.scaleSequential()
+                        .interpolator(d3.interpolateWarm)
+                        .domain([Cmin, Cmax]);
+
+                    var myOpacity = d3.scaleLinear()
+                        .domain([Omin, Omax])
+                        .range([0.3, 1]);
+
+                    var myOrientation = d3.scaleLinear()
+                        .domain([Ormin, Ormax])
+                        .range([0, 270])
+
+
+
+                    console.log(markB)
+
+
+                    if (sizeCir == "-----") {
                         dot
                             .data(dataFilter)
                             .transition()
                             .duration(1000)
                             .attr("cx", function (d) { return x(+d.Xaxi) })
                             .attr("cy", function (d) { return y(+d.Yaxi) })
-                            .attr("r", function (d) { return z(+d.sizeCi) })
+                            .attr("r", 10)
+                        console.log(animationB)
+
+
+
                         if (colorC == "-----") {
                             dot
                                 .style("fill", "violet")
+
+                            if (textureC == "-----") {
+
+                            }
+                            else {
+                                dot
+                                    .style("fill", function (d) { return textu(+d.texC); })
+                            }
                         }
                         else {
-                            dot
-                                .style("fill", function (d) { return myColor(+d.colorB); })
+                            if (textureC == "-----") {
+
+                            }
+                            else {
+
+                                dot
+
+                                    .style("fill", function (d) { return textu(+d.texC); })
+                                    .style("fill", function (d) { return myColor(+d.colorB); })
+
+
+
+                            }
+
                         }
+
+
+
 
                         if (opaciB == "-----") {
                             dot
@@ -648,383 +598,434 @@
                                 .style("opacity", function (d) { return myOpacity(+d.opaC); })
                         }
 
-                    }
-                    else {
-                        dot
-                            .data(dataFilter)
-                            .transition()
-                            .duration(150)
-                            .on("start", function repeat() {
-                                d3.active(this)
-                                    .attr("cx", function (d) { return x(+d.Xaxi) + an(+d.anime) })
-                                    .attr("r", function (d) { return z(+d.sizeCi) })
-                                    .transition()
-                                    .attr("cx", function (d) { return x(+d.Xaxi) - an(+d.anime) })
-                                    .attr("r", function (d) { return z(+d.sizeCi) })
-                                    .transition()
-                                    .on("start", repeat);
-                            })
+                        if (animationB == "-----") {
 
-                        if (colorC == "-----") {
-                            dot
-                                .style("fill", "violet")
                         }
                         else {
                             dot
-                                .style("fill", function (d) { return myColor(+d.colorB); })
-                        }
-
-                        if (opaciB == "-----") {
-                            dot
-                                .style("opacity", "1")
-                        }
-                        else {
-                            dot
-                                .style("opacity", function (d) { return myOpacity(+d.opaC); })
-                        }
-
-
-
-                    }
-                    
-
-
-
-                    
-
-
-
-
-                }
-
-                
-
-
-                
-
-
-                /* if (colorC == "-----")
-                 {
-                     dot
-                     .style("fill", "blue")
-                 }
-                 */
-
-                console.log(orientaB);
-
-                if (orientaB == "-----") {
-                    svg.exit().remove();
-
-                    semi
-                        .data(dataFilter)
-                        .transition()
-                        .duration(50)
-                        .style("fill", "white")
-                        .style("opacity", 0)
-                }
-                else {
-                    svg.exit().remove();
-                    dot
-                        .style("fill", "white")
-                        .style("opacity", 0)
-
-                    markers
-                        .data(dataFilter)
-                        .transition()
-                        .duration(50)
-                        .style("fill", "white")
-                        .style("opacity", 0)
-
-                    semi
-                        .data(dataFilter)
-                        .transition()
-                        .duration(1000)
-                        .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) + ") rotate(" + myOrientation(d.orieB) + ")"; })
-                    if (opaciB == "-----") {
-                        semi
-                            .style("opacity", "0.8")
-                            .attr("stroke", "grey")
-                    }
-                    else {
-                        semi
-                            .style("opacity", function (d) { return myOpacity(+d.opaC); })
-                            .attr("stroke", "grey")
-                    }
-                    if (colorC == "-----") {
-                        semi
-                            .style("fill", "violet")
-                            .attr("stroke", "grey")
-                    }
-                    else {
-                        semi
-                            .style("fill", function (d) { return myColor(+d.colorB); })
-                            .attr("stroke", "grey")
-                    }
-                    //.attr("transform", "rotate(-60)")
-                    if (sizeCir == "-----") {
-                        semi
-                            .attr("d", customCircle.size(250))
-                    }
-                    else {
-                        semi
-                            .attr("d", customCircle.size(function (d) { return 25 * z(+d.sizeCi); }))
-                    }
-                    if (animationB == "-----") {
-
-                    }
-                    else {
-                        semi
-                            .data(dataFilter)
-                            .transition()
-                            .duration(150)
-                            .on("start", function repeat() {
-                                d3.active(this)
-                                    .attr("transform", function (d) { return "translate(" + (x(d.Xaxi) + an(d.anime)) + "," + y(d.Yaxi) + ") rotate(" + myOrientation(d.orieB) + ")"; })
-                                    .transition()
-                                    .attr("transform", function (d) { return "translate(" + (x(d.Xaxi) - an(d.anime)) + "," + y(d.Yaxi) + ") rotate(" + myOrientation(d.orieB) + ")"; })
-                                    .transition()
-                                    .on("start", repeat);
-                            })
-                    }
-
-                }
-
-
-
-                if (markB == "-----") {
-                    svg.exit().remove();
-
-                    markers
-                        .data(dataFilter)
-                        .transition()
-                        .duration(50)
-                        .attr("d", d3.symbol()
-                            .size(120)
-                            .type(function (d) { return shape(d.marks) })
-                        )
-                        .style("fill", "white")
-                        .style("opacity", 0)
-
-                }
-                else {
-                    svg.exit().remove();
-                    dot
-                        .style("fill", "white")
-                        .style("opacity", 0)
-
-                    semi
-                        .data(dataFilter)
-                        .transition()
-                        .duration(50)
-                        .style("fill", "white")
-                        .style("opacity", 0)
-
-
-                    // Add dots
-
-                    markers
-                        .data(dataFilter)
-                        .transition()
-                        .duration(500)
-                    if (sizeCir == "-----") {
-                        markers
-                            .attr("d", d3.symbol()
-                                .size(180).type(function (d) { return shape(d.marks); }))
-                            .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) + ")"; })
-
-                    }
-                    else {
-                        markers
-                            .attr("d", d3.symbol()
-                                .size(function (d) { return 50 * m(+d.sizeCi); }).type(function (d) { return shape(d.marks); }))
-                            //.size(300).type(function (d) { return shape(d.marks); }))
-                            .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) + ")"; })
-
-                    }
-
-                    if (opaciB == "-----") {
-                        markers
-                            .style("opacity", "0.8")
-                            .attr("stroke", "grey")
-                    }
-                    else {
-                        markers
-                            .style("opacity", function (d) { return myOpacity(+d.opaC); })
-                            .attr("stroke", "grey")
-                    }
-                    if (colorC == "-----") {
-                        markers
-                            .style("fill", "violet")
-                            .attr("stroke", "grey")
-                    }
-                    else {
-                        markers
-                            .style("fill", function (d) { return myColor(+d.colorB); })
-                            .attr("stroke", "grey")
-                    }
-
-                    if (animationB == "-----") {
-
-                    }
-                    else {
-                        markers
-                            .data(dataFilter)
-                            .transition()
-                            .duration(150)
-                            .on("start", function repeat() {
-                                d3.active(this)
-                                    .attr("transform", function (d) { return "translate(" + (x(d.Xaxi) + an(d.anime)) + "," + y(d.Yaxi) + ")"; })
-                                    .transition()
-                                    .attr("transform", function (d) { return "translate(" + (x(d.Xaxi) - an(d.anime)) + "," + y(d.Yaxi) + ")"; })
-                                    .transition()
-                                    .on("start", repeat);
-                            })
-                    }
-                    //.attr("transform", "rotate(-60)")
-                    /*console.log(animationB)
-                    if (animationB == "-----") {
-                        markers
-                        .attr("stroke", "grey")
-                    }
-                    else 
-                    {
-                        dot
-                        .on("start", function repeat() {
-                            d3.active(this)
-                                .attr("cx", width)
+                                .data(dataFilter)
                                 .transition()
-                                .attr("cx", 0)
-                                .transition()
-                                .on("start", repeat);
-                        })
-                        */
-                          /*  function downwards() {
+                                .duration(150)
+                                .on("start", function repeat() {
+                                    d3.active(this)
+                                        .attr("cx", function (d) { return x(+d.Xaxi) + an(+d.anime) })
+                                        .transition()
+                                        .attr("cx", function (d) { return x(+d.Xaxi) - an(+d.anime) })
+                                        .transition()
+                                        .on("start", repeat);
+                                })
+                        }
 
-                            markers
+
+
+
+
+                    } else {
+
+                        if (animationB == "-----") {
+                            dot
+                                .data(dataFilter)
                                 .transition()
                                 .duration(1000)
-                                .attr("transform", function (d) { return "translate(" + 10 + "," + 10 + ")"; })
-                                // .delay(500)
-                                //.on("end", upwards)
+                                .attr("cx", function (d) { return x(+d.Xaxi) })
+                                .attr("cy", function (d) { return y(+d.Yaxi) })
+                                .attr("r", function (d) { return z(+d.sizeCi) })
+                            if (colorC == "-----") {
+                                dot
+                                    .style("fill", "violet")
                             }
-                            */
+                            else {
+                                dot
+                                    .style("fill", function (d) { return myColor(+d.colorB); })
+                            }
 
-                      /*  function upwards() {
-                            d3.select("#ButtonAnimation").on("change", function (d) {
-                                change = d3.select(this).property("value")
-                                if (change == '-----') {
-                                    ending()
-                                }
-                                */
-                           // })
-                               
-                                    
-
-                           
+                            if (opaciB == "-----") {
+                                dot
+                                    .style("opacity", "1")
+                            }
+                            else {
+                                dot
+                                    .style("opacity", function (d) { return myOpacity(+d.opaC); })
+                            }
 
                         }
-                        
-                   
+                        else {
+                            dot
+                                .data(dataFilter)
+                                .transition()
+                                .duration(150)
+                                .on("start", function repeat() {
+                                    d3.active(this)
+                                        .attr("cx", function (d) { return x(+d.Xaxi) + an(+d.anime) })
+                                        .attr("r", function (d) { return z(+d.sizeCi) })
+                                        .transition()
+                                        .attr("cx", function (d) { return x(+d.Xaxi) - an(+d.anime) })
+                                        .attr("r", function (d) { return z(+d.sizeCi) })
+                                        .transition()
+                                        .on("start", repeat);
+                                })
 
-         
+                            if (colorC == "-----") {
+                                dot
+                                    .style("fill", "violet")
+                            }
+                            else {
+                                dot
+                                    .style("fill", function (d) { return myColor(+d.colorB); })
+                            }
+
+                            if (opaciB == "-----") {
+                                dot
+                                    .style("opacity", "1")
+                            }
+                            else {
+                                dot
+                                    .style("opacity", function (d) { return myOpacity(+d.opaC); })
+                            }
 
 
 
-                svg.exit().remove();
+                        }
 
+
+
+
+
+
+
+
+
+                    }
+
+
+
+
+
+
+
+                    /* if (colorC == "-----")
+                     {
+                         dot
+                         .style("fill", "blue")
+                     }
+                     */
+
+                    console.log(orientaB);
+
+                    if (orientaB == "-----") {
+                        svg.exit().remove();
+
+                        semi
+                            .data(dataFilter)
+                            .transition()
+                            .duration(50)
+                            .style("fill", "white")
+                            .style("opacity", 0)
+                    }
+                    else {
+                        svg.exit().remove();
+                        dot
+                            .style("fill", "white")
+                            .style("opacity", 0)
+
+                        markers
+                            .data(dataFilter)
+                            .transition()
+                            .duration(50)
+                            .style("fill", "white")
+                            .style("opacity", 0)
+
+                        semi
+                            .data(dataFilter)
+                            .transition()
+                            .duration(1000)
+                            .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) + ") rotate(" + myOrientation(d.orieB) + ")"; })
+                        if (opaciB == "-----") {
+                            semi
+                                .style("opacity", "0.8")
+                                .attr("stroke", "grey")
+                        }
+                        else {
+                            semi
+                                .style("opacity", function (d) { return myOpacity(+d.opaC); })
+                                .attr("stroke", "grey")
+                        }
+                        if (colorC == "-----") {
+                            semi
+                                .style("fill", "violet")
+                                .attr("stroke", "grey")
+                        }
+                        else {
+                            semi
+                                .style("fill", function (d) { return myColor(+d.colorB); })
+                                .attr("stroke", "grey")
+                        }
+                        //.attr("transform", "rotate(-60)")
+                        if (sizeCir == "-----") {
+                            semi
+                                .attr("d", customCircle.size(250))
+                        }
+                        else {
+                            semi
+                                .attr("d", customCircle.size(function (d) { return 25 * z(+d.sizeCi); }))
+                        }
+                        if (animationB == "-----") {
+
+                        }
+                        else {
+                            semi
+                                .data(dataFilter)
+                                .transition()
+                                .duration(150)
+                                .on("start", function repeat() {
+                                    d3.active(this)
+                                        .attr("transform", function (d) { return "translate(" + (x(d.Xaxi) + an(d.anime)) + "," + y(d.Yaxi) + ") rotate(" + myOrientation(d.orieB) + ")"; })
+                                        .transition()
+                                        .attr("transform", function (d) { return "translate(" + (x(d.Xaxi) - an(d.anime)) + "," + y(d.Yaxi) + ") rotate(" + myOrientation(d.orieB) + ")"; })
+                                        .transition()
+                                        .on("start", repeat);
+                                })
+                        }
+
+                    }
+
+
+
+                    if (markB == "-----") {
+                        svg.exit().remove();
+
+                        markers
+                            .data(dataFilter)
+                            .transition()
+                            .duration(50)
+                            .attr("d", d3.symbol()
+                                .size(120)
+                                .type(function (d) { return shape(d.marks) })
+                            )
+                            .style("fill", "white")
+                            .style("opacity", 0)
+
+                    }
+                    else {
+                        svg.exit().remove();
+                        dot
+                            .style("fill", "white")
+                            .style("opacity", 0)
+
+                        semi
+                            .data(dataFilter)
+                            .transition()
+                            .duration(50)
+                            .style("fill", "white")
+                            .style("opacity", 0)
+
+
+                        // Add dots
+
+                        markers
+                            .data(dataFilter)
+                            .transition()
+                            .duration(500)
+                        if (sizeCir == "-----") {
+                            markers
+                                .attr("d", d3.symbol()
+                                    .size(180).type(function (d) { return shape(d.marks); }))
+                                .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) + ")"; })
+
+                        }
+                        else {
+                            markers
+                                .attr("d", d3.symbol()
+                                    .size(function (d) { return 50 * m(+d.sizeCi); }).type(function (d) { return shape(d.marks); }))
+                                //.size(300).type(function (d) { return shape(d.marks); }))
+                                .attr("transform", function (d) { return "translate(" + x(d.Xaxi) + "," + y(d.Yaxi) + ")"; })
+
+                        }
+
+                        if (opaciB == "-----") {
+                            markers
+                                .style("opacity", "0.8")
+                                .attr("stroke", "grey")
+                        }
+                        else {
+                            markers
+                                .style("opacity", function (d) { return myOpacity(+d.opaC); })
+                                .attr("stroke", "grey")
+                        }
+                        if (colorC == "-----") {
+                            markers
+                                .style("fill", "violet")
+                                .attr("stroke", "grey")
+                        }
+                        else {
+                            markers
+                                .style("fill", function (d) { return myColor(+d.colorB); })
+                                .attr("stroke", "grey")
+                        }
+
+                        if (animationB == "-----") {
+
+                        }
+                        else {
+                            markers
+                                .data(dataFilter)
+                                .transition()
+                                .duration(150)
+                                .on("start", function repeat() {
+                                    d3.active(this)
+                                        .attr("transform", function (d) { return "translate(" + (x(d.Xaxi) + an(d.anime)) + "," + y(d.Yaxi) + ")"; })
+                                        .transition()
+                                        .attr("transform", function (d) { return "translate(" + (x(d.Xaxi) - an(d.anime)) + "," + y(d.Yaxi) + ")"; })
+                                        .transition()
+                                        .on("start", repeat);
+                                })
+                        }
+                        //.attr("transform", "rotate(-60)")
+                        /*console.log(animationB)
+                        if (animationB == "-----") {
+                            markers
+                            .attr("stroke", "grey")
+                        }
+                        else 
+                        {
+                            dot
+                            .on("start", function repeat() {
+                                d3.active(this)
+                                    .attr("cx", width)
+                                    .transition()
+                                    .attr("cx", 0)
+                                    .transition()
+                                    .on("start", repeat);
+                            })
+                            */
+                        /*  function downwards() {
+
+                          markers
+                              .transition()
+                              .duration(1000)
+                              .attr("transform", function (d) { return "translate(" + 10 + "," + 10 + ")"; })
+                              // .delay(500)
+                              //.on("end", upwards)
+                          }
+                          */
+
+                        /*  function upwards() {
+                              d3.select("#ButtonAnimation").on("change", function (d) {
+                                  change = d3.select(this).property("value")
+                                  if (change == '-----') {
+                                      ending()
+                                  }
+                                  */
+                        // })
+
+
+
+
+
+                    }
+
+
+
+
+
+
+
+                    svg.exit().remove();
+
+
+                }
+
+                // run the updateChart function with this selected option
+                var sel1 = d3.select("#selectButton1").property("value")
+                var sel2 = d3.select("#selectButton2").property("value")
+                var sel3 = d3.select("#selectButton3").property("value")
+                var sel4 = d3.select("#selectButton4").property("value")
+                var sel5 = d3.select("#ButtonSize").property("value")
+                var sel6 = d3.select("#ButtonColor").property("value")
+                var sel7 = d3.select("#ButtonOpacity").property("value")
+                var sel8 = d3.select("#ButtonOrient").property("value")
+                var sel9 = d3.select("#ButtonMark").property("value")
+                var sel10 = d3.select("#ButtonTexture").property("value")
+                var sel11 = d3.select("#ButtonAnimation").property("value")
+
+                // When the button is changed, run the updateChart function
+                d3.select("#selectButton1").on("change", function (d) {
+                    // recover the option that has been chosen
+                    sel1 = d3.select(this).property("value")
+                    // run the updateChart function with this selected option
+                    update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+                })
+
+                // When the button is changed, run the updateChart function
+                d3.select("#selectButton2").on("change", function (d) {
+                    // recover the option that has been chosen
+                    sel2 = d3.select(this).property("value")
+                    // run the updateChart function with this selected option
+                    update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+
+                })
+
+                d3.select("#selectButton3").on("change", function (d) {
+                    // recover the option that has been chosen
+                    sel3 = d3.select(this).property("value")
+                    // run the updateChart function with this selected option
+                    update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+                })
+
+                d3.select("#selectButton4").on("change", function (d) {
+                    // recover the option that has been chosen
+                    sel4 = d3.select(this).property("value")
+                    update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+                })
+
+                d3.select("#ButtonSize").on("change", function (d) {
+                    // recover the option that has been chosen
+                    sel5 = d3.select(this).property("value")
+                    update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+                })
+
+                d3.select("#ButtonColor").on("change", function (d) {
+                    // recover the option that has been chosen
+                    sel6 = d3.select(this).property("value")
+                    update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+                })
+
+                d3.select("#ButtonOpacity").on("change", function (d) {
+                    // recover the option that has been chosen
+                    sel7 = d3.select(this).property("value")
+                    update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+                })
+
+                d3.select("#ButtonOrient").on("change", function (d) {
+                    // recover the option that has been chosen
+                    sel8 = d3.select(this).property("value")
+                    update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+                })
+
+                d3.select("#ButtonMark").on("change", function (d) {
+                    // recover the option that has been chosen
+                    sel9 = d3.select(this).property("value")
+                    update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+                })
+
+                d3.select("#ButtonTexture").on("change", function (d) {
+                    // recover the option that has been chosen
+                    sel10 = d3.select(this).property("value")
+                    update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+                })
+
+                d3.select("#ButtonAnimation").on("change", function (d) {
+                    // recover the option that has been chosen
+                    sel11 = d3.select(this).property("value")
+                    update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+                })
+
+                update(allGroup[0], allGroup[0], Scales[0], Scales[0], allSizes[0], allSizes[0], allSizes[0], allSizes[0], catData[0], catData[0], catData[0])
+
+                console.log(catData[0])
 
             }
-
-            // run the updateChart function with this selected option
-            var sel1 = d3.select("#selectButton1").property("value")
-            var sel2 = d3.select("#selectButton2").property("value")
-            var sel3 = d3.select("#selectButton3").property("value")
-            var sel4 = d3.select("#selectButton4").property("value")
-            var sel5 = d3.select("#ButtonSize").property("value")
-            var sel6 = d3.select("#ButtonColor").property("value")
-            var sel7 = d3.select("#ButtonOpacity").property("value")
-            var sel8 = d3.select("#ButtonOrient").property("value")
-            var sel9 = d3.select("#ButtonMark").property("value")
-            var sel10 = d3.select("#ButtonTexture").property("value")
-            var sel11 = d3.select("#ButtonAnimation").property("value")
-
-            // When the button is changed, run the updateChart function
-            d3.select("#selectButton1").on("change", function (d) {
-                // recover the option that has been chosen
-                sel1 = d3.select(this).property("value")
-                // run the updateChart function with this selected option
-                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
-            })
-
-            // When the button is changed, run the updateChart function
-            d3.select("#selectButton2").on("change", function (d) {
-                // recover the option that has been chosen
-                sel2 = d3.select(this).property("value")
-                // run the updateChart function with this selected option
-                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
-
-            })
-
-            d3.select("#selectButton3").on("change", function (d) {
-                // recover the option that has been chosen
-                sel3 = d3.select(this).property("value")
-                // run the updateChart function with this selected option
-                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
-            })
-
-            d3.select("#selectButton4").on("change", function (d) {
-                // recover the option that has been chosen
-                sel4 = d3.select(this).property("value")
-                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
-            })
-
-            d3.select("#ButtonSize").on("change", function (d) {
-                // recover the option that has been chosen
-                sel5 = d3.select(this).property("value")
-                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
-            })
-
-            d3.select("#ButtonColor").on("change", function (d) {
-                // recover the option that has been chosen
-                sel6 = d3.select(this).property("value")
-                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
-            })
-
-            d3.select("#ButtonOpacity").on("change", function (d) {
-                // recover the option that has been chosen
-                sel7 = d3.select(this).property("value")
-                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
-            })
-
-            d3.select("#ButtonOrient").on("change", function (d) {
-                // recover the option that has been chosen
-                sel8 = d3.select(this).property("value")
-                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
-            })
-
-            d3.select("#ButtonMark").on("change", function (d) {
-                // recover the option that has been chosen
-                sel9 = d3.select(this).property("value")
-                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
-            })
-
-            d3.select("#ButtonTexture").on("change", function (d) {
-                // recover the option that has been chosen
-                sel10 = d3.select(this).property("value")
-                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
-            })
-
-            d3.select("#ButtonAnimation").on("change", function (d) {
-                // recover the option that has been chosen
-                sel11 = d3.select(this).property("value")
-                update(sel1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
-            })
-
-            update(allGroup[0], allGroup[0], Scales[0], Scales[0], allSizes[0], allSizes[0], allSizes[0], allSizes[0], catData[0], catData[0], catData[0])
-
-            console.log(catData[0])
-
-            }
+        })
 
 
 
