@@ -92,6 +92,15 @@
                 <p> <select id="ButtonTexture"></select> </p>
                 <h5> <b> 8. Motion </b> </h5>
                 <p> <select id="ButtonAnimation"></select> </p>
+
+                <form id="form" class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary active">
+                        <input type="radio" name="controlHeatmapType" value="MRR" checked>Option 1<br>
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="controlHeatmapType" value="LYL">Option 2<br>
+                    </label>
+                </form>
             </div>
         </div>
     </div>
@@ -386,9 +395,9 @@
                 var Armax = d3.max(dataFilter, function (d) { return +d.anime })
 
 
-               /* function texCre(noTex, colorBack) {
+                function texCre(noTex, colorBack) {
 
-                */
+                
 
                    /* var l = textures.lines().size(4)
                         .strokeWidth(1).background("violet");
@@ -567,9 +576,10 @@
                         else {
 
                             dot
-                                .style("fill", function (d) { return myColor(+d.colorB); })
+                                
                                 .style("fill", function (d) { return textu(+d.texC); })
-                                 
+                                .style("fill", function (d) { return myColor(+d.colorB); }) 
+                                
                             
           
                         }
