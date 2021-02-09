@@ -141,12 +141,13 @@
 
         
         function changeData(datasets) {
+
             var dataS
             if (datasets == 'IRIS') {
                 dataS = "data/iris.csv";
             }
             if (datasets == 'TOYS') {
-                dataS = "data/toys.csv";
+                dataS = "data/iris.csv";
             }
             if (datasets == 'BABY') {
                 dataS = "data/babies.csv";
@@ -1014,6 +1015,7 @@
                 console.log(catData[0])
 
             })
+            svg.exit().remove();
         }
         changeData('BABY')
 
