@@ -135,7 +135,7 @@
             .attr("transform",
                 "translate(" + margin.left + "," + margin.top + ")");
 
-        var dataS
+        var dataS = "data / babies.csv";
         //choose the data
         function changeData(datasets) {
 
@@ -150,6 +150,8 @@
             }
 
         }
+
+        console.log(dataS)
 
         //Read the data
         d3.csv(dataS, function (data) {
