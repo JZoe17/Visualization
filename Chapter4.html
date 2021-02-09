@@ -42,6 +42,13 @@
     <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <br>
+
+    <div class="btn-group">
+        <button class="button" onclick="changeData('IRIS')">IRIS-Dataset</button>
+        <button class="button" onclick="changeData('TOYS')">Toy-Dataset</button>
+        <button class="button" onclick="changeData('BABY')">Babyboomer</button>
+    </div>
+
     <!-- Initialize a select button -->
     <div class="container">
         <div class="row">
@@ -128,10 +135,26 @@
             .attr("transform",
                 "translate(" + margin.left + "," + margin.top + ")");
 
-        //Read the data
-        d3.csv("data/babies.csv", function (data) {
+        var dataS
+        //choose the data
+        function changeData(datasets) {
 
-            
+            if (datasets == 'IRIS') {
+                dataS = "data / iris.csv"
+            }
+            if (datasets == 'TOYS') { 
+                dataS = "data / toys.csv"
+            }
+            if (datasets == 'BABY') {
+                dataS = "data / babies.csv"
+            }
+
+        }
+
+        //Read the data
+        d3.csv(dataS, function (data) {
+
+
 
 
             console.log(data);
@@ -154,7 +177,7 @@
             console.log(initial)
 
             // Shape scale: give a specie, it gives a shape
-            
+
 
 
 
@@ -165,14 +188,14 @@
             // add the options to the button
 
 
-           d3.select("#selectButton1")
+            d3.select("#selectButton1")
                 .selectAll('myOptions')
                 .data(allGroup)
                 .enter()
                 .append('option')
                 .text(function (d) { return d; }) // text showed in the menu
                 .attr("value", function (d) { return d; }) // corresponding value returned by the button
-                
+
 
             d3.select("#selectButton2")
                 .selectAll('myOptions')
@@ -390,7 +413,6 @@
                 var Armin = d3.min(dataFilter, function (d) { return +d.anime })
                 var Armax = d3.max(dataFilter, function (d) { return +d.anime })
 
-
                 var shape = d3.scaleOrdinal()
                     .domain(["1", "2"])
                     .range([d3.symbolTriangle, d3.symbolSquare])
@@ -402,8 +424,6 @@
                 var an = d3.scaleLinear()
                     .domain([Armin, Armax])
                     .range([1, 10])
-
-
 
                 // updating the x,y axis range
                 //x axis
@@ -432,7 +452,6 @@
                     svg.selectAll(".myXaxis").transition()
                         .duration(1000)
                         .call(xAxis);
-
                 }
 
                 svg.select("#text_label1")
@@ -459,7 +478,6 @@
                         .transition()
                         .duration(1000)
                         .call(yAxis);
-
                 } else {
                     var y = d3.scaleLinear().range([height, 0]);
                     y.domain([Ymin, Ymax]);
@@ -996,7 +1014,7 @@
 
         })
 
-         
+
 
 
     </script>
