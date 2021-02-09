@@ -189,12 +189,9 @@
 
 
                 // add the options to the button
-                svg.select("#selectButton1")
-                    .data(allGroup)
-                    .transition()
-                    .duration(1000)
-
-                d3.select("#selectButton1")
+               
+               
+               var b1 =  d3.select("#selectButton1")
                     .selectAll('myOptions')
                     .data(allGroup)
                     .enter()
@@ -1019,7 +1016,8 @@
                 console.log(catData[0])
 
             })
-            
+
+            b1.exit().remove();
         }
         changeData('BABY')
 
