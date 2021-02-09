@@ -193,6 +193,8 @@
 
                 d3.select("#selectButton1")
                     .selectAll('myOptions')
+                    .transition()
+                    .duration(1000)
                     .data(allGroup)
                     .enter()
                     .append('option')
