@@ -193,8 +193,8 @@
                 // add the options to the button
                
                 
-               var b1 =  d3.select("#selectButton1")
-                    .select('myOptions')
+               d3.select("#selectButton1")
+                    .selectAll('myOptions')
                     .data(allGroup)
                     .enter()
                     .append('option')
