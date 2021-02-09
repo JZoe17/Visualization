@@ -44,9 +44,9 @@
     <br>
 
     <div class="btn-group">
-        <button class="button" onclick="changeData('IRIS')">IRIS-Dataset</button>
-        <button class="button" onclick="changeData('TOYS')">Toy-Dataset</button>
-        <button class="button" onclick="changeData('BABY')">Babyboomer</button>
+        <button  onclick="changeData('IRIS')">IRIS-Dataset</button>
+        <button  onclick="changeData('TOYS')">Toy-Dataset</button>
+        <button  onclick="changeData('BABY')">Babyboomer</button>
     </div>
 
     <!-- Initialize a select button -->
@@ -135,18 +135,21 @@
             .attr("transform",
                 "translate(" + margin.left + "," + margin.top + ")");
 
-        var dataS = "data/babies.csv";
+        var dataS 
         //choose the data
         function changeData(datasets) {
 
             if (datasets == 'IRIS') {
-                dataS = "data/iris.csv"
+                dataS = "data/iris.csv";
             }
             if (datasets == 'TOYS') { 
-                dataS = "data/toys.csv"
+                dataS = "data/toys.csv";
             }
             if (datasets == 'BABY') {
-                dataS = "data/babies.csv"
+                dataS = "data/babies.csv";
+            }
+            else {
+                dataS = "data/babies.csv";
             }
 
         }
