@@ -124,23 +124,23 @@
 
         
         //choose the data
-        
+        // set the dimensions and margins of the graph
+        var margin = { top: 50, right: 50, bottom: 60, left: 90 },
+            width = 760 - margin.left - margin.right,
+            height = 500 - margin.top - margin.bottom;
+
+        // append the svg object to the body of the page
+        var svg = d3.select("#my_dataviz")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform",
+                "translate(" + margin.left + "," + margin.top + ")");
 
         
         function changeData(datasets) {
-            // set the dimensions and margins of the graph
-            var margin = { top: 50, right: 50, bottom: 60, left: 90 },
-                width = 760 - margin.left - margin.right,
-                height = 500 - margin.top - margin.bottom;
-
-            // append the svg object to the body of the page
-            var svg = d3.select("#my_dataviz")
-                .append("svg")
-                .attr("width", width + margin.left + margin.right)
-                .attr("height", height + margin.top + margin.bottom)
-                .append("g")
-                .attr("transform",
-                    "translate(" + margin.left + "," + margin.top + ")");
+            d3.select("#selectButton1").selectAll('myOptions').remove()
 
             var dataS = null;
             if (datasets == 'IRIS') {
@@ -153,6 +153,7 @@
                 dataS = "data/babies.csv";
             }
             console.log(dataS)
+        }
             //Read the data
             d3.csv(dataS, function (data) {
 
@@ -1019,7 +1020,6 @@
 
             b1.exit().remove();
             d3.select("#selectButton1").selectAll('myOptions').remove()
-        }
         changeData('BABY')
 
 
