@@ -142,7 +142,7 @@
         
         function changeData(datasets) {
 
-            var dataS
+            var dataS = null;
             if (datasets == 'IRIS') {
                 dataS = "data/iris.csv";
             }
@@ -1015,7 +1015,7 @@
                 console.log(catData[0])
 
             })
-            svg.exit().remove();
+            
         }
         changeData('BABY')
 
