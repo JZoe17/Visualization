@@ -511,6 +511,8 @@
 
                             svg.select("#text_label2")
                                 .data(data)
+                                .transition()
+                                .duration(1000)
                                 .attr("transform", "rotate(-90)")
                                 .attr("y", 0 - margin.left)
                                 .attr("x", 0 - (height / 2))
@@ -1031,7 +1033,7 @@
                     /* b1.exit().remove();
                      */
                     d3.select("#selectButton1").selectAll('myOptions').remove()
-
+                    d3.select(data).remove()
                 }
 
 
