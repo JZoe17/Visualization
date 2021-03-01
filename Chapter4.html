@@ -73,9 +73,9 @@
                 <!--  <p>1. Position</p>-->
                 <p>
                     X Variable
-                    <div id="my_Buttons">
-                        <select id="selectButton1"></select>
-                    </div>
+                    
+                   <select id="selectButton1"></select>
+                    
                 </p>
                 <p>
                     Scale
@@ -149,15 +149,12 @@
             .append("g")
             .attr("transform",
                 "translate(" + margin.left + "," + margin.top + ")");
-        var buttons = d3.select("#my_Buttons")
-            .append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-            .append("g")
-            .attr("transform",
-                "translate(" + margin.left + "," + margin.top + ")");
-
         
+
+       var button1 = d3
+            .select("#selectButton1")
+            .selectAll('myOptions')
+            
 
 
         changeData('IRIS');
@@ -182,7 +179,7 @@
             //Read the data
             d3.csv(dataS, function (data) {
 
-                
+                button1.exit().remove()
 
 
                 console.log(data);
@@ -207,6 +204,12 @@
 
                 // Shape scale: give a specie, it gives a shape
 
+                button1
+                    .data(allGroup)
+                    .enter()
+                    .append('option')
+                    .text(function (d) { return d; }) // text showed in the menu
+                    .attr("value", function (d) { return d; }) // corresponding value returned by the button
 
 
 
@@ -243,15 +246,7 @@
                     .style("opacity", "0.4")
                     .attr("text-anchor", "middle");
 
-                buttons
-                    .select("#selectButton1")
-                    .selectAll('myOptions')
-                    .data(allGroup)
-                    .enter()
-                    .append('option')
-                    .text(function (d) { return d; }) // text showed in the menu
-                    .attr("value", function (d) { return d; }) // corresponding value returned by the button
-
+                
 
 
 
