@@ -400,9 +400,9 @@
 
                     d3.select("#selectButton1")
                         .selectAll('myOptions')
+                        .data(allGroup)
                         .transition()
                         .duration(1000)
-                        .data(allGroup)
                         .enter()
                         .append('option')
                         .text(function (d) { return d; }) // text showed in the menu
@@ -1046,7 +1046,6 @@
             // d3.select("#selectButton1").selectAll('myOptions').remove()
             // d3.select(data).remove()
             svg.exit().remove();
-            markers.exit().remove();
             dot.exit().remove();
             semi.exit().remove();
             d3.select("#selectButton1").exit().remove();
