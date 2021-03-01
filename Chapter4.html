@@ -151,7 +151,7 @@
         changeData('IRIS');
 
         function changeData(datasets) {
-            svg.exit().remove();
+            
             /* d3.select("#selectButton1").selectAll('myOptions').remove() */
 
             dataS = null;
@@ -464,6 +464,8 @@
                         .attr("value", function (d) { return d; }) // corresponding value returned by the button
 
                     d3.select("#ButtonOrient")
+                        .exit()
+                        .remove()
                         .selectAll('myOptions')
                         .data(allSizes)
                         .enter()
@@ -941,6 +943,10 @@
 
 
                     svg.exit().remove();
+                    marker.exit().remove();
+                    markers.exit().remove();
+                    dot.exit().remove();
+                    semi.exit().remove();
 
 
                 }
