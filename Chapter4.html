@@ -163,6 +163,7 @@
         changeData('IRIS');
 
         function changeData(datasets) {
+           // buttons.exit().remove();
             
             /* d3.select("#selectButton1").selectAll('myOptions').remove() */
 
@@ -181,7 +182,7 @@
             //Read the data
             d3.csv(dataS, function (data) {
 
-                buttons.exit().remove();
+                
 
 
                 console.log(data);
