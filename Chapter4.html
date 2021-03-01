@@ -55,7 +55,7 @@
         </div>
     </div>
 
-    
+
 
 
 
@@ -73,9 +73,9 @@
                 <!--  <p>1. Position</p>-->
                 <p>
                     X Variable
-                    
-                   <select id="selectButton1"></select>
-                    
+
+                    <select id="selectButton1"></select>
+
                 </p>
                 <p>
                     Scale
@@ -131,6 +131,8 @@
 
     <svg id="demoCustomCircle" width="100" height="100"></svg>
 
+    <script src="d3/d3v3.js"></script>
+
     <script>
 
 
@@ -155,7 +157,6 @@
             .select("#selectButton1")
             .selectAll('myOptions')
 
-        d3v3 = "d3/d3.v3.js";
         // Creating radio buttons
 
         var shapeData = ["Triangle", "Circle", "Square", "Rectangle"],
@@ -164,18 +165,18 @@
         // Create the shape selectors
         var form = d3v3.select("body").append("form");
 
-        
-            
+
+
 
 
         changeData('IRIS');
 
         function changeData(datasets) {
-           // buttons.exit().remove();
+            // buttons.exit().remove();
             button1.exit().remove()
             svg.exit().remove()
             dot.exit().remove()
-            
+
             /* d3.select("#selectButton1").selectAll('myOptions').remove() */
 
             dataS = null;
@@ -193,7 +194,7 @@
             //Read the data
             d3.csv(dataS, function (data) {
 
-                
+
 
 
                 console.log(data);
@@ -213,7 +214,7 @@
                 catData.unshift("-----");
 
 
-                // creating the radio buttons 
+                // creating the radio buttons
                 labels = form.selectAll("label")
                     .data(shapeData)
                     .enter()
@@ -241,7 +242,7 @@
                     .data(data)
                     .enter()
                     .append('option')
-                    
+
 
 
 
@@ -277,7 +278,7 @@
                     .style("opacity", "0.4")
                     .attr("text-anchor", "middle");
 
-                
+
 
 
 
@@ -359,11 +360,11 @@
                     .strokeWidth(1).background("violet");
 
 
-              
-                    
 
 
-                    
+
+
+
 
                 svg.call(l);
                 svg.call(c);
@@ -453,7 +454,7 @@
 
 
 
-                   
+
 
 
                     d3.select("#selectButton2")
@@ -991,7 +992,7 @@
 
 
 
-                    
+
 
 
                 }
@@ -1091,7 +1092,7 @@
              */
             // d3.select("#selectButton1").selectAll('myOptions').remove()
             // d3.select(data).remove()
-            
+
         }
 
 
