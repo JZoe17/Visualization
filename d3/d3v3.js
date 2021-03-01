@@ -5,7 +5,7 @@
   var d3v3_arraySlice = [].slice, d3v3_array = function(list) {
     return d3v3_arraySlice.call(list);
   };
-  var d3v3v3_document = this.document;
+  var d3v3_document = this.document;
   function d3v3_documentElement(node) {
     return node && (node.ownerDocument || node.document || node).documentElement;
   }
