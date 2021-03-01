@@ -73,7 +73,9 @@
                 <!--  <p>1. Position</p>-->
                 <p>
                     X Variable
-                    <select id="selectButton1"></select>
+                    <div id="my_Buttons">
+                        <select id="selectButton1"></select>
+                    </div>
                 </p>
                 <p>
                     Scale
@@ -147,7 +149,7 @@
             .append("g")
             .attr("transform",
                 "translate(" + margin.left + "," + margin.top + ")");
-        var buttons = d3.select("#selectButton1")
+        var buttons = d3.select("#my_Buttons")
             .append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
@@ -155,11 +157,7 @@
             .attr("transform",
                 "translate(" + margin.left + "," + margin.top + ")");
 
-        var butt1 = buttons
-            .selectAll('myOptions')
-            .data(data)
-            .enter()
-            .append('option')
+        
 
 
         changeData('IRIS');
@@ -183,7 +181,7 @@
             //Read the data
             d3.csv(dataS, function (data) {
 
-
+                buttons.exit().remove();
 
 
                 console.log(data);
@@ -243,6 +241,16 @@
                     .attr("fill", "black")
                     .style("opacity", "0.4")
                     .attr("text-anchor", "middle");
+
+                buttons
+                    .select("#selectButton1")
+                    .selectAll('myOptions')
+                    .data(allGroup)
+                    .enter()
+                    .append('option')
+                    .text(function (d) { return d; }) // text showed in the menu
+                    .attr("value", function (d) { return d; }) // corresponding value returned by the button
+
 
 
 
@@ -328,13 +336,7 @@
                     
 
 
-                butt1
-                    .data(allGroup)
-                    .transition()
-                    .duration(1000)
-                    .text(function (d) { return d; }) // text showed in the menu
-                    .attr("value", function (d) { return d; }) // corresponding value returned by the button
-
+                    
 
                 svg.call(l);
                 svg.call(c);
