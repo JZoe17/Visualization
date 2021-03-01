@@ -399,6 +399,8 @@
 
 
                     d3.select("#selectButton1")
+                        .exit()
+                        .remove()
                         .selectAll('myOptions')
                         .data(allGroup)
                         .enter()
