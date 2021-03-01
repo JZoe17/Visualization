@@ -147,6 +147,14 @@
             .append("g")
             .attr("transform",
                 "translate(" + margin.left + "," + margin.top + ")");
+        var buttons = d3.select("#selectButton1")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform",
+                "translate(" + margin.left + "," + margin.top + ")");
+
 
         changeData('IRIS');
 
@@ -398,11 +406,9 @@
 
 
 
-                    d3.select("#selectButton1")
+                    buttons
                         .selectAll('myOptions')
                         .data(allGroup)
-                        .transition()
-                        .duration(1000)
                         .enter()
                         .append('option')
                         .text(function (d) { return d; }) // text showed in the menu
