@@ -75,7 +75,7 @@
                     X Variable
 
                     <select id="selectButton1"></select>
-
+                    <div id="Radio_withD3"></div>
                 </p>
                 <p>
                     Scale
@@ -165,7 +165,9 @@
         // Create the shape selectors
         var form = d3v3.select("body").append("form");
 
+        var theRadio = d3.select("#Radio_withD3")
 
+        
 
 
 
@@ -230,6 +232,16 @@
                     .property("checked", function (d, i) { return i === j; });
 
 
+                theRadio
+                    .selectAll()
+                    .data(allGroup)
+                    .enter()
+                    .append("label")
+                    .text(function (d) { return d; })
+                    .append("input")
+                    .attr("type", "radio")
+                    .attr("value", function (d) { return d; })
+                    .attr("name", "radios")
 
 
                 //console.log(sizeC);
