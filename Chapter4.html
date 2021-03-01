@@ -399,8 +399,6 @@
 
 
                     d3.select("#selectButton1")
-                        .exit()
-                        .remove()
                         .selectAll('myOptions')
                         .data(allGroup)
                         .enter()
@@ -944,11 +942,7 @@
 
 
 
-                    svg.exit().remove();
-                    marker.exit().remove();
-                    markers.exit().remove();
-                    dot.exit().remove();
-                    semi.exit().remove();
+                    
 
 
                 }
@@ -1048,6 +1042,11 @@
              */
             // d3.select("#selectButton1").selectAll('myOptions').remove()
             // d3.select(data).remove()
+            svg.exit().remove();
+            markers.exit().remove();
+            dot.exit().remove();
+            semi.exit().remove();
+            d3.select("#selectButton1").exit().remove();
         }
 
 
