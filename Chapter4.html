@@ -75,7 +75,11 @@
                     X Variable
 
                     <select id="selectButton1"></select>
-                    <div id="Radio_withD3"></div>
+                    <div id="Radio_withD3_1"></div>
+                    <div id="Radio_withD3_2"></div>
+                    <div id="Radio_withD3_3"></div>
+
+
                 </p>
                 <p>
                     Scale
@@ -163,9 +167,9 @@
             j = 1;  // Choose the rectangle as default
 
         // Create the shape selectors
-        var form = d3v3.select("body").append("form");
+        var form = d3v3.select("#Radio_withD3_2").append("form");
 
-        var theRadio = d3.select("#Radio_withD3")
+        var theRadio = d3.select("#Radio_withD3_1")
 
         
 
@@ -182,22 +186,31 @@
             /* d3.select("#selectButton1").selectAll('myOptions').remove() */
 
             dataS = null;
+            var buttonR;
             if (datasets == 'IRIS') {
                 dataS = "data/iris.csv";
+                buttonR = "B1";
+                var form = d3v3.select("#Radio_withD3_2").append("form");
             }
             if (datasets == 'TOYS') {
                 dataS = "data/iris.csv";
+                buttonR = "B2";
+                var form = d3v3.select("#Radio_withD3_1").append("form");
             }
             if (datasets == 'BABY') {
                 dataS = "data/babies.csv";
+                buttonR = "B3";
+                var form = d3v3.select("#Radio_withD3_3").append("form");
             }
             console.log(dataS)
 
             //Read the data
             d3.csv(dataS, function (data) {
 
-
-
+                theRadio
+                    .exit()
+                    .remove()
+                 
 
                 console.log(data);
                 allGroup = d3.keys(data[0]);
@@ -215,7 +228,7 @@
                 allSizes.unshift("-----");
                 catData.unshift("-----");
 
-
+                
                 // creating the radio buttons
                 labels = form.selectAll("label")
                     .data(allGroup)
@@ -242,8 +255,7 @@
                     .attr("type", "radio")
                     .attr("value", function (d) { return d; })
                     .attr("name", "radios")
-                    .exit()
-                    .remove()
+                    
 
 
                 //console.log(sizeC);
