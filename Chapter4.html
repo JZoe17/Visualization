@@ -167,7 +167,7 @@
             j = 1;  // Choose the rectangle as default
 
         // Create the shape selectors
-        var form = d3v3.select("#Radio_withD3_2").append("form");
+        
 
         var theRadio = d3.select("#Radio_withD3_1")
 
@@ -187,6 +187,7 @@
 
             dataS = null;
             var buttonR;
+            
             if (datasets == 'IRIS') {
                 dataS = "data/iris.csv";
                 buttonR = "B1";
@@ -207,9 +208,7 @@
             //Read the data
             d3.csv(dataS, function (data) {
 
-                theRadio
-                    .exit()
-                    .remove()
+                
                  
 
                 console.log(data);
@@ -245,7 +244,7 @@
                     .property("checked", function (d, i) { return i === j; });
 
 
-               theRadio
+              /* theRadio
                     .selectAll()
                     .data(allGroup)
                     .enter()
@@ -255,7 +254,7 @@
                     .attr("type", "radio")
                     .attr("value", function (d) { return d; })
                     .attr("name", "radios")
-                    
+                    */
 
 
                 //console.log(sizeC);
@@ -1113,6 +1112,10 @@
                 console.log(catData[0])
 
             })
+
+            form
+                .exit()
+                .remove()
 
             /* b1.exit().remove();
              */
