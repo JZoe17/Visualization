@@ -177,7 +177,9 @@
 
         changeData('IRIS');
 
-        var form = d3v3.append("form")
+        var form1 = d3v3.select("#Radio_withD3_1").append("form");
+        var form2 = d3v3.select("#Radio_withD3_2").append("form");
+        var form3 = d3v3.select("#Radio_withD3_3").append("form");
 
         function changeData(datasets) {
             // buttons.exit().remove();
@@ -194,20 +196,20 @@
             if (datasets == 'IRIS') {
                 dataS = "data/iris.csv";
                 buttonR = "B1";
-                form.exit().remove();
-                form.select("#Radio_withD3_1");
+                form2.selectAll().remove();
+                form3.selectAll().remove();
             }
             if (datasets == 'TOYS') {
                 dataS = "data/iris.csv";
                 buttonR = "B2";
-                form.exit().remove();
-                form.select("#Radio_withD3_2");
+                form1.selectAll().remove();
+                form3.selectAll().remove();
             }
             if (datasets == 'BABY') {
                 dataS = "data/babies.csv";
                 buttonR = "B3";
-                form.exit().remove();
-                form.select("#Radio_withD3_3");
+                form1.selectAll().remove();
+                form2.selectAll().remove();
             }
             console.log(dataS)
 
@@ -250,7 +252,7 @@
                     .property("checked", function (d, i) { return i === j; });
 
 
-              /* theRadio
+              theRadio
                     .selectAll()
                     .data(allGroup)
                     .enter()
@@ -260,7 +262,7 @@
                     .attr("type", "radio")
                     .attr("value", function (d) { return d; })
                     .attr("name", "radios")
-                    */
+                    .attr("checked", true)
 
 
                 //console.log(sizeC);
