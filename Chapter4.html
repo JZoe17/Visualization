@@ -177,10 +177,13 @@
 
         changeData('IRIS');
 
+        var form = d3v3.append("form")
+
         function changeData(datasets) {
             // buttons.exit().remove();
             button1.exit().remove()
             svg.exit().remove()
+            form.exit().remove()
             
 
             /* d3.select("#selectButton1").selectAll('myOptions').remove() */
@@ -191,17 +194,17 @@
             if (datasets == 'IRIS') {
                 dataS = "data/iris.csv";
                 buttonR = "B1";
-                var form = d3v3.select("#Radio_withD3_2").append("form");
+                form.select("#Radio_withD3_1");
             }
             if (datasets == 'TOYS') {
                 dataS = "data/iris.csv";
                 buttonR = "B2";
-                var form = d3v3.select("#Radio_withD3_1").append("form");
+                form.select("#Radio_withD3_2");
             }
             if (datasets == 'BABY') {
                 dataS = "data/babies.csv";
                 buttonR = "B3";
-                var form = d3v3.select("#Radio_withD3_3").append("form");
+                form.select("#Radio_withD3_3");
             }
             console.log(dataS)
 
@@ -1113,9 +1116,7 @@
 
             })
 
-            form
-                .exit()
-                .remove()
+            
 
             /* b1.exit().remove();
              */
