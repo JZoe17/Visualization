@@ -183,7 +183,7 @@
             // buttons.exit().remove();
             button1.exit().remove()
             svg.exit().remove()
-            form.exit().remove()
+            
             
 
             /* d3.select("#selectButton1").selectAll('myOptions').remove() */
@@ -194,16 +194,19 @@
             if (datasets == 'IRIS') {
                 dataS = "data/iris.csv";
                 buttonR = "B1";
+                form.exit().remove();
                 form.select("#Radio_withD3_1");
             }
             if (datasets == 'TOYS') {
                 dataS = "data/iris.csv";
                 buttonR = "B2";
+                form.exit().remove();
                 form.select("#Radio_withD3_2");
             }
             if (datasets == 'BABY') {
                 dataS = "data/babies.csv";
                 buttonR = "B3";
+                form.exit().remove();
                 form.select("#Radio_withD3_3");
             }
             console.log(dataS)
