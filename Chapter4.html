@@ -164,7 +164,7 @@
         // Creating radio buttons
 
         var shapeData = ["Triangle", "Circle", "Square", "Rectangle"],
-            j = 1;  // Choose the rectangle as default
+        j = 1;  // Choose the rectangle as default
 
         // Create the shape selectors
         
@@ -275,7 +275,7 @@
                     .attr("type", "radio")
                     .attr("value", function (d) { return d; })
                     .attr("name", "radios")
-                    .attr("checked", true)
+                    .attr("checked", function (d, i) { return i === j; })
 
 
                 //console.log(sizeC);
