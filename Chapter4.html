@@ -275,7 +275,7 @@
                     .attr("type", "radio")
                     .attr("value", function (d, i) { return i; })
                     .attr("name", "radios")
-                    .attr("checked", function (d, i) { return i === j; })
+                    .property("checked", function (d, i) { return i === j; })
 
 
                 //console.log(sizeC);
