@@ -178,39 +178,39 @@
         
 
         var form1 = d3v3.select("#Radio_withD3_1").append("form");
-        var form2 = d3v3.select("#Radio_withD3_2").append("form");
-        var form3 = d3v3.select("#Radio_withD3_3").append("form");
+       
 
         function changeData(datasets) {
             // buttons.exit().remove();
             button1.exit().remove()
             svg.exit().remove()
-            
-            
-            
+
+
+
 
             /* d3.select("#selectButton1").selectAll('myOptions').remove() */
 
             dataS = null;
             var buttonR;
-            
+
             if (datasets == 'IRIS') {
                 dataS = "data/iris.csv";
                 buttonR = "B1";
                 form1.selectAll("label").remove
-                
+
             }
             if (datasets == 'TOYS') {
                 dataS = "data/iris.csv";
                 buttonR = "B2";
-                
+                form1.selectAll("label").remove
             }
             if (datasets == 'BABY') {
                 dataS = "data/babies.csv";
                 buttonR = "B3";
-                
+                form1.selectAll("label").remove
             }
             console.log(dataS)
+        }
 
             //Read the data
             d3.csv(dataS, function (data) {
