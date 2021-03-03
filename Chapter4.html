@@ -169,13 +169,13 @@
         // Create the shape selectors
         
 
-        var theRadio = d3.select("#Radio_withD3_1")
+        var theRadio = d3.select("#Radio_withD3_1").selectAll("label")
 
         
 
 
-
-        changeData('IRIS');
+        dataS = "data/iris.csv";
+        
 
         var form1 = d3v3.select("#Radio_withD3_1").append("form");
         var form2 = d3v3.select("#Radio_withD3_2").append("form");
@@ -185,6 +185,7 @@
             // buttons.exit().remove();
             button1.exit().remove()
             svg.exit().remove()
+            
             
             
 
@@ -197,16 +198,17 @@
                 dataS = "data/iris.csv";
                 buttonR = "B1";
                 form1.selectAll("label").remove
+                
             }
             if (datasets == 'TOYS') {
                 dataS = "data/iris.csv";
                 buttonR = "B2";
-                form1.selectAll("label").remove
+                
             }
             if (datasets == 'BABY') {
                 dataS = "data/babies.csv";
                 buttonR = "B3";
-                form1.selectAll("label").remove
+                
             }
             console.log(dataS)
 
@@ -234,7 +236,8 @@
 
                 
                 // creating the radio buttons
-                labels = form.selectAll("label")
+                labels = form1
+                    .selectAll("label")
                     .data(allGroup)
                     .enter()
                     .append("label")
@@ -409,7 +412,7 @@
                 // A function that updates the chart
                 function update(selectedGroup1, selectedGroup2, ax1, ax2, sizeCir, colorC, opaciB, orientaB, markB, textureC, animationB) {
 
-
+                    
 
                     // Create new data with the selection?
                     var dataFilter = data.map(function (d) { return { Yaxi: d[selectedGroup2], Xaxi: d[selectedGroup1], vals: d[ax1], vals2: d[ax2], sizeCi: d[sizeCir], colorB: d[colorC], opaC: d[opaciB], orieB: d[orientaB], marks: d[markB], texC: d[textureC], anime: d[animationB] } })
