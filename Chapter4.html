@@ -169,10 +169,10 @@
         // Create the shape selectors
         
 
-        var theRadio = d3.select("#Radio_withD3_1").selectAll("label")
+       
+        var theRadio = d3.select("#Radio_withD3_2")
 
         
-
 
         dataIni = "data/iris.csv";
         readData(dataIni)
@@ -198,17 +198,26 @@
                 dataNew = "data/iris.csv";
                 buttonR = "B1";
                 form1.selectAll("label").remove
+                theRadio
+                    .selectAll("label")
+                    .remove()
 
             }
             if (datasets == 'TOYS') {
                 dataNew = "data/iris.csv";
                 buttonR = "B2";
                 form1.selectAll("label").remove
+                theRadio
+                    .selectAll("label")
+                    .remove()
             }
             if (datasets == 'BABY') {
                 dataNew = "data/babies.csv";
                 buttonR = "B3";
                 form1.selectAll("label").remove
+                theRadio
+                    .selectAll("label")
+                    .remove()
             }
             console.log(dataNew)
 
