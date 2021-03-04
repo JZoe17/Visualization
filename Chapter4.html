@@ -197,7 +197,6 @@
                             if (datasets == 'IRIS') {
                                 dataNew = "data/iris.csv";
                                 buttonR = "B1";
-                                form1.selectAll("label").remove
                                 theRadio
                                     .selectAll("label")
                                     .remove()
@@ -206,7 +205,6 @@
                             if (datasets == 'TOYS') {
                                 dataNew = "data/iris.csv";
                                 buttonR = "B2";
-                                form1.selectAll("label").remove
                                 theRadio
                                     .selectAll("label")
                                     .remove()
@@ -214,8 +212,7 @@
                             if (datasets == 'BABY') {
                                 dataNew = "data/babies.csv";
                                 buttonR = "B3";
-                                form1.selectAll("label").remove
-                                theRadio
+                                 theRadio
                                     .selectAll("label")
                                     .remove()
                             }
@@ -277,6 +274,7 @@
                                     .attr("value", function (d, i) { return i; })
                                     .attr("name", "radios")
                                     .property("checked", function (d, i) { return i === j; })
+
 
 
                                 //console.log(sizeC);
