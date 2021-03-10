@@ -275,6 +275,19 @@
                                     .attr("name", "radios")
                                     .property("checked", function (d, i) { return i === j; })
 
+                                theRadio2
+                                    .selectAll()
+                                    .data(allGroup)
+                                    .enter()
+                                    .append("label")
+                                    .text(function (d) { return d; })
+                                    .append("input")
+                                    .attr("type", "radio")
+                                    .attr("value", function (d, i) { return d; })
+                                    .attr("name", "radios2")
+                                    .property("checked", function (d, i) { return i === j; })
+
+
 
 
                                 //console.log(sizeC);
@@ -496,10 +509,6 @@
                                     console.log(selectedGroup1);
 
                                     console.log(ax2);
-
-
-
-
 
 
                                     d3.select("#selectButton2")
@@ -1041,8 +1050,8 @@
                                 }
 
                                 // run the updateChart function with this selected option
-                                var sel1 = d3.select("#Radio_withD3_1").property("value")
-                                var sel2 = d3.select("#selectButton2").property("value")
+                                //var sel1 = d3.select("#Radio_withD3_1").property("value")
+                                //var sel2 = d3.select("#selectButton2").property("value")
                                 var sel3 = d3.select("#selectButton3").property("value")
                                 var sel4 = d3.select("#selectButton4").property("value")
                                 var sel5 = d3.select("#ButtonSize").property("value")
@@ -1064,15 +1073,23 @@
                                             select1 = ele[i].value
                                     }
                                     console.log(select1)                                    // run the updateChart function with this selected option
-                                    update(select1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+                                    update(select1, select2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
                                 })
 
                                 // When the button is changed, run the updateChart function
                                 d3.select("#selectButton2").on("change", function (d) {
                                     // recover the option that has been chosen
-                                    sel2 = d3.select(this).property("value")
+                                    //select2 = d3.select(this).property("value")
+                                    var ele2 = document.getElementsByName('radios');
+                                    for (i = 0; i < ele2.length; i++) {
+                                        if (ele2[i].checked)
+                                            // document.getElementById("Radio_withD3").innerHTML
+                                            //  = "Gender: "+ele[i].value; 
+                                            select2 = ele2[i].value
+                                    }
+                                    console.log(select1) 
                                     // run the updateChart function with this selected option
-                                    update(select1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+                                    update(select1, select2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
 
                                 })
 
@@ -1080,55 +1097,55 @@
                                     // recover the option that has been chosen
                                     sel3 = d3.select(this).property("value")
                                     // run the updateChart function with this selected option
-                                    update(select1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+                                    update(select1, select2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
                                 })
 
                                 d3.select("#selectButton4").on("change", function (d) {
                                     // recover the option that has been chosen
                                     sel4 = d3.select(this).property("value")
-                                    update(select1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+                                    update(select1, select2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
                                 })
 
                                 d3.select("#ButtonSize").on("change", function (d) {
                                     // recover the option that has been chosen
                                     sel5 = d3.select(this).property("value")
-                                    update(select1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+                                    update(select1, select2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
                                 })
 
                                 d3.select("#ButtonColor").on("change", function (d) {
                                     // recover the option that has been chosen
                                     sel6 = d3.select(this).property("value")
-                                    update(select1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+                                    update(select1, select2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
                                 })
 
                                 d3.select("#ButtonOpacity").on("change", function (d) {
                                     // recover the option that has been chosen
                                     sel7 = d3.select(this).property("value")
-                                    update(select1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+                                    update(select1, select2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
                                 })
 
                                 d3.select("#ButtonOrient").on("change", function (d) {
                                     // recover the option that has been chosen
                                     sel8 = d3.select(this).property("value")
-                                    update(select1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+                                    update(select1, select2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
                                 })
 
                                 d3.select("#ButtonMark").on("change", function (d) {
                                     // recover the option that has been chosen
                                     sel9 = d3.select(this).property("value")
-                                    update(select1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+                                    update(select1, select2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
                                 })
 
                                 d3.select("#ButtonTexture").on("change", function (d) {
                                     // recover the option that has been chosen
                                     sel10 = d3.select(this).property("value")
-                                    update(select1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+                                    update(select1, select2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
                                 })
 
                                 d3.select("#ButtonAnimation").on("change", function (d) {
                                     // recover the option that has been chosen
                                     sel11 = d3.select(this).property("value")
-                                    update(select1, sel2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+                                    update(select1, select2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
                                 })
 
                                 update(allGroup[0], allGroup[0], Scales[0], Scales[0], allSizes[0], allSizes[0], allSizes[0], allSizes[0], catData[0], catData[0], catData[0])
