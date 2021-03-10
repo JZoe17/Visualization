@@ -76,8 +76,6 @@
 
                     <!--   <select id="selectButton1"></select> -->
                     <div id="Radio_withD3_1"></div>
-                    <div id="Radio_withD3_2"></div>
-                    <div id="Radio_withD3_3"></div>
 
 
                 </p>
@@ -87,7 +85,9 @@
                 </p>
                 <p>
                     Y Variable
-                    <select id="selectButton2"></select>
+                    <div id="Radio_withD3_2"></div>
+
+                    <!--  <select id="selectButton2"></select> -->
                 </p>
                 <p>
                     Scale
@@ -171,6 +171,7 @@
 
 
                         var theRadio = d3.select("#Radio_withD3_1")
+                        var theRadio2 = d3.select("#Radio_withD3_2")
 
 
 
@@ -212,7 +213,7 @@
                             if (datasets == 'BABY') {
                                 dataNew = "data/babies.csv";
                                 buttonR = "B3";
-                                 theRadio
+                                theRadio
                                     .selectAll("label")
                                     .remove()
                             }
@@ -1069,7 +1070,7 @@
                                     for (i = 0; i < ele.length; i++) {
                                         if (ele[i].checked)
                                             // document.getElementById("Radio_withD3").innerHTML
-                                            //  = "Gender: "+ele[i].value; 
+                                            //  = "Gender: "+ele[i].value;
                                             select1 = ele[i].value
                                     }
                                     console.log(select1)                                    // run the updateChart function with this selected option
@@ -1084,10 +1085,10 @@
                                     for (i = 0; i < ele2.length; i++) {
                                         if (ele2[i].checked)
                                             // document.getElementById("Radio_withD3").innerHTML
-                                            //  = "Gender: "+ele[i].value; 
+                                            //  = "Gender: "+ele[i].value;
                                             select2 = ele2[i].value
                                     }
-                                    console.log(select1) 
+                                    console.log(select1)
                                     // run the updateChart function with this selected option
                                     update(select1, select2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
 
@@ -1158,8 +1159,8 @@
 
                         /* b1.exit().remove();
                          */
-                                // d3.select("#selectButton1").selectAll('myOptions').remove()
-                                // d3.select(data).remove()
+                                                    // d3.select("#selectButton1").selectAll('myOptions').remove()
+                                                    // d3.select(data).remove()
 
 
 
