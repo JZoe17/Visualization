@@ -438,7 +438,8 @@
                                 // A function that updates the chart
                                 function update(selectedGroup1, selectedGroup2, ax1, ax2, sizeCir, colorC, opaciB, orientaB, markB, textureC, animationB) {
 
-
+                                    select1 = selectedGroup1;
+                                    select2 = selectedGroup2;
 
                                     // Create new data with the selection?
                                     var dataFilter = data.map(function (d) { return { Yaxi: d[selectedGroup2], Xaxi: d[selectedGroup1], vals: d[ax1], vals2: d[ax2], sizeCi: d[sizeCir], colorB: d[colorC], opaC: d[opaciB], orieB: d[orientaB], marks: d[markB], texC: d[textureC], anime: d[animationB] } })
@@ -1081,7 +1082,7 @@
                                 d3.select("#selectButton2").on("change", function (d) {
                                     // recover the option that has been chosen
                                     //select2 = d3.select(this).property("value")
-                                    var ele2 = document.getElementsByName('radios');
+                                    var ele2 = document.getElementsByName('radios2');
                                     for (i = 0; i < ele2.length; i++) {
                                         if (ele2[i].checked)
                                             // document.getElementById("Radio_withD3").innerHTML
