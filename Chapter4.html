@@ -148,13 +148,7 @@
                             height = 500 - margin.top - margin.bottom;
 
                         // append the svg object to the body of the page
-                        var svg = d3.select("#my_dataviz")
-                            .append("svg")
-                            .attr("width", width + margin.left + margin.right)
-                            .attr("height", height + margin.top + margin.bottom)
-                            .append("g")
-                            .attr("transform",
-                                "translate(" + margin.left + "," + margin.top + ")");
+                        
 
 
                         var button1 = d3
@@ -232,6 +226,7 @@
                             readData(dataNew)
                         }
 
+
                         function readData(dataS) {
                             //Read the data
                             d3.csv(dataS, function (data) {
@@ -257,7 +252,13 @@
                                 catData.unshift("-----");
 
 
-                             
+                                var svg = d3.select("#my_dataviz")
+                                    .append("svg")
+                                    .attr("width", width + margin.left + margin.right)
+                                    .attr("height", height + margin.top + margin.bottom)
+                                    .append("g")
+                                    .attr("transform",
+                                        "translate(" + margin.left + "," + margin.top + ")");
 
 
                                 theRadio
@@ -525,6 +526,8 @@
                                     // updating the x,y axis range
                                     //x axis
                                     console.log(dataFilter);
+                                    console.log(selectedGroup1);
+
                                     console.log(Xmax);
                                     console.log(Ymax);
 
@@ -610,7 +613,7 @@
                                         .transition()
                                         .duration(1000)
                                         .attr("transform", "rotate(-90)")
-                                        .attr("y", 0 - margin.left)
+                                        .attr("y", 0 + margin.left)
                                         .attr("x", 0 - (height / 2))
                                         .attr("dy", "1em")
                                         .text(selectedGroup2);
@@ -650,7 +653,7 @@
 
                                     if (sizeCir == "-----") {
                                         dot
-                                            .data(dataFilter)
+                                            .data(data)
                                             .transition()
                                             .duration(1000)
                                             .attr("cx", function (d) { return x(+d.Xaxi) })
