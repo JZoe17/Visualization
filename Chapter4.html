@@ -427,6 +427,10 @@
                                     var Armin = d3.min(dataFilter, function (d) { return +d.anime })
                                     var Armax = d3.max(dataFilter, function (d) { return +d.anime })
 
+                                    console.log(d.Xaxi)
+                                    console.log(d.Yaxi)
+
+
                                     var shape = d3.scaleOrdinal()
                                         .domain(["1", "2"])
                                         .range([d3.symbolTriangle, d3.symbolSquare])
@@ -482,13 +486,14 @@
                                     console.log(ax2);
 
 
-                                    d3.select("#selectButton2")
+                                  /*  d3.select("#selectButton2")
                                         .selectAll('myOptions')
                                         .data(allGroup)
                                         .enter()
                                         .append('option')
                                         .text(function (d) { return d; }) // text showed in the menu
                                         .attr("value", function (d) { return d; }) // corresponding value returned by the button
+                                        */
 
                                     d3.select("#selectButton3")
                                         .selectAll('myOptions')
