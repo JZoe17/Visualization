@@ -559,8 +559,6 @@
                                         .attr("value", function (d) { return d; }) // corresponding value returned by the button
 
                                     d3.select("#ButtonOrient")
-                                        .exit()
-                                        .remove()
                                         .selectAll('myOptions')
                                         .data(allSizes)
                                         .enter()
