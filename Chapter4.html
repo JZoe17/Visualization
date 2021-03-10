@@ -135,7 +135,7 @@
 
                     <svg id="demoCustomCircle" width="100" height="100"></svg>
 
-                    <script src="d3/d3v3.js"></script>
+                    
 
                     <script>
 
@@ -246,22 +246,7 @@
                                 catData.unshift("-----");
 
 
-                                // creating the radio buttons
-                                /* labels = form1
-                                     .selectAll("label")
-                                     .data(allGroup)
-                                     .enter()
-                                     .append("label")
-                                     .text(function (d) { return d; })
-                                     .insert("input")
-                                     .attr({
-                                         type: "radio",
-                                         class: "shape",
-                                         name: "mode",
-                                         value: function (d, i) { return i; }
-                                     })
-                                     .property("checked", function (d, i) { return i === j; });
-                                     */
+                             
 
 
                                 theRadio
@@ -350,23 +335,7 @@
                                     .attr("r", 7)
                                     /*.style("opacity", "0.6") */
                                     .attr("stroke", "grey")
-                                /*.attr("stroke", "blue")
-                                .style("opacity", "0.3")
-                                */
-
-                                /* var trian = svg
-                                   .append('g')
-                                   .selectAll('dot')
-                                   .data(data)
-                                   .enter()
-                                   .append('path')
-                                         .attr("d", d3.symbol()
-                                         .size(120)
-                                         .type(d3.symbolTriangle)
-                               )
-                                     /*.attr("stroke", "blue")
-                                     .style("opacity", "0.3")
-                                     */
+                                 
 
                                 //Custom Semi Circle, accurate center and size
                                 var customShapeCircle = {
@@ -1079,7 +1048,7 @@
                                 })
 
                                 // When the button is changed, run the updateChart function
-                                d3.select("#selectButton2").on("change", function (d) {
+                                d3.select("#Radio_withD3_2").on("change", function (d) {
                                     // recover the option that has been chosen
                                     //select2 = d3.select(this).property("value")
                                     var ele2 = document.getElementsByName('radios2');
@@ -1089,7 +1058,7 @@
                                             //  = "Gender: "+ele[i].value;
                                             select2 = ele2[i].value
                                     }
-                                    console.log(select1)
+                                    console.log(select2)
                                     // run the updateChart function with this selected option
                                     update(select1, select2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
 
