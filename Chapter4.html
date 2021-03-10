@@ -398,7 +398,76 @@
                                 svg.call(c);
 
 
+                                d3.select("#selectButton3")
+                                    .selectAll('myOptions')
+                                    .data(Scales)
+                                    .enter()
+                                    .append('option')
+                                    .text(function (d) { return d; }) // text showed in the menu
+                                    .attr("value", function (d) { return d; }) // corresponding value returned by the button
 
+                                d3.select("#selectButton4")
+                                    .selectAll('myOptions')
+                                    .data(Scales)
+                                    .enter()
+                                    .append('option')
+                                    .text(function (d) { return d; }) // text showed in the menu
+                                    .attr("value", function (d) { return d; }) // corresponding value returned by the button
+
+                                d3.select("#ButtonSize")
+                                    .selectAll('myOptions')
+                                    .data(allSizes)
+                                    .enter()
+                                    .append('option')
+                                    .text(function (d) { return d; }) // text showed in the menu
+                                    .attr("value", function (d) { return d; }) // corresponding value returned by the button
+
+                                d3.select("#ButtonMark")
+                                    .selectAll('myOptions')
+                                    .data(catData)
+                                    .enter()
+                                    .append('option')
+                                    .text(function (d) { return d; }) // text showed in the menu
+                                    .attr("value", function (d) { return d; }) // corresponding value returned by the button
+
+                                d3.select("#ButtonColor")
+                                    .selectAll('myOptions')
+                                    .data(allSizes)
+                                    .enter()
+                                    .append('option')
+                                    .text(function (d) { return d; }) // text showed in the menu
+                                    .attr("value", function (d) { return d; }) // corresponding value returned by the button
+
+                                d3.select("#ButtonOpacity")
+                                    .selectAll('myOptions')
+                                    .data(allSizes)
+                                    .enter()
+                                    .append('option')
+                                    .text(function (d) { return d; }) // text showed in the menu
+                                    .attr("value", function (d) { return d; }) // corresponding value returned by the button
+
+                                d3.select("#ButtonOrient")
+                                    .selectAll('myOptions')
+                                    .data(allSizes)
+                                    .enter()
+                                    .append('option')
+                                    .text(function (d) { return d; }) // text showed in the menu
+                                    .attr("value", function (d) { return d; }) // corresponding value returned by the button
+                                d3.select("#ButtonTexture")
+                                    .selectAll('myOptions')
+                                    .data(catData)
+                                    .enter()
+                                    .append('option')
+                                    .text(function (d) { return d; }) // text showed in the menu
+                                    .attr("value", function (d) { return d; }) // corresponding value returned by the button
+
+                                d3.select("#ButtonAnimation")
+                                    .selectAll('myOptions')
+                                    .data(catData)
+                                    .enter()
+                                    .append('option')
+                                    .text(function (d) { return d; }) // text showed in the menu
+                                    .attr("value", function (d) { return d; }) // corresponding value returned by the button
 
 
 
@@ -494,76 +563,7 @@
                                         .attr("value", function (d) { return d; }) // corresponding value returned by the button
                                         */
 
-                                    d3.select("#selectButton3")
-                                        .selectAll('myOptions')
-                                        .data(Scales)
-                                        .enter()
-                                        .append('option')
-                                        .text(function (d) { return d; }) // text showed in the menu
-                                        .attr("value", function (d) { return d; }) // corresponding value returned by the button
-
-                                    d3.select("#selectButton4")
-                                        .selectAll('myOptions')
-                                        .data(Scales)
-                                        .enter()
-                                        .append('option')
-                                        .text(function (d) { return d; }) // text showed in the menu
-                                        .attr("value", function (d) { return d; }) // corresponding value returned by the button
-
-                                    d3.select("#ButtonSize")
-                                        .selectAll('myOptions')
-                                        .data(allSizes)
-                                        .enter()
-                                        .append('option')
-                                        .text(function (d) { return d; }) // text showed in the menu
-                                        .attr("value", function (d) { return d; }) // corresponding value returned by the button
-
-                                    d3.select("#ButtonMark")
-                                        .selectAll('myOptions')
-                                        .data(catData)
-                                        .enter()
-                                        .append('option')
-                                        .text(function (d) { return d; }) // text showed in the menu
-                                        .attr("value", function (d) { return d; }) // corresponding value returned by the button
-
-                                    d3.select("#ButtonColor")
-                                        .selectAll('myOptions')
-                                        .data(allSizes)
-                                        .enter()
-                                        .append('option')
-                                        .text(function (d) { return d; }) // text showed in the menu
-                                        .attr("value", function (d) { return d; }) // corresponding value returned by the button
-
-                                    d3.select("#ButtonOpacity")
-                                        .selectAll('myOptions')
-                                        .data(allSizes)
-                                        .enter()
-                                        .append('option')
-                                        .text(function (d) { return d; }) // text showed in the menu
-                                        .attr("value", function (d) { return d; }) // corresponding value returned by the button
-
-                                    d3.select("#ButtonOrient")
-                                        .selectAll('myOptions')
-                                        .data(allSizes)
-                                        .enter()
-                                        .append('option')
-                                        .text(function (d) { return d; }) // text showed in the menu
-                                        .attr("value", function (d) { return d; }) // corresponding value returned by the button
-                                    d3.select("#ButtonTexture")
-                                        .selectAll('myOptions')
-                                        .data(catData)
-                                        .enter()
-                                        .append('option')
-                                        .text(function (d) { return d; }) // text showed in the menu
-                                        .attr("value", function (d) { return d; }) // corresponding value returned by the button
-
-                                    d3.select("#ButtonAnimation")
-                                        .selectAll('myOptions')
-                                        .data(catData)
-                                        .enter()
-                                        .append('option')
-                                        .text(function (d) { return d; }) // text showed in the menu
-                                        .attr("value", function (d) { return d; }) // corresponding value returned by the button
+                                    
 
 
                                     if (ax2 == "logarithmic") {
@@ -1030,7 +1030,7 @@
 
                                 // current values
                                 //X 
-                                var ele = document.getElementsByName('radios');
+                                ele = document.getElementsByName('radios');
                                 for (i = 0; i < ele.length; i++) {
                                     if (ele[i].checked)
                                         // document.getElementById("Radio_withD3").innerHTML
@@ -1038,7 +1038,7 @@
                                         select1 = ele[i].value
                                 }
 
-                                var ele2 = document.getElementsByName('radios2');
+                                ele2 = document.getElementsByName('radios2');
                                 for (i = 0; i < ele.length; i++) {
                                     if (ele2[i].checked)
                                         // document.getElementById("Radio_withD3").innerHTML
@@ -1060,7 +1060,7 @@
                                 // When the button is changed, run the updateChart function
                                 d3.select("#Radio_withD3_1").on("change", function (d) {
                                     // recover the option that has been chosen
-                                    var ele = document.getElementsByName('radios');
+                                    ele = document.getElementsByName('radios');
                                     for (i = 0; i < ele.length; i++) {
                                         if (ele[i].checked)
                                             // document.getElementById("Radio_withD3").innerHTML
@@ -1075,7 +1075,7 @@
                                 d3.select("#Radio_withD3_2").on("change", function (d) {
                                     // recover the option that has been chosen
                                     //select2 = d3.select(this).property("value")
-                                    var ele2 = document.getElementsByName('radios2');
+                                    ele2 = document.getElementsByName('radios2');
                                     for (i = 0; i < ele2.length; i++) {
                                         if (ele2[i].checked)
                                             // document.getElementById("Radio_withD3").innerHTML
