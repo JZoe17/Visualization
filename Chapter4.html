@@ -62,13 +62,13 @@
     <!-- Initialize a select button -->
     <div class="container">
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-9">
                 <!-- <h2>Column 1</h2>
                  <p>Some text..</p> -->
                 <div id="my_dataviz"></div>
             </div>
 
-            <div class="col-md-2">
+            <div class="col-md-4">
                 <h5> <b> 1. Position </b> </h5>
                 <!--  <p>1. Position</p>-->
                 <p>
@@ -82,6 +82,7 @@
                 <p>
                     Scale
                     <select id="selectButton3"></select>
+                    <div id="Radio_withD3_x_log"></div>
                 </p>
                 <p>
                     Y Variable
@@ -92,6 +93,7 @@
                 <p>
                     Scale
                     <select id="selectButton4"></select>
+                    <div id="Radio_withD3_y_log"></div>
                 </p>
                 <h5> <b> 2. Mark </b> </h5>
                 <p> <select id="ButtonMark"></select> </p>
@@ -172,6 +174,9 @@
 
                         var theRadio = d3.select("#Radio_withD3_1")
                         var theRadio2 = d3.select("#Radio_withD3_2")
+                        var theRadio3 = d3.select("#Radio_withD3_x_log")
+                        var theRadio4 = d3.select("#Radio_withD3_y_log")
+
 
 
 
@@ -205,6 +210,12 @@
                                 theRadio2
                                     .selectAll("label")
                                     .remove()
+                                theRadio3
+                                    .selectAll("label")
+                                    .remove()
+                                theRadio4
+                                    .selectAll("label")
+                                    .remove()
 
                                 svg
                                     .selectAll("circle")
@@ -221,6 +232,12 @@
                                 theRadio2
                                     .selectAll("label")
                                     .remove()
+                                theRadio3
+                                    .selectAll("label")
+                                    .remove()
+                                theRadio4
+                                    .selectAll("label")
+                                    .remove()
                                 svg
                                     .selectAll("circle")
                                     .remove()
@@ -232,6 +249,12 @@
                                     .selectAll("label")
                                     .remove()
                                 theRadio2
+                                    .selectAll("label")
+                                    .remove()
+                                theRadio3
+                                    .selectAll("label")
+                                    .remove()
+                                theRadio4
                                     .selectAll("label")
                                     .remove()
                                 svg
@@ -295,6 +318,28 @@
                                     .attr("name", "radios2")
                                     .property("checked", function (d, i) { return i === j; })
 
+                                theRadio3
+                                    .selectAll()
+                                    .data(allScales)
+                                    .enter()
+                                    .append("label")
+                                    .text(function (d) { return d; })
+                                    .append("input")
+                                    .attr("type", "radio")
+                                    .attr("value", function (d, i) { return d; })
+                                    .attr("name", "radios3")
+                                    .property("checked", function (d, i) { return i === j; })
+                                theRadio4
+                                    .selectAll()
+                                    .data(allScales)
+                                    .enter()
+                                    .append("label")
+                                    .text(function (d) { return d; })
+                                    .append("input")
+                                    .attr("type", "radio")
+                                    .attr("value", function (d, i) { return d; })
+                                    .attr("name", "radios4")
+                                    .property("checked", function (d, i) { return i === j; })
 
 
 
@@ -499,6 +544,8 @@
 
                                     select1 = selectedGroup1;
                                     select2 = selectedGroup2;
+                                    select3 = ax1;
+                                    select4 = ax2;
 
                                     // Create new data with the selection?
                                     var dataFilter = data.map(function (d) { return { Yaxi: d[selectedGroup2], Xaxi: d[selectedGroup1], vals: d[ax1], vals2: d[ax2], sizeCi: d[sizeCir], colorB: d[colorC], opaC: d[opaciB], orieB: d[orientaB], marks: d[markB], texC: d[textureC], anime: d[animationB] } })
@@ -1071,9 +1118,24 @@
                                     if (ele2[i].checked)
                                         // document.getElementById("Radio_withD3").innerHTML
                                         //  = "Gender: "+ele[i].value;
-                                        select2 = ele[i].value
+                                        select2 = ele2[i].value
                                 }
 
+                                ele3 = document.getElementsByName('radios3');
+                                for (i = 0; i < ele3.length; i++) {
+                                    if (ele3[i].checked)
+                                        // document.getElementById("Radio_withD3").innerHTML
+                                        //  = "Gender: "+ele[i].value;
+                                        select3 = ele3[i].value
+                                }
+
+                                ele4 = document.getElementsByName('radios4');
+                                for (i = 0; i < ele4.length; i++) {
+                                    if (ele4[i].checked)
+                                        // document.getElementById("Radio_withD3").innerHTML
+                                        //  = "Gender: "+ele[i].value;
+                                        select4 = ele4[i].value
+                                }
 
                                 var sel3 = d3.select("#selectButton3").property("value")
                                 var sel4 = d3.select("#selectButton4").property("value")
@@ -1116,12 +1178,44 @@
 
                                 })
 
-                                d3.select("#selectButton3").on("change", function (d) {
+                                d3.select("#Radio_withD3_x_log").on("change", function (d) {
+                                    // recover the option that has been chosen
+                                    //select2 = d3.select(this).property("value")
+                                    ele3 = document.getElementsByName('radios3');
+                                    for (i = 0; i < ele3.length; i++) {
+                                        if (ele3[i].checked)
+                                            // document.getElementById("Radio_withD3").innerHTML
+                                            //  = "Gender: "+ele[i].value;
+                                            select3 = ele3[i].value
+                                    }
+                                    console.log(select3)
+                                    // run the updateChart function with this selected option
+                                    update(select1, select2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+
+                                })
+
+                                d3.select("#Radio_withD3_y_log").on("change", function (d) {
+                                    // recover the option that has been chosen
+                                    //select2 = d3.select(this).property("value")
+                                    ele4 = document.getElementsByName('radios4');
+                                    for (i = 0; i < ele4.length; i++) {
+                                        if (ele4[i].checked)
+                                            // document.getElementById("Radio_withD3").innerHTML
+                                            //  = "Gender: "+ele[i].value;
+                                            select4 = ele4[i].value
+                                    }
+                                    console.log(select4)
+                                    // run the updateChart function with this selected option
+                                    update(select1, select2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+
+                                })
+                                /*d3.select("#selectButton3").on("change", function (d) {
                                     // recover the option that has been chosen
                                     sel3 = d3.select(this).property("value")
                                     // run the updateChart function with this selected option
                                     update(select1, select2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
                                 })
+                                */
 
                                 d3.select("#selectButton4").on("change", function (d) {
                                     // recover the option that has been chosen
