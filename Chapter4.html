@@ -206,6 +206,11 @@
                                     .selectAll("label")
                                     .remove()
 
+                                dot
+                                    .selectAll('circle')
+                                    .remove()
+
+
                             }
                             if (datasets == 'TOYS') {
                                 dataNew = "data/iris.csv";
@@ -216,6 +221,9 @@
                                 theRadio2
                                     .selectAll("label")
                                     .remove()
+                                dot
+                                    .selectAll('circle')
+                                    .remove()
                             }
                             if (datasets == 'BABY') {
                                 dataNew = "data/babies.csv";
@@ -225,6 +233,9 @@
                                     .remove()
                                 theRadio2
                                     .selectAll("label")
+                                    .remove()
+                                dot
+                                    .selectAll('circle')
                                     .remove()
                             }
                             console.log(dataNew)
@@ -649,9 +660,9 @@
 
                                     console.log(markB)
 
+                                    
 
                                     if (sizeCir == "-----") {
-                                        dot.exit().remove()
 
                                         dot
                                             .data(dataFilter)
