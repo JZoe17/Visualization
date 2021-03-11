@@ -183,13 +183,13 @@
                     var theRadio2 = d3.select("#Radio_withD3_2")
                     var theRadio3 = d3.select("#Radio_withD3_x_log")
                     var theRadio4 = d3.select("#Radio_withD3_y_log")
-                    var theRadio4 = d3.select("#Radio_withD3_5")
-                    var theRadio5 = d3.select("#Radio_withD3_6")                                                                                                                                                                            
-                    var theRadio6 = d3.select("#Radio_withD3_7")
-                    var theRadio7 = d3.select("#Radio_withD3_8")
-                    var theRadio8 = d3.select("#Radio_withD3_9")
-                    var theRadio9 = d3.select("#Radio_withD3_10")
-                    var theRadio10 = d3.select("#Radio_withD3_11")
+                    var theRadio5 = d3.select("#Radio_withD3_5")
+                    var theRadio6 = d3.select("#Radio_withD3_6")                                                                                                                                                                            
+                    var theRadio7 = d3.select("#Radio_withD3_7")
+                    var theRadio8 = d3.select("#Radio_withD3_8")
+                    var theRadio9 = d3.select("#Radio_withD3_9")
+                    var theRadio10 = d3.select("#Radio_withD3_10")
+                    var theRadio11 = d3.select("#Radio_withD3_11")
 
 
 
@@ -313,7 +313,7 @@
                                 .property("checked", function (d, i) { return i === j; })
                             theRadio5
                                 .selectAll()
-                                .data(catData)
+                                .data(allSizes)
                                 .enter()
                                 .append("label")
                                 .text(function (d) { return d; })
@@ -324,7 +324,7 @@
                                 .property("checked", function (d, i) { return i === j; })
                             theRadio6
                                 .selectAll()
-                                .data(allSizes)
+                                .data(catData)
                                 .enter()
                                 .append("label")
                                 .text(function (d) { return d; })
@@ -357,7 +357,7 @@
                                 .property("checked", function (d, i) { return i === j; })
                             theRadio9
                                 .selectAll()
-                                .data(catData)
+                                .data(allSizes)
                                 .enter()
                                 .append("label")
                                 .text(function (d) { return d; })
@@ -367,6 +367,18 @@
                                 .attr("name", "radios4")
                                 .property("checked", function (d, i) { return i === j; })
                             theRadio10
+                                .selectAll()
+                                .data(catData)
+                                .enter()
+                                .append("label")
+                                .text(function (d) { return d; })
+                                .append("input")
+                                .attr("type", "radio")
+                                .attr("value", function (d, i) { return d; })
+                                .attr("name", "radios4")
+                                .property("checked", function (d, i) { return i === j; })
+
+                            theRadio11
                                 .selectAll()
                                 .data(catData)
                                 .enter()
