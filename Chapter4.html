@@ -204,62 +204,17 @@
                                 dataNew = "data/iris.csv";
                                 buttonR = "B1";
                                 //remove all of the labels
-                                theRadio
-                                    .selectAll("label")
-                                    .remove()
-                                theRadio2
-                                    .selectAll("label")
-                                    .remove()
-                                theRadio3
-                                    .selectAll("label")
-                                    .remove()
-                                theRadio4
-                                    .selectAll("label")
-                                    .remove()
-
-                                svg
-                                    .selectAll("circle")
-                                    .remove()
-
-
+                                removeLabels();
                             }
                             if (datasets == 'TOYS') {
                                 dataNew = "data/iris.csv";
                                 buttonR = "B2";
-                                theRadio
-                                    .selectAll("label")
-                                    .remove()
-                                theRadio2
-                                    .selectAll("label")
-                                    .remove()
-                                theRadio3
-                                    .selectAll("label")
-                                    .remove()
-                                theRadio4
-                                    .selectAll("label")
-                                    .remove()
-                                svg
-                                    .selectAll("circle")
-                                    .remove()
+                                removeLabels();
                             }
                             if (datasets == 'BABY') {
                                 dataNew = "data/babies.csv";
                                 buttonR = "B3";
-                                theRadio
-                                    .selectAll("label")
-                                    .remove()
-                                theRadio2
-                                    .selectAll("label")
-                                    .remove()
-                                theRadio3
-                                    .selectAll("label")
-                                    .remove()
-                                theRadio4
-                                    .selectAll("label")
-                                    .remove()
-                                svg
-                                    .selectAll("circle")
-                                    .remove()
+                                removeLabels();
                             }
                             console.log(dataNew)
 
@@ -340,7 +295,83 @@
                                     .attr("value", function (d, i) { return d; })
                                     .attr("name", "radios4")
                                     .property("checked", function (d, i) { return i === j; })
-
+                                theRadio5
+                                    .selectAll()
+                                    .data(allSizes)
+                                    .enter()
+                                    .append("label")
+                                    .text(function (d) { return d; })
+                                    .append("input")
+                                    .attr("type", "radio")
+                                    .attr("value", function (d, i) { return d; })
+                                    .attr("name", "radios4")
+                                    .property("checked", function (d, i) { return i === j; })
+                                theRadio6
+                                    .selectAll()
+                                    .data(catData)
+                                    .enter()
+                                    .append("label")
+                                    .text(function (d) { return d; })
+                                    .append("input")
+                                    .attr("type", "radio")
+                                    .attr("value", function (d, i) { return d; })
+                                    .attr("name", "radios4")
+                                    .property("checked", function (d, i) { return i === j; })
+                                theRadio7
+                                    .selectAll()
+                                    .data(allSizes)
+                                    .enter()
+                                    .append("label")
+                                    .text(function (d) { return d; })
+                                    .append("input")
+                                    .attr("type", "radio")
+                                    .attr("value", function (d, i) { return d; })
+                                    .attr("name", "radios4")
+                                    .property("checked", function (d, i) { return i === j; })
+                                theRadio8
+                                    .selectAll()
+                                    .data(allSizes)
+                                    .enter()
+                                    .append("label")
+                                    .text(function (d) { return d; })
+                                    .append("input")
+                                    .attr("type", "radio")
+                                    .attr("value", function (d, i) { return d; })
+                                    .attr("name", "radios4")
+                                    .property("checked", function (d, i) { return i === j; })
+                                theRadio9
+                                    .selectAll()
+                                    .data(allSizes)
+                                    .enter()
+                                    .append("label")
+                                    .text(function (d) { return d; })
+                                    .append("input")
+                                    .attr("type", "radio")
+                                    .attr("value", function (d, i) { return d; })
+                                    .attr("name", "radios4")
+                                    .property("checked", function (d, i) { return i === j; })
+                                theRadio10
+                                    .selectAll()
+                                    .data(catData)
+                                    .enter()
+                                    .append("label")
+                                    .text(function (d) { return d; })
+                                    .append("input")
+                                    .attr("type", "radio")
+                                    .attr("value", function (d, i) { return d; })
+                                    .attr("name", "radios4")
+                                    .property("checked", function (d, i) { return i === j; })
+                                theRadio11
+                                    .selectAll()
+                                    .data(catData)
+                                    .enter()
+                                    .append("label")
+                                    .text(function (d) { return d; })
+                                    .append("input")
+                                    .attr("type", "radio")
+                                    .attr("value", function (d, i) { return d; })
+                                    .attr("name", "radios4")
+                                    .property("checked", function (d, i) { return i === j; })
 
 
                                 //console.log(sizeC);
@@ -465,7 +496,8 @@
                                 svg.call(c);
 
 
-                                d3.select("#selectButton3")
+                                /*
+                                 d3.select("#selectButton3")
                                     .selectAll('myOptions')
                                     .data(Scales)
                                     .enter()
@@ -535,6 +567,7 @@
                                     .append('option')
                                     .text(function (d) { return d; }) // text showed in the menu
                                     .attr("value", function (d) { return d; }) // corresponding value returned by the button
+                                    */
 
 
 
@@ -546,6 +579,13 @@
                                     select2 = selectedGroup2;
                                     select3 = ax1;
                                     select4 = ax2;
+                                    select5 = sizeCir;
+                                    select6 = colorC;
+                                    select7 = opaciB;
+                                    select8 = orientaB;
+                                    select9 = markB;
+                                    select10 = textureC;
+                                    select11 = animationB;
 
                                     // Create new data with the selection?
                                     var dataFilter = data.map(function (d) { return { Yaxi: d[selectedGroup2], Xaxi: d[selectedGroup1], vals: d[ax1], vals2: d[ax2], sizeCi: d[sizeCir], colorB: d[colorC], opaC: d[opaciB], orieB: d[orientaB], marks: d[markB], texC: d[textureC], anime: d[animationB] } })
@@ -1137,15 +1177,65 @@
                                         select4 = ele4[i].value
                                 }
 
+                                ele5 = document.getElementsByName('radios5');
+                                for (i = 0; i < ele5.length; i++) {
+                                    if (ele5[i].checked)
+                                        // document.getElementById("Radio_withD3").innerHTML
+                                        //  = "Gender: "+ele[i].value;
+                                        select5 = ele5[i].value
+                                }
+                                ele6 = document.getElementsByName('radios6');
+                                for (i = 0; i < ele6.length; i++) {
+                                    if (ele6[i].checked)
+                                        // document.getElementById("Radio_withD3").innerHTML
+                                        //  = "Gender: "+ele[i].value;
+                                        select6 = ele6[i].value
+                                }
+                                ele7 = document.getElementsByName('radios7');
+                                for (i = 0; i < ele7.length; i++) {
+                                    if (ele7[i].checked)
+                                        // document.getElementById("Radio_withD3").innerHTML
+                                        //  = "Gender: "+ele[i].value;
+                                        select7 = ele7[i].value
+                                }
+                                ele8 = document.getElementsByName('radios8');
+                                for (i = 0; i < ele8.length; i++) {
+                                    if (ele8[i].checked)
+                                        // document.getElementById("Radio_withD3").innerHTML
+                                        //  = "Gender: "+ele[i].value;
+                                        select8 = ele8[i].value
+                                }
+                                ele9 = document.getElementsByName('radios9');
+                                for (i = 0; i < ele9.length; i++) {
+                                    if (ele9[i].checked)
+                                        // document.getElementById("Radio_withD3").innerHTML
+                                        //  = "Gender: "+ele[i].value;
+                                        select9 = ele9[i].value
+                                }
+                                ele10 = document.getElementsByName('radios10');
+                                for (i = 0; i < ele10.length; i++) {
+                                    if (ele10[i].checked)
+                                        // document.getElementById("Radio_withD3").innerHTML
+                                        //  = "Gender: "+ele[i].value;
+                                        select10 = ele10[i].value
+                                }
+                                ele11 = document.getElementsByName('radios11');
+                                for (i = 0; i < ele11.length; i++) {
+                                    if (ele11[i].checked)
+                                        // document.getElementById("Radio_withD3").innerHTML
+                                        //  = "Gender: "+ele[i].value;
+                                        select11 = ele11[i].value
+                                }
+
                                // var sel3 = d3.select("#selectButton3").property("value")
                               //  var sel4 = d3.select("#selectButton4").property("value")
-                                var sel5 = d3.select("#ButtonSize").property("value")
+                               /* var sel5 = d3.select("#ButtonSize").property("value")
                                 var sel6 = d3.select("#ButtonColor").property("value")
                                 var sel7 = d3.select("#ButtonOpacity").property("value")
                                 var sel8 = d3.select("#ButtonOrient").property("value")
                                 var sel9 = d3.select("#ButtonMark").property("value")
                                 var sel10 = d3.select("#ButtonTexture").property("value")
-                                var sel11 = d3.select("#ButtonAnimation").property("value")
+                                var sel11 = d3.select("#ButtonAnimation").property("value") */
 
                                 // When the button is changed, run the updateChart function
                                 d3.select("#Radio_withD3_1").on("change", function (d) {
@@ -1209,14 +1299,134 @@
                                     update(select1, select2, select3, select4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
 
                                 })
+                                d3.select("#Radio_withD3_5").on("change", function (d) {
+                                    // recover the option that has been chosen
+                                    //select2 = d3.select(this).property("value")
+                                    ele5 = document.getElementsByName('radios5');
+                                    for (i = 0; i < ele5.length; i++) {
+                                        if (ele5[i].checked)
+                                            // document.getElementById("Radio_withD3").innerHTML
+                                            //  = "Gender: "+ele[i].value;
+                                            select5 = ele5[i].value
+                                    }
+                                    console.log(select5)
+                                    // run the updateChart function with this selected option
+                                    update(select1, select2, select3, select4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+
+                                })
+                                d3.select("#Radio_withD3_6").on("change", function (d) {
+                                    // recover the option that has been chosen
+                                    //select2 = d3.select(this).property("value")
+                                    ele6 = document.getElementsByName('radios6');
+                                    for (i = 0; i < ele6.length; i++) {
+                                        if (ele6[i].checked)
+                                            // document.getElementById("Radio_withD3").innerHTML
+                                            //  = "Gender: "+ele[i].value;
+                                            select6 = ele6[i].value
+                                    }
+                                    console.log(select6)
+                                    // run the updateChart function with this selected option
+                                    update(select1, select2, select3, select4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+
+                                })
+                                d3.select("#Radio_withD3_7").on("change", function (d) {
+                                    // recover the option that has been chosen
+                                    //select2 = d3.select(this).property("value")
+                                    ele7 = document.getElementsByName('radios7');
+                                    for (i = 0; i < ele7.length; i++) {
+                                        if (ele7[i].checked)
+                                            // document.getElementById("Radio_withD3").innerHTML
+                                            //  = "Gender: "+ele[i].value;
+                                            select7 = ele7[i].value
+                                    }
+                                    console.log(select7)
+                                    // run the updateChart function with this selected option
+                                    update(select1, select2, select3, select4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+
+                                })
+                                d3.select("#Radio_withD3_8").on("change", function (d) {
+                                    // recover the option that has been chosen
+                                    //select2 = d3.select(this).property("value")
+                                    ele8 = document.getElementsByName('radios8');
+                                    for (i = 0; i < ele8.length; i++) {
+                                        if (ele8[i].checked)
+                                            // document.getElementById("Radio_withD3").innerHTML
+                                            //  = "Gender: "+ele[i].value;
+                                            select8 = ele8[i].value
+                                    }
+                                    console.log(select8)
+                                    // run the updateChart function with this selected option
+                                    update(select1, select2, select3, select4, select5, select6, select7, select8, select9, select10, select11)
+
+                                })
+                                d3.select("#Radio_withD3_9").on("change", function (d) {
+                                    // recover the option that has been chosen
+                                    //select2 = d3.select(this).property("value")
+                                    ele9 = document.getElementsByName('radios9');
+                                    for (i = 0; i < ele9.length; i++) {
+                                        if (ele6[i].checked)
+                                            // document.getElementById("Radio_withD3").innerHTML
+                                            //  = "Gender: "+ele[i].value;
+                                            select9 = ele9[i].value
+                                    }
+                                    console.log(select9)
+                                    // run the updateChart function with this selected option
+                                    update(select1, select2, select3, select4, select5, select6, select7, select8, select9, select10, select11)
+
+                                })
+                                d3.select("#Radio_withD3_10").on("change", function (d) {
+                                    // recover the option that has been chosen
+                                    //select2 = d3.select(this).property("value")
+                                    ele10 = document.getElementsByName('radios10');
+                                    for (i = 0; i < ele10.length; i++) {
+                                        if (ele10[i].checked)
+                                            // document.getElementById("Radio_withD3").innerHTML
+                                            //  = "Gender: "+ele[i].value;
+                                            select10 = ele10[i].value
+                                    }
+                                    console.log(select10)
+                                    // run the updateChart function with this selected option
+                                    update(select1, select2, select3, select4, select5, select6, select7, select8, select9, select10, select11)
+
+                                })
+                                d3.select("#Radio_withD3_11").on("change", function (d) {
+                                    // recover the option that has been chosen
+                                    //select2 = d3.select(this).property("value")
+                                    ele11 = document.getElementsByName('radios11');
+                                    for (i = 0; i < ele11.length; i++) {
+                                        if (ele11[i].checked)
+                                            // document.getElementById("Radio_withD3").innerHTML
+                                            //  = "Gender: "+ele[i].value;
+                                            select11 = ele11[i].value
+                                    }
+                                    console.log(select11)
+                                    // run the updateChart function with this selected option
+                                    update(select1, select2, select3, select4, select5, select6, select7, select8, select9, select10, select11)
+
+                                })
+                               /* d3.select("#Radio_withD3_4").on("change", function (d) {
+                                    // recover the option that has been chosen
+                                    //select2 = d3.select(this).property("value")
+                                    ele5 = document.getElementsByName('radios5');
+                                    for (i = 0; i < ele5.length; i++) {
+                                        if (ele5[i].checked)
+                                            // document.getElementById("Radio_withD3").innerHTML
+                                            //  = "Gender: "+ele[i].value;
+                                            select5 = ele5[i].value
+                                    }
+                                    console.log(select5)
+                                    // run the updateChart function with this selected option
+                                    update(select1, select2, select3, select4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
+
+                                })
                                 /*d3.select("#selectButton3").on("change", function (d) {
                                     // recover the option that has been chosen
                                     sel3 = d3.select(this).property("value")
                                     // run the updateChart function with this selected option
                                     update(select1, select2, sel3, sel4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
                                 })
-                                */
-
+                                
+                                /*
                                 d3.select("#selectButton4").on("change", function (d) {
                                     // recover the option that has been chosen
                                     sel4 = d3.select(this).property("value")
@@ -1264,7 +1474,47 @@
                                     sel11 = d3.select(this).property("value")
                                     update(select1, select2, select3, select4, sel5, sel6, sel7, sel8, sel9, sel10, sel11)
                                 })
+                                */
 
+                                function removeLabels() {
+                                    theRadio
+                                        .selectAll("label")
+                                        .remove()
+                                    theRadio2
+                                        .selectAll("label")
+                                        .remove()
+                                    theRadio3
+                                        .selectAll("label")
+                                        .remove()
+                                    theRadio4
+                                        .selectAll("label")
+                                        .remove()
+                                    theRadio5
+                                        .selectAll("label")
+                                        .remove()
+                                    theRadio6
+                                        .selectAll("label")
+                                        .remove()
+                                    theRadio7
+                                        .selectAll("label")
+                                        .remove()
+                                    theRadio8
+                                        .selectAll("label")
+                                        .remove()
+                                    theRadio9
+                                        .selectAll("label")
+                                        .remove()
+                                    theRadio10
+                                        .selectAll("label")
+                                        .remove()
+                                    theRadio11
+                                        .selectAll("label")
+                                        .remove()
+
+                                    svg
+                                        .selectAll("circle")
+                                        .remove()
+                                }
 
                                 console.log(catData[0])
                                 update(allGroup[0], allGroup[0], Scales[0], Scales[0], allSizes[0], allSizes[0], allSizes[0], allSizes[0], catData[0], catData[0], catData[0])
