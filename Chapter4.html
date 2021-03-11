@@ -97,11 +97,11 @@
                         <!--  <select id="selectButton4"></select> -->
                         <div id="Radio_withD3_y_log"></div>
                     </p>
-                    <h5> <b> 2. Mark </b> </h5>
+                    <h5> <b> 2. Size </b> </h5>
                     <!-- <p> <select id="ButtonMark"></select> </p>-->
                     <div id="Radio_withD3_5"></div>
 
-                    <h5>  <b> 3. Size </b> </h5>
+                    <h5>  <b> 3. Mark </b> </h5>
                     <p>
                         <!--     <select id="ButtonSize"></select>-->
                         <div id="Radio_withD3_6"></div>
@@ -355,7 +355,7 @@
                                 .property("checked", function (d, i) { return i === j; })
                             theRadio5
                                 .selectAll()
-                                .data(catData)
+                                .data(allSizes)
                                 .enter()
                                 .append("label")
                                 .text(function (d) { return d; })
@@ -366,7 +366,7 @@
                                 .property("checked", function (d, i) { return i === j; })
                             theRadio6
                                 .selectAll()
-                                .data(allSizes)
+                                .data(catData)
                                 .enter()
                                 .append("label")
                                 .text(function (d) { return d; })
