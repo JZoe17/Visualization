@@ -143,10 +143,18 @@
 
                         //choose the data
                         // set the dimensions and margins of the graph
-                      
+                        var margin = { top: 50, right: 50, bottom: 60, left: 90 },
+                            width = 760 - margin.left - margin.right,
+                            height = 500 - margin.top - margin.bottom;
 
                         // append the svg object to the body of the page
-                        
+                        var svg = d3.select("#my_dataviz")
+                            .append("svg")
+                            .attr("width", width + margin.left + margin.right)
+                            .attr("height", height + margin.top + margin.bottom)
+                            .append("g")
+                            .attr("transform",
+                                "translate(" + margin.left + "," + margin.top + ")");
 
 
                         var button1 = d3
@@ -172,19 +180,7 @@
 
 
                         //var form1 = d3v3.select("#Radio_withD3_1").append("form");
-                        var margin = { top: 50, right: 50, bottom: 60, left: 90 },
-                            width = 760 - margin.left - margin.right,
-                            height = 500 - margin.top - margin.bottom;
 
-                        var svg = d3.select("#my_dataviz")
-                            .append("svg")
-                            .attr("width", width + margin.left + margin.right)
-                            .attr("height", height + margin.top + margin.bottom)
-                            .append("g")
-                            .attr("transform",
-                                "translate(" + margin.left + "," + margin.top + ")");
-
-                        
 
                         function changeData(datasets) {
                             // buttons.exit().remove();
@@ -236,12 +232,12 @@
                             readData(dataNew)
                         }
 
-
                         function readData(dataS) {
                             //Read the data
                             d3.csv(dataS, function (data) {
 
-                               // svg.exit().remove()
+                                svg.exit().remove()
+
 
 
                                 console.log(data);
@@ -261,7 +257,7 @@
                                 catData.unshift("-----");
 
 
-
+                             
 
 
                                 theRadio
@@ -616,7 +612,7 @@
                                         .transition()
                                         .duration(1000)
                                         .attr("transform", "rotate(-90)")
-                                        .attr("y", 0 + margin.left)
+                                        .attr("y", 0 - margin.left)
                                         .attr("x", 0 - (height / 2))
                                         .attr("dy", "1em")
                                         .text(selectedGroup2);
@@ -655,8 +651,10 @@
 
 
                                     if (sizeCir == "-----") {
+                                        dot.exit().remove()
+
                                         dot
-                                            .data(data)
+                                            .data(dataFilter)
                                             .transition()
                                             .duration(1000)
                                             .attr("cx", function (d) { return x(+d.Xaxi) })
