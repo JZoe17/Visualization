@@ -63,69 +63,71 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <!-- <h2>Column 1</h2>
-                 <p>Some text..</p> -->
-                <div id="my_dataviz"></div>
+               
+                        <!-- <h2>Column 1</h2>
+             <p>Some text..</p> -->
+                        <div id="my_dataviz"></div>
+                </div>
+
+                <div class="col-md-4">
+                    <h5> <b> 1. Position </b> </h5>
+                    <!--  <p>1. Position</p>-->
+                    <p>
+                        X Variable
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <!--   <select id="selectButton1"></select> -->
+                            <div id="Radio_withD3_1"></div>
+                        </div>
+
+
+                    </p>
+                    <p>
+                        Scale
+                        <!-- <select id="selectButton3"></select> -->
+                        <div id="Radio_withD3_x_log"></div>
+                    </p>
+                    <p>
+                        Y Variable
+                        <div id="Radio_withD3_2"></div>
+
+                        <!--  <select id="selectButton2"></select> -->
+                    </p>
+                    <p>
+                        Scale
+                        <!--  <select id="selectButton4"></select> -->
+                        <div id="Radio_withD3_y_log"></div>
+                    </p>
+                    <h5> <b> 2. Mark </b> </h5>
+                    <!-- <p> <select id="ButtonMark"></select> </p>-->
+                    <div id="Radio_withD3_5"></div>
+
+                    <h5>  <b> 3. Size </b> </h5>
+                    <p>
+                        <!--     <select id="ButtonSize"></select>-->
+                        <div id="Radio_withD3_6"></div>
+                    </p>
+
+                    <h5>  <b> 4. Brightness </b> </h5>
+                    <p>
+                        <!--   <select id="ButtonOpacity"></select>-->
+                        <div id="Radio_withD3_7"></div>
+                    </p>
+
+                    <h5> <b> 5. Color </b> </h5>
+                    <!-- <p> <select id="ButtonColor"></select> </p>-->
+                    <div id="Radio_withD3_8"></div>
+
+                    <h5> <b> 6. Orientation </b> </h5>
+                    <!-- <p> <select id="ButtonOrient"></select> </p>-->
+                    <div id="Radio_withD3_9"></div>
+                    <h5> <b> 7. Texture </b> </h5>
+                    <!-- <p> <select id="ButtonTexture"></select> </p>-->
+                    <div id="Radio_withD3_10"></div>
+                    <h5> <b> 8. Motion </b> </h5>
+                    <!-- <p> <select id="ButtonAnimation"></select> </p>-->
+                    <div id="Radio_withD3_11"></div>
+                </div>
             </div>
-
-            <div class="col-md-4">
-                <h5> <b> 1. Position </b> </h5>
-                <!--  <p>1. Position</p>-->
-                <p>
-                    X Variable
-
-                    <!--   <select id="selectButton1"></select> -->
-                    <div id="Radio_withD3_1"></div>
-
-
-                </p>
-                <p>
-                    Scale
-                    <!-- <select id="selectButton3"></select> -->
-                    <div id="Radio_withD3_x_log"></div>
-                </p>
-                <p>
-                    Y Variable
-                    <div id="Radio_withD3_2"></div>
-
-                    <!--  <select id="selectButton2"></select> -->
-                </p>
-                <p>
-                    Scale
-                    <!--  <select id="selectButton4"></select> -->
-                    <div id="Radio_withD3_y_log"></div>
-                </p>
-                <h5> <b> 2. Mark </b> </h5>
-                <!-- <p> <select id="ButtonMark"></select> </p>-->
-                <div id="Radio_withD3_5"></div>
-
-                <h5>  <b> 3. Size </b> </h5>
-                <p>
-                    <!--     <select id="ButtonSize"></select>-->
-                    <div id="Radio_withD3_6"></div>
-                </p>
-
-                <h5>  <b> 4. Brightness </b> </h5>
-                <p>
-                    <!--   <select id="ButtonOpacity"></select>-->
-                    <div id="Radio_withD3_7"></div>
-                </p>
-
-                <h5> <b> 5. Color </b> </h5>
-                <!-- <p> <select id="ButtonColor"></select> </p>-->
-                <div id="Radio_withD3_8"></div>
-
-                <h5> <b> 6. Orientation </b> </h5>
-                <!-- <p> <select id="ButtonOrient"></select> </p>-->
-                <div id="Radio_withD3_9"></div>
-                <h5> <b> 7. Texture </b> </h5>
-                <!-- <p> <select id="ButtonTexture"></select> </p>-->
-                <div id="Radio_withD3_10"></div>
-                <h5> <b> 8. Motion </b> </h5>
-                <!-- <p> <select id="ButtonAnimation"></select> </p>-->
-                <div id="Radio_withD3_11"></div>
-            </div>
-        </div>
     </div>
 
     <div class="container">
@@ -270,6 +272,7 @@
                                 .data(allGroup)
                                 .enter()
                                 .append("label")
+                                .attr("class", "btn btn-secondary")
                                 .text(function (d) { return d; })
                                 .append("input")
                                 .attr("type", "radio")
