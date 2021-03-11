@@ -320,7 +320,7 @@
 
                                 theRadio3
                                     .selectAll()
-                                    .data(allScales)
+                                    .data(Scales)
                                     .enter()
                                     .append("label")
                                     .text(function (d) { return d; })
@@ -331,7 +331,7 @@
                                     .property("checked", function (d, i) { return i === j; })
                                 theRadio4
                                     .selectAll()
-                                    .data(allScales)
+                                    .data(Scales)
                                     .enter()
                                     .append("label")
                                     .text(function (d) { return d; })
