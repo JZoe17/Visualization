@@ -313,7 +313,7 @@
                                 .property("checked", function (d, i) { return i === j; })
                             theRadio5
                                 .selectAll()
-                                .data(allSizes)
+                                .data(catData)
                                 .enter()
                                 .append("label")
                                 .text(function (d) { return d; })
@@ -324,7 +324,7 @@
                                 .property("checked", function (d, i) { return i === j; })
                             theRadio6
                                 .selectAll()
-                                .data(catData)
+                                .data(allSizes)
                                 .enter()
                                 .append("label")
                                 .text(function (d) { return d; })
@@ -357,7 +357,7 @@
                                 .property("checked", function (d, i) { return i === j; })
                             theRadio9
                                 .selectAll()
-                                .data(allSizes)
+                                .data(catData)
                                 .enter()
                                 .append("label")
                                 .text(function (d) { return d; })
@@ -377,17 +377,7 @@
                                 .attr("value", function (d, i) { return d; })
                                 .attr("name", "radios4")
                                 .property("checked", function (d, i) { return i === j; })
-                            theRadio11
-                                .selectAll()
-                                .data(catData)
-                                .enter()
-                                .append("label")
-                                .text(function (d) { return d; })
-                                .append("input")
-                                .attr("type", "radio")
-                                .attr("value", function (d, i) { return d; })
-                                .attr("name", "radios4")
-                                .property("checked", function (d, i) { return i === j; })
+                           
 
 
                             //console.log(sizeC);
