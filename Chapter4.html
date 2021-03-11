@@ -237,6 +237,45 @@
                         console.log(dataNew)
 
                         readData(dataNew)
+
+                        function removeLabels() {
+                            theRadio
+                                .selectAll("label")
+                                .remove()
+                            theRadio2
+                                .selectAll("label")
+                                .remove()
+                            theRadio3
+                                .selectAll("label")
+                                .remove()
+                            theRadio4
+                                .selectAll("label")
+                                .remove()
+                            theRadio5
+                                .selectAll("label")
+                                .remove()
+                            theRadio6
+                                .selectAll("label")
+                                .remove()
+                            theRadio7
+                                .selectAll("label")
+                                .remove()
+                            theRadio8
+                                .selectAll("label")
+                                .remove()
+                            theRadio9
+                                .selectAll("label")
+                                .remove()
+                            theRadio10
+                                .selectAll("label")
+                                .remove()
+
+
+                            svg
+                                .selectAll("circle")
+                                .remove()
+                        }
+
                     }
 
                     function readData(dataS) {
@@ -1497,43 +1536,7 @@
                              })
                              */
 
-                            function removeLabels() {
-                                theRadio
-                                    .selectAll("label")
-                                    .remove()
-                                theRadio2
-                                    .selectAll("label")
-                                    .remove()
-                                theRadio3
-                                    .selectAll("label")
-                                    .remove()
-                                theRadio4
-                                    .selectAll("label")
-                                    .remove()
-                                theRadio5
-                                    .selectAll("label")
-                                    .remove()
-                                theRadio6
-                                    .selectAll("label")
-                                    .remove()
-                                theRadio7
-                                    .selectAll("label")
-                                    .remove()
-                                theRadio8
-                                    .selectAll("label")
-                                    .remove()
-                                theRadio9
-                                    .selectAll("label")
-                                    .remove()
-                                theRadio10
-                                    .selectAll("label")
-                                    .remove()
-                                
-
-                                svg
-                                    .selectAll("circle")
-                                    .remove()
-                            }
+                            
 
                             console.log(catData[0])
                             update(allGroup[0], allGroup[0], Scales[0], Scales[0], allSizes[0], allSizes[0], allSizes[0], allSizes[0], catData[0], catData[0], catData[0])
