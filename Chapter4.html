@@ -62,7 +62,7 @@
     <!-- Initialize a select button -->
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <!-- <h2>Column 1</h2>
                  <p>Some text..</p> -->
                 <div id="my_dataviz"></div>
@@ -81,7 +81,7 @@
                 </p>
                 <p>
                     Scale
-                    <select id="selectButton3"></select>
+                    <!-- <select id="selectButton3"></select> -->
                     <div id="Radio_withD3_x_log"></div>
                 </p>
                 <p>
@@ -92,7 +92,7 @@
                 </p>
                 <p>
                     Scale
-                    <select id="selectButton4"></select>
+                    <!--  <select id="selectButton4"></select> -->
                     <div id="Radio_withD3_y_log"></div>
                 </p>
                 <h5> <b> 2. Mark </b> </h5>
@@ -137,7 +137,7 @@
 
                     <svg id="demoCustomCircle" width="100" height="100"></svg>
 
-                    
+
 
                     <script>
 
@@ -189,8 +189,8 @@
 
                         function changeData(datasets) {
                             // buttons.exit().remove();
-                            
-                            
+
+
 
 
 
@@ -291,7 +291,7 @@
                                 catData.unshift("-----");
 
 
-                             
+
 
 
                                 theRadio
@@ -402,7 +402,7 @@
                                     .attr("r", 7)
                                     /*.style("opacity", "0.6") */
                                     .attr("stroke", "grey")
-                                 
+
 
                                 //Custom Semi Circle, accurate center and size
                                 var customShapeCircle = {
@@ -625,16 +625,16 @@
                                     console.log(ax2);
 
 
-                                  /*  d3.select("#selectButton2")
-                                        .selectAll('myOptions')
-                                        .data(allGroup)
-                                        .enter()
-                                        .append('option')
-                                        .text(function (d) { return d; }) // text showed in the menu
-                                        .attr("value", function (d) { return d; }) // corresponding value returned by the button
-                                        */
+                                    /*  d3.select("#selectButton2")
+                                          .selectAll('myOptions')
+                                          .data(allGroup)
+                                          .enter()
+                                          .append('option')
+                                          .text(function (d) { return d; }) // text showed in the menu
+                                          .attr("value", function (d) { return d; }) // corresponding value returned by the button
+                                          */
 
-                                    
+
 
 
                                     if (ax2 == "logarithmic") {
@@ -707,7 +707,7 @@
 
                                     console.log(markB)
 
-                                    
+
 
                                     if (sizeCir == "-----") {
 
@@ -1104,7 +1104,7 @@
                                 //var sel2 = d3.select("#selectButton2").property("value")
 
                                 // current values
-                                //X 
+                                //X
                                 ele = document.getElementsByName('radios');
                                 for (i = 0; i < ele.length; i++) {
                                     if (ele[i].checked)
@@ -1277,8 +1277,8 @@
 
                         /* b1.exit().remove();
                          */
-                                                    // d3.select("#selectButton1").selectAll('myOptions').remove()
-                                                    // d3.select(data).remove()
+                                                                        // d3.select("#selectButton1").selectAll('myOptions').remove()
+                                                                        // d3.select(data).remove()
 
 
 
