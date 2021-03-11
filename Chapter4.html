@@ -206,7 +206,7 @@
                                     .selectAll("label")
                                     .remove()
 
-                                dot
+                                svg
                                     .selectAll("circle")
                                     .remove()
 
@@ -221,7 +221,7 @@
                                 theRadio2
                                     .selectAll("label")
                                     .remove()
-                                dot
+                                svg
                                     .selectAll("circle")
                                     .remove()
                             }
@@ -234,7 +234,7 @@
                                 theRadio2
                                     .selectAll("label")
                                     .remove()
-                                dot
+                                svg
                                     .selectAll("circle")
                                     .remove()
                             }
@@ -664,28 +664,16 @@
 
                                     if (sizeCir == "-----") {
 
-                                       /* dot
+                                        dot
                                             .data(dataFilter)
                                             .transition()
                                             .duration(1000)
                                             .attr("cx", function (d) { return x(+d.Xaxi) })
                                             .attr("cy", function (d) { return y(+d.Yaxi) })
                                             .attr("r", 10)
-                                            */
-                                       console.log(animationB)
+                                        console.log(animationB)
 
-                                       dot = svg
-                                            .selectAll('circle')
-                                            .data(dataFilter)
-                                            .transition()
-                                            .duration(1000)
-                                            .enter()
-                                            .append('circle')
-                                            .attr("cx", function (d) { return x(+d.Xaxi) })
-                                            .attr("cy", function (d) { return y(+d.Yaxi) })
-                                            .attr("r", 10)
-                                            /*.style("opacity", "0.6") */
-                                            .attr("stroke", "grey")
+
 
 
 
