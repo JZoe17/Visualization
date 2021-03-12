@@ -269,6 +269,10 @@
                             theRadio10
                                 .selectAll("label")
                                 .remove()
+                            theRadio11
+                                .selectAll("label")
+                                .remove()
+
 
 
                             svg
@@ -366,7 +370,7 @@
                                 .property("checked", function (d, i) { return i === j; })
                             theRadio6
                                 .selectAll()
-                                .data(catData)
+                                .data(allSizes)
                                 .enter()
                                 .append("label")
                                 .text(function (d) { return d; })
@@ -410,7 +414,7 @@
                                 .property("checked", function (d, i) { return i === j; })
                             theRadio10
                                 .selectAll()
-                                .data(catData)
+                                .data(allSizes)
                                 .enter()
                                 .append("label")
                                 .text(function (d) { return d; })
