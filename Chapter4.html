@@ -101,7 +101,7 @@
                     <!-- <p> <select id="ButtonMark"></select> </p>-->
                     <div id="Radio_withD3_5"></div>
 
-                    <h5>  <b> 3. Mark </b> </h5>
+                    <h5>  <b> 3. Color </b> </h5>
                     <p>
                         <!--     <select id="ButtonSize"></select>-->
                         <div id="Radio_withD3_6"></div>
@@ -113,11 +113,11 @@
                         <div id="Radio_withD3_7"></div>
                     </p>
 
-                    <h5> <b> 5. Color </b> </h5>
+                    <h5> <b> 5. Orientation </b> </h5>
                     <!-- <p> <select id="ButtonColor"></select> </p>-->
                     <div id="Radio_withD3_8"></div>
 
-                    <h5> <b> 6. Orientation </b> </h5>
+                    <h5> <b> 6. Mark </b> </h5>
                     <!-- <p> <select id="ButtonOrient"></select> </p>-->
                     <div id="Radio_withD3_9"></div>
                     <h5> <b> 7. Texture </b> </h5>
@@ -774,9 +774,10 @@
                                     .transition()
                                     .duration(1000)
                                     .attr("transform", "rotate(-90)")
-                                    .attr("y", 0 - margin.left)
-                                    .attr("x", 0 - (height / 2))
+                                    .attr("y", 0 + margin.left/2)
+                                    .attr("x", 0 + (height / 2))
                                     .attr("dy", "1em")
+                                    .style("text-anchor", "middle")
                                     .text(selectedGroup2);
 
 
