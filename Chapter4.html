@@ -492,7 +492,7 @@
                                 .attr("font-size", "22px")
                                 .attr("fill", "black")
                                 .style("opacity", "0.4")
-                                .attr("text-anchor", "middle");
+                                .attr("text-anchor", "end");
 
 
 
@@ -776,10 +776,14 @@
                                 }
 
 
+                                svg.append("text_label2")
+                                    .attr("y", 6)
+                                    .attr("dy", ".75em")
+                                    .attr("transform", "rotate(-90)")
+                                    .text(selectedGroup2);
 
 
-
-                                svg.select("#text_label2")
+                                /*svg.select("#text_label2")
                                     .data(data)
                                     .transition()
                                     .duration(1000)
@@ -789,7 +793,7 @@
                                     .attr("dy", "1em")
                                     .style("text-anchor", "middle")
                                     .text(selectedGroup2);
-
+                                    */
 
                                 var z = d3.scaleLinear()
                                     .domain([Zmin, Zmax])
