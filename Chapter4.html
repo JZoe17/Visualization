@@ -74,9 +74,11 @@
                     <!--  <p>1. Position</p>-->
                     <p>
                         X Variable
-                        <div class="btn-group btn-group-md" role="group" aria-label="...">
-                            <!--   <select id="selectButton1"></select> -->
-                            <div id="Radio_withD3_1"  ></div>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            
+                                <!--   <select id="selectButton1"></select> -->
+                                <div id="Radio_withD3_1"></div>
+                           
                         </div>
 
 
@@ -309,13 +311,12 @@
 
 
 
-
                             theRadio
                                 .selectAll()
                                 .data(allGroup)
                                 .enter()
                                 .append("label")
-                                .attr("class", "btn btn-secondary")
+                                .attr("class", "btn btn-secondary active")
                                 .text(function (d) { return d; })
                                 .append("input")
                                 .attr("type", "radio")
