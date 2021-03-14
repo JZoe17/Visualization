@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://d3js.org/d3.v4.js"></script>
-  
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
     <title>The 8 Visual Variables</title>
-</head>
-<body>
+
+
 
     <header>
         <div class="container">
@@ -78,7 +80,7 @@
                 <div id="my_dataviz"></div>
             </div>
 
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <h5> <b> 1. Position </b> </h5>
                 <!--  <p>1. Position</p>-->
                 <p>
@@ -86,10 +88,10 @@
                 </p>
                 <!-- <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
-    <!--   <select id="selectButton1"></select> -->
+                <!--   <select id="selectButton1"></select> -->
                 <!--    <div id="Radio_withD3_1"></div>
 
-    </div> -->
+                </div> -->
                 <form id="Radio_withD3_1" class="btn-group btn-group-toggle" data-toggle="buttons">
                 </form>
 
@@ -109,11 +111,11 @@
                 </p>
                 <form id="Radio_withD3_2" class="btn-group btn-group-toggle" data-toggle="buttons">
                 </form>
-               
+                Scale
                 <form id="Radio_withD3_y_log" class="btn-group btn-group-toggle" data-toggle="buttons">
                 </form>
                 <!-- <p> <select id="ButtonMark"></select> </p>-->
-                
+
 
                 <h5>  <b> 3. Color </b> </h5>
                 <p>
@@ -160,8 +162,9 @@
 
     <svg id="demoCustomCircle" width="100" height="100"></svg>
 
+</head>
 
-
+<body>
     <script>
 
 
@@ -322,21 +325,21 @@
 
 
 
-              //  setterBu(theRadio, allGroup, "radios");
+                //  setterBu(theRadio, allGroup, "radios");
 
-               theRadio
+                theRadio
                     .selectAll()
                     .data(allGroup)
                     .enter()
                     .append("label")
-                    .attr("class", function (d, i) {if (i === j){return "btn btn-default active";} else { return "btn btn-default"} })
+                    .attr("class", function (d, i) { if (i === j) { return "btn btn-default active"; } else { return "btn btn-default" } })
                     .text(function (d) { return d; })
                     .append("input")
                     .attr("type", "radio")
                     .attr("value", function (d, i) { return d; })
                     .attr("name", "radios")
-                    .attr("autocomplete","off")
-                    .property("checked", function (d, i) { return i === j; }) 
+                    .attr("autocomplete", "off")
+                    .property("checked", function (d, i) { return i === j; })
 
                 theRadio2
                     .selectAll()
@@ -1366,7 +1369,7 @@
                             update(select1, select2, select3, select4, select5, select6, select7, select8, select9, select10, select11)
                         }
                     }
-                    
+
                 })
 
                 // When the button is changed, run the updateChart function
@@ -1384,11 +1387,11 @@
 
 
                         }
-                            // document.getElementById("Radio_withD3").innerHTML
-                            //  = "Gender: "+ele[i].value;
-                            
+                        // document.getElementById("Radio_withD3").innerHTML
+                        //  = "Gender: "+ele[i].value;
+
                     }
-                   
+
                 })
 
                 d3.select("#Radio_withD3_x_log").on("change", function (d) {
@@ -1403,13 +1406,13 @@
                             select3 = ele3[i].value
                             console.log(select3)
                             updaterBu(theRadio3, posNu, Scales, "radios3");
-                            
+
                             // run the updateChart function with this selected option
                             update(select1, select2, select3, select4, select5, select6, select7, select8, select9, select10, select11)
 
                         }
                     }
-                    
+
                 })
 
                 d3.select("#Radio_withD3_y_log").on("change", function (d) {
@@ -1427,11 +1430,11 @@
                             update(select1, select2, select3, select4, select5, select6, select7, select8, select9, select10, select11)
 
                         }
-                            // document.getElementById("Radio_withD3").innerHTML
-                            //  = "Gender: "+ele[i].value;
-                            
+                        // document.getElementById("Radio_withD3").innerHTML
+                        //  = "Gender: "+ele[i].value;
+
                     }
-                    
+
                 })
                 d3.select("#Radio_withD3_5").on("change", function (d) {
                     // recover the option that has been chosen
@@ -1532,7 +1535,7 @@
                             // document.getElementById("Radio_withD3").innerHTML
                             //  = "Gender: "+ele[i].value;
                             select11 = ele11[i].value
-                            
+
                         }
                     }
                     console.log(select11)
@@ -1615,7 +1618,7 @@
 
 
                 function updaterBu(RadioNu, posNu, dataNu, nameR) {
-                   RadioNu.selectAll("label")
+                    RadioNu.selectAll("label")
                         .remove()
 
                     j = posNu;
@@ -1645,13 +1648,17 @@
 
         /* b1.exit().remove();
          */
-                                                                                                                                                                                                                                                                    // d3.select("#selectButton1").selectAll('myOptions').remove()
-                                                                                                                                                                                                                                                                    // d3.select(data).remove()
-
-
-
-
-
+            // d3.select("#selectButton1").selectAll('myOptions').remove()
+            // d3.select(data).remove()
     </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+
+    </body>
+        
 
 </html>
