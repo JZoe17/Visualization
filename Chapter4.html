@@ -331,7 +331,7 @@
                     .data(allGroup)
                     .enter()
                     .append("label")
-                   .attr("class", "btn btn-default active")
+                    .attr("class", "btn btn-default")
                     .text(function (d) { return d; })
                     .append("input")
                     .attr("type", "radio")
@@ -1359,7 +1359,7 @@
                             //  = "Gender: "+ele[i].value;
                             select1 = ele[i].value
                         posNu = i; 
-                        updaterBu(theRadio, posNu, allGroup, "radio1");
+                        updaterBu(theRadio, posNu, allGroup, "radios");
                     }
                     console.log(select1)                                    // run the updateChart function with this selected option
                     update(select1, select2, select3, select4, select5, select6, select7, select8, select9, select10, select11)
