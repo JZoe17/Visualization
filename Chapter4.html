@@ -369,6 +369,7 @@
                     .data(Scales)
                     .enter()
                     .append("label")
+                    .attr("class", function (d, i) { if (i === j) { return "btn btn-default active"; } else { return "btn btn-default" } })
                     .text(function (d) { return d; })
                     .append("input")
                     .attr("type", "radio")
