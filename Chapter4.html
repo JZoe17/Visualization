@@ -331,7 +331,7 @@
                     .data(allGroup)
                     .enter()
                     .append("label")
-                    .attr("class", "btn btn-default")
+                    .attr("class", function (d, i) {if (i === j){return "btn btn-default active";} else { return "btn btn-default"} })
                     .text(function (d) { return d; })
                     .append("input")
                     .attr("type", "radio")
@@ -1349,7 +1349,6 @@
                  var sel10 = d3.select("#ButtonTexture").property("value")
                  var sel11 = d3.select("#ButtonAnimation").property("value") */
 
-                // When the button is changed, run the updateChart function
                 d3.select("#Radio_withD3_1").on("change", function (d) {
                     // recover the option that has been chosen
                     ele = document.getElementsByName('radios');
@@ -1518,7 +1517,8 @@
                         }
                     }
                     console.log(select11)
-                    // run the updateChart function with this selected option
+
+
                     update(select1, select2, select3, select4, select5, select6, select7, select8, select9, select10, select11)
 
                 })
