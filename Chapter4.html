@@ -62,7 +62,7 @@
         }
 
         h4 {
-            padding-bottom: 10px
+            padding-bottom: 10px;
         }
     </style>
 
@@ -83,19 +83,24 @@
                 <!--  <p>1. Position</p>-->
                 <p>
                     X Variable
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-
-                        <!--   <select id="selectButton1"></select> -->
-                        <div id="Radio_withD3_1"></div>
-
-                    </div>
-
-
                 </p>
+                    <!-- <div class="btn-group btn-group-toggle" data-toggle="buttons">
+
+    <!--   <select id="selectButton1"></select> -->
+                    <!--    <div id="Radio_withD3_1"></div>
+
+    </div> -->
+                    <form id="Radio_withD3_1" class="btn-group btn-group-toggle" data-toggle="buttons">
+                    </form>
+
+
                 <p>
                     Scale
                     <!-- <select id="selectButton3"></select> -->
-                    <div id="Radio_withD3_x_log"></div>
+                    <label class="btn btn-secondary">
+                        <div id="Radio_withD3_x_log"></div>
+                    </label>
+
                 </p>
                 <p>
                     Y Variable
@@ -319,8 +324,9 @@
 
 
 
+                setterBu(theRadio, allGroup, "radios");
 
-                theRadio
+               /* theRadio
                     .selectAll()
                     .data(allGroup)
                     .enter()
@@ -332,7 +338,7 @@
                     .attr("value", function (d, i) { return d; })
                     .attr("name", "radios")
                     .attr("autocomplete","off")
-                    .property("checked", function (d, i) { return i === j; })
+                    .property("checked", function (d, i) { return i === j; }) */
 
                 theRadio2
                     .selectAll()
@@ -461,7 +467,24 @@
                     .append('option')
 
 
+                function setterBu(RadioNu, dataRa, radioNu) {
+                    j = 0;
 
+                    RadioNu
+                        .selectAll()
+                        .data(dataRa)
+                        .enter()
+                        .append("label")
+                        .attr("class", function (d, i) { if (i === j) { return "btn btn-default active"; } else { return "btn btn-default" } })
+                        .text(function (d) { return d; })
+                        .append("input")
+                        .attr("type", "radio")
+                        .attr("value", function (d, i) { return d; })
+                        .attr("name", radioNu)
+                        .attr("autocomplete", "off")
+                        .property("checked", function (d, i) { return i === j; })
+
+                }
 
                 // List of groups (here I have one group per column)
 
@@ -1336,6 +1359,8 @@
                             // document.getElementById("Radio_withD3").innerHTML
                             //  = "Gender: "+ele[i].value;
                             select1 = ele[i].value
+                        posNu = i; 
+                        updaterBu(theRadio, posNu, allGroup, "radio1");
                     }
                     console.log(select1)                                    // run the updateChart function with this selected option
                     update(select1, select2, select3, select4, select5, select6, select7, select8, select9, select10, select11)
@@ -1484,10 +1509,12 @@
                     //select2 = d3.select(this).property("value")
                     ele11 = document.getElementsByName('radios11');
                     for (i = 0; i < ele11.length; i++) {
-                        if (ele11[i].checked)
+                        if (ele11[i].checked) {
                             // document.getElementById("Radio_withD3").innerHTML
                             //  = "Gender: "+ele[i].value;
                             select11 = ele11[i].value
+                            
+                        }
                     }
                     console.log(select11)
                     // run the updateChart function with this selected option
@@ -1567,7 +1594,27 @@
                  */
 
 
+                function updaterBu(RadioNu, posNu, dataNu, nameR) {
+                   RadioNu.selectAll("label")
+                        .remove()
 
+
+                    j = posNu;
+                    Radionu
+                        .selectAll()
+                        .data(dataNu)
+                        .enter()
+                        .append("label")
+                        .attr("class", function (d, i) { if (i === j) { return "btn btn-default active"; } else { return "btn btn-default" } })
+                        .text(function (d) { return d; })
+                        .append("input")
+                        .attr("type", "radio")
+                        .attr("value", function (d, i) { return d; })
+                        .attr("name", nameR)
+                        .attr("autocomplete", "off")
+                        .property("checked", function (d, i) { return i === j; })
+
+                }
                 console.log(catData[0])
                 update(allGroup[0], allGroup[0], Scales[0], Scales[0], allSizes[0], allSizes[0], allSizes[0], allSizes[0], catData[0], catData[0], catData[0])
 
