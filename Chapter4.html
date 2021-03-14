@@ -78,7 +78,7 @@
                 <div id="my_dataviz"></div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <h5> <b> 1. Position </b> </h5>
                 <!--  <p>1. Position</p>-->
                 <p>
@@ -1399,6 +1399,7 @@
                         if (ele3[i].checked) {
                             // document.getElementById("Radio_withD3").innerHTML
                             //  = "Gender: "+ele[i].value;
+                            posNu = i;
                             select3 = ele3[i].value
                             console.log(select3)
                             updaterBu(theRadio3, posNu, Scales, "radios3");
@@ -1417,6 +1418,7 @@
                     ele4 = document.getElementsByName('radios4');
                     for (i = 0; i < ele4.length; i++) {
                         if (ele4[i].checked) {
+                            posNu = i;
                             select4 = ele4[i].value
                             console.log(select4)
                             updaterBu(theRadio4, posNu, Scales, "radios4");
