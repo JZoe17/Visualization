@@ -1597,20 +1597,20 @@
                    RadioNu.selectAll("label")
                         .remove()
 
-                    pp = posNu;
+                    j = posNu;
                     RadioNu
                         .selectAll()
                         .data(dataNu)
                         .enter()
                         .append("label")
-                        .attr("class", function (d, i) { if (i === pp) { return "btn btn-default active"; } else { return "btn btn-default" } })
+                        .attr("class", function (d, i) { if (i === j) { return "btn btn-default active"; } else { return "btn btn-default" } })
                         .text(function (d) { return d; })
                         .append("input")
                         .attr("type", "radio")
                         .attr("value", function (d, i) { return d; })
                         .attr("name", nameR)
                         .attr("autocomplete", "off")
-                        .property("checked", function (d, i) { return i === pp; })
+                        .property("checked", function (d, i) { return i === j; })
 
                 }
                 console.log(catData[0])
